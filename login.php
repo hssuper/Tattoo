@@ -43,7 +43,7 @@ $_SESSION['confereNr'] = "-2";
                                     $_SESSION['msg'] = "";
                                 }
                                 ?>
-                    <form>
+                    <form action="./controller/validaLogin.php">
                         <div class="form-group">
                             <label for="cpf">CPF</label>
                             <input type="text" class="form-control" id="cpf" placeholder="Informe seu Cpf">
