@@ -1,3 +1,15 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+if(!isset($_SESSION['msg'])){
+    $_SESSION['msg'] = "";
+}
+
+$_SESSION['nr'] = "-1";
+$_SESSION['confereNr'] = "-2";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,7 +37,12 @@
 
                 <div class="col-lg-4">
                     <h3>Login</h3>
-
+                    <?php 
+                                if($_SESSION['msg'] != ""){
+                                    echo $_SESSION['msg'];
+                                    $_SESSION['msg'] = "";
+                                }
+                                ?>
                     <form>
                         <div class="form-group">
                             <label for="cpf">CPF</label>
