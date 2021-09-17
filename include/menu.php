@@ -16,7 +16,7 @@
                 <ul class="navbar-nav" style="font-family: 'Rye', cursive;">
                     <li><img src="img/home.png" height="30px" width="30px"><a href="home.php">Home</a></li>
                     <li><img src="img/maquina.png" height="30px" width="30px"><a href="tatuagens.php">tatuagens</a></li>
-                    <li><img src="img/cadastro.png" height="30px" width="30px"><a href="cadastro.php" >Cadastrar</a></li>
+                    
                     <li>
                         <?php
                         if (isset($_SESSION['id'])) {
@@ -36,7 +36,7 @@
                             <?php
                         } else {
                             ?>
-                             <li><img src="img/perfil.png" height="30px" width="30px"><a href="login.php"  >Login</a> </li>
+                             <li><img src="img/perfil.png" height="30px" width="30px"><a href="login.php" >Entrar</a> </li>
                             <?php
                         }
                         ?>

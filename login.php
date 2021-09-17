@@ -2,7 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-if(!isset($_SESSION['msg'])){
+if (!isset($_SESSION['msg'])) {
     $_SESSION['msg'] = "";
 }
 
@@ -12,6 +12,7 @@ $_SESSION['confereNr'] = "-2";
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,61 +22,67 @@ $_SESSION['confereNr'] = "-2";
     <link rel="stylesheet" href="bootstrap/css/style.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
 
 </head>
 <?php
-    include_once "include/menu.php";
-    ?>
+include_once "include/menu.php";
+?>
+
 <body>
-    
-
-   <div class="container" style="font-family: 'Rye', cursive;">
-            <div class="row">
-                <div class="col"></div>
-
-                <div class="col-lg-4">
-                    <h3>Login</h3>
-                    <?php 
-                                if($_SESSION['msg'] != ""){
-                                    echo $_SESSION['msg'];
-                                    $_SESSION['msg'] = "";
-                                }
-                                ?>
-                    <form action="./controller/validaLogin.php">
-                        <div class="form-group">
-                            <label for="cpf">CPF</label>
-                            <input type="text" class="form-control" id="cpf" placeholder="Informe seu Cpf">
-                        </div>
 
 
-                        <div class="form-group">
-                            <label for="senha">Senha</label>
-                            <input type="password" class="form-control" id="senha" placeholder="Informe uma Senha">
-                        </div>
+    <div class="container" style="font-family: 'Rye', cursive;">
+        <div class="row">
+            <div class="col"></div>
 
-                        <button type="button" class="btn btn-primary" id="cadastrar" onclick="cadastrarContato()">Entrar</button>
-                    </form>
+            <div class="col-lg-4">
+                <h3>Efetuar Login</h3>
+                <?php
+                if ($_SESSION['msg'] != "") {
+                    echo $_SESSION['msg'];
+                    $_SESSION['msg'] = "";
+                }
+                ?>
+                <form action="./controller/validaLogin.php">
+                    <div class="form-group">
+                        <label for="cpf">CPF</label>
+                        <input type="text" class="form-control" id="cpf" placeholder="Informe seu Cpf">
+                    </div>
 
-                    <div id="status"></div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control" id="senha" placeholder="Informe uma Senha">
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="cadastrar" onclick="cadastrarContato()">Entrar</button>
+                </form>
+                <br>
+                <div>
+                    <a style="color: #808080"  href="cadastro.php">Criar um Cadastro</a>
                 </div>
-
-                <div class="col"></div>
+                <div id="status"></div>
             </div>
-        </div> <!-- fecha /container -->
-        
-        
-        <footer id="myFooter" style="padding-top: 200px;">
-        <div class="container" >
+
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <!-- fecha /container -->
+
+
+    <footer id="myFooter" style="padding-top: 200px;">
+        <div class="container">
             <div class="row" style="color: #808080">
-                <div class="col-sm-3" >
+                <div class="col-sm-3">
                     <h2 class="logo"><a href="tatuagens.php"><img src="img/logo2.jfif" height="90px" width="90px"></h2>
                 </div>
-                <div class="col-sm-2" >
+                <div class="col-sm-2">
                     <h5 style="color: #808080">Inicio</h5>
                     <ul>
-                    <li><a style="color: #808080" href="home.php">Home</a></li>
+                        <li><a style="color: #808080" href="home.php">Home</a></li>
                         <li><a style="color: #808080" href="tatuagens.php">tatuagens</a></li>
                         <li><a style="color: #808080" href="cadastro.php">cadastrar</a></li>
                         <li><a style="color: #808080" href="login.php">login</a></li>
@@ -86,7 +93,7 @@ $_SESSION['confereNr'] = "-2";
                     <ul>
                         <li><a style="color: #808080" href="">Informações da Empresa</a></li>
                         <li><a style="color: #808080" href="">Contato</a></li>
-                        
+
                     </ul>
                 </div>
                 <div class="col-sm-2">
@@ -117,11 +124,12 @@ $_SESSION['confereNr'] = "-2";
 
     <!-- jQuery (online) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- JavaScript customizado -->
     <script src="js/scripts.js"></script>
 </body>
+
 </html>

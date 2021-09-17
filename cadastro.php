@@ -32,7 +32,7 @@
                 <div class="col" ></div>
 
                 <div class="col-lg-4" >
-                    <h3>Cadastro de Contato</h3>
+                    <h3>Cadastro De Cliente</h3>
 <?php
 if(isset($_POST['cadastrar'])){
     $nome = trim($_POST['nome']);

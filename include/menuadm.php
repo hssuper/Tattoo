@@ -14,7 +14,8 @@
                     <li><a href="home.php">Home</a></li>
                     <li><a href="busca.php">Buscar</a></li>
                     <li><a href="cadastro.php">Cadastrar</a></li>
-                    <li>
+                    <li><a href="adm.php">Adm</a></li>
+                    
                         <?php
                         if (isset($_SESSION['id'])) {
                             ?>
@@ -37,9 +38,9 @@
                             <?php
                         }
                         ?>
-                    </li>
-                    <li><a href="menuadm.php">Adm</a>
-                </li>
+                    
+                    
+                
                 <!-- Botão dropright dividido -->
 <div class="btn-group dropright">
   <button type="button" class="btn btn-secondary">
