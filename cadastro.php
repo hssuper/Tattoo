@@ -1,7 +1,7 @@
 <?php
         include_once "include/menu.php";
-        include_once 'C:/xampp/htdocs/tattoo/controller/cadastroFuncionarioController.php';
-        include_once 'C:/xampp/htdocs/tattoo/model/Funcionario.php';
+        include_once 'C:/xampp/htdocs/tattoo/controller/cadastroController.php';
+        include_once 'C:/xampp/htdocs/tattoo/model/cadastro.php';
         include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
         $msg = new mensagem();
         $ct= new Cadastro();
