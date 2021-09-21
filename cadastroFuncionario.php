@@ -43,14 +43,13 @@ $btEnviar = FALSE;
                         $senha = $_POST['senha'];
                         $cpf = $_POST['cpf'];
                         $dtNasc = $_POST['dtNasc'];
-                        $perfil = $_POST['perfil'];
                         unset($_POST['cadastrarFunc']);
                         $cc = new cadastroFuncionarioController();
                         //echo "$nome, $contato,  $senha, $cpf, $dtNasc";
-                        $msg = $cc->inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc,$perfil);
-                       // echo $msg->getMsg();
-                      //  echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-  //URL='cadastroFuncionario.php'\">";
+                        $msg = $cc->inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc);
+                        // echo $msg->getMsg();
+                        //  echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                        //URL='cadastroFuncionario.php'\">";
                     }
                 }
                 ?>
@@ -84,19 +83,19 @@ $btEnviar = FALSE;
 
                     <div class="form-group">
                         <label for="dtNasc">Data De Nascimento</label>
-                        <input type="date" name="dtNasc" class="form-control"  placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
+                        <input type="date" name="dtNasc" class="form-control" id="dtNasc" placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
                     </div>
 
                     <label>Perfil</label>
                     <select class="form-control" name="perfil">
                         <option>[--SELECIONE--]</option>
                         <option <?php
-                                if ($ct->getPerfil() == "Funcionario") {
+                                if ($ct == "Funcionario") {
                                     echo "selected = 'selected'";
                                 }
                                 ?>>Funcionario</option>
                         <option <?php
-                                if ($ct->getPerfil() == "Adm") {
+                                if ($ct == "Adm") {
                                     echo "selected = 'selected'";
                                 }
                                 ?>>Adm</option>
