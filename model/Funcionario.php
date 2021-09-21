@@ -4,6 +4,7 @@ class Funcionario{
 private $idcadastro;
 private $nomeFuncionario;
 private $contato;
+private $email;
 private $senha;
 private $cpf;
 private $dtNasc;
@@ -31,6 +32,13 @@ function setContato($contato){
     $this->contato = $contato;
 }
 
+function getEmail(){
+    return $this->email;
+
+}
+function setEmail($email){
+    $this->email = $email;
+}
 
 
 function getSenha(){

@@ -46,7 +46,7 @@ $btEnviar = FALSE;
                         $cc = new cadastroFuncionarioController();
                         //echo "$nomeFuncionario, $contato,  $senha, $cpf, $dtNasc";
                         $msg = $cc->inserirCadastro($nomeFuncionario, $contato, $senha, $cpf, $dtNasc);
-                        echo $msg ->getMsg();
+                        echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
 URL='cadastroFuncionario.php'\">";
                     }
@@ -56,8 +56,8 @@ URL='cadastroFuncionario.php'\">";
 
                 <form method="post" action="">
                     <div class="form-group">
-                        <label for="nomeFuncionario">Nome Funcionario</label>
-                        <input type="text" class="form-control" name="nomeFuncionario" placeholder="Informe o Nome Funcionario" value="<?php echo $ct->getNomeFuncionario(); ?>">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe seu Nome" value="<?php echo $ct->getNomeFuncionario(); ?>">
                     </div>
 
                     <div class="form-group">
@@ -65,6 +65,10 @@ URL='cadastroFuncionario.php'\">";
                         <input type="text" class="form-control" id="contato" name="contato" placeholder="Informe seu contato" value="<?php echo $ct->getContato(); ?>">
                     </div>
 
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input name="email" type="text" class="form-control" id="email" placeholder="Informe seu E-Mail" value="<?php echo $ct->getEmail(); ?>">
+                    </div>
 
                     <div class="form-group">
                         <label for="senha">Senha</label>
@@ -81,10 +85,16 @@ URL='cadastroFuncionario.php'\">";
                         <input type="date" name="dtNasc" class="form-control" id="dtNasc" placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
                     </div>
 
+                    <label>Perfil</label>
+                    <select class="form-control" name="perfil">
+                        <option>[--SELECIONE--]</option>
+                        <option>Funcionario</option>
+                        <option>Adm</option>
 
+                        
 
-                    <br>
-                    <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
+                        
+                        <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
                 </form>
 
                 <div id="status"></div>

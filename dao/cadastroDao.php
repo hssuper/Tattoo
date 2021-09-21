@@ -25,7 +25,7 @@ class DaoCadastro
                 $cpf = $cadastro->getCpf();
                 $dtNasc = $cadastro->getDtNasc();
 
-                $stmt = $conecta->prepare("insert into usuario values (null,?,?,?,?,?,?)");
+                $stmt = $conecta->prepare("insert into usuario values (null,?,?,?,?,?,?,'cliente')");
                 $stmt->bindParam(1, $nome);
                 $stmt->bindParam(2, $contato);
                 $stmt->bindParam(3, $senha);

@@ -18,18 +18,21 @@ if($conecta){
 
         $nomeFuncionario = $cadastro->getNomeFuncionario();
         $contato = $cadastro->getContato();
+        $email = $cadastro->getEmail();
         $senha = $cadastro->getSenha();
         $cpf = $cadastro->getCpf();
         $dtNasc = $cadastro->getDtNasc();
-        $msg->setMsg("$nomeFuncionario, $contato,  $senha, $cpf, $dtNasc");
+        $msg->setMsg("$nomeFuncionario, $contato,$email,  $senha, $cpf, $dtNasc");
         
         
-        $stmt = $conecta->prepare("insert into funcionario values (null,?,?,?,?,?)");
+        $stmt = $conecta->prepare("insert into funcionario values (null,?,?,?,?,?,?,?)");
         $stmt->bindParam(1, $nomeFuncionario);
         $stmt->bindParam(2, $contato);
-        $stmt->bindParam(3, $senha);
-        $stmt->bindParam(4, $cpf);
-        $stmt->bindParam(5, $dtNasc);
+        $stmt->bindParam(3, $email);
+        $stmt->bindParam(4, $senha);
+        $stmt->bindParam(5, $cpf);
+        $stmt->bindParam(6, $dtNasc);
+        $stmt->bindParam(7, $perfil);
         $stmt->execute();
     
         $msg->setMsg("<p style='color:gree;'>Dados Cadastrados com sucesso.</p>");
