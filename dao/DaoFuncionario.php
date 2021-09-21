@@ -26,7 +26,7 @@ if($conecta){
         $msg->setMsg("$nome, $contato,$email,  $senha, $cpf, $dtNasc,$perfil");
         
         
-        $stmt = $conecta->prepare("insert into usuario values (null,?,?,?,?,?,?,?)");
+        $stmt = $conecta->prepare("insert into funcionario values (null,?,?,?,?,?,?,'Funcionario')");
         $stmt->bindParam(1, $nome);
         $stmt->bindParam(2, $contato);
         $stmt->bindParam(3, $email);

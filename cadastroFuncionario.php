@@ -46,11 +46,11 @@ $btEnviar = FALSE;
                         $perfil = $_POST['perfil'];
                         unset($_POST['cadastrarFunc']);
                         $cc = new cadastroFuncionarioController();
-                        echo "$nome, $contato,  $senha, $cpf, $dtNasc";
-                        $msg = $cc->inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc, $perfil);
-                        echo $msg->getMsg();
-                        //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
- // URL='cadastroFuncionario.php'\">";
+                        //echo "$nome, $contato,  $senha, $cpf, $dtNasc";
+                        $msg = $cc->inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc,$perfil);
+                       // echo $msg->getMsg();
+                      //  echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+  //URL='cadastroFuncionario.php'\">";
                     }
                 }
                 ?>
