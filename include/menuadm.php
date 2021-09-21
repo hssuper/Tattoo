@@ -11,10 +11,9 @@
         <div class="collapse navbar-collapse" id="menu">
             <div class="navbar-header">
                 <ul class="navbar-nav">
-                    <li><a href="home.php">Home</a></li>
-                    <li><a href="busca.php">Buscar</a></li>
-                    <li><a href="cadastro.php">Cadastrar</a></li>
-                    <li><a href="adm.php">Adm</a></li>
+                    <li><img src="img/home.png" height="30px" width="30px"><a href="home.php">Home</a></li>
+                    <li><img src="img/maquina.png" height="30px" width="30px"><a href="tatuagens.php">Tatuagens</a></li>
+                    <li><img src="img/cadastro.png" height="30px" width="30px"><a href="adm.php">Adm</a></li>
                     
                         <?php
                         if (isset($_SESSION['id'])) {
