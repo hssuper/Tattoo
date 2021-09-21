@@ -39,13 +39,15 @@ $btEnviar = FALSE;
                     $nomeFuncionario = $_POST['nomeFuncionario'];
                     if ($nomeFuncionario != "") {
                         $contato = $_POST['contato'];
+                        $email = $_POST['email'];
                         $senha = $_POST['senha'];
                         $cpf = $_POST['cpf'];
                         $dtNasc = $_POST['dtNasc'];
+                        $perfil = $_POST['perfil'];
                         unset($_POST['cadastrarFunc']);
                         $cc = new cadastroFuncionarioController();
                         //echo "$nomeFuncionario, $contato,  $senha, $cpf, $dtNasc";
-                        $msg = $cc->inserirCadastro($nomeFuncionario, $contato, $senha, $cpf, $dtNasc);
+                        $msg = $cc->inserirCadastro($nomeFuncionario, $contato, $email, $senha, $cpf, $dtNasc, $perfil);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
 URL='cadastroFuncionario.php'\">";
@@ -88,12 +90,20 @@ URL='cadastroFuncionario.php'\">";
                     <label>Perfil</label>
                     <select class="form-control" name="perfil">
                         <option>[--SELECIONE--]</option>
-                        <option>Funcionario</option>
-                        <option>Adm</option>
+                        <option <?php
+                                if ($ct->getPerfil() == "Funcionario") {
+                                    echo "selected = 'selected'";
+                                }
+                                ?>>Funcionario</option>
+                        <option <?php
+                                if ($ct->getPerfil() == "Adm") {
+                                    echo "selected = 'selected'";
+                                }
+                                ?>>Adm</option>
 
-                        
 
-                        
+
+
                         <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
                 </form>
 

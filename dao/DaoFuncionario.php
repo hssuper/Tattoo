@@ -22,7 +22,8 @@ if($conecta){
         $senha = $cadastro->getSenha();
         $cpf = $cadastro->getCpf();
         $dtNasc = $cadastro->getDtNasc();
-        $msg->setMsg("$nomeFuncionario, $contato,$email,  $senha, $cpf, $dtNasc");
+        $perfil = $cadastro->getPerfil();
+        $msg->setMsg("$nomeFuncionario, $contato,$email,  $senha, $cpf, $dtNasc,$perfil");
         
         
         $stmt = $conecta->prepare("insert into funcionario values (null,?,?,?,?,?,?,?)");

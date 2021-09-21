@@ -8,6 +8,7 @@ private $email;
 private $senha;
 private $cpf;
 private $dtNasc;
+private $perfil;
 
 function getIdcadastro(){
     return $this->idcadastro;
@@ -65,6 +66,15 @@ function setDtNasc($dtNasc){
 
 
 
+public function getPerfil()
+{
+return $this->perfil;
+}
+ 
+public function setPerfil($perfil)
+{
+$this->perfil = $perfil;
 
-
+return $this;
+}
 }

@@ -13,8 +13,8 @@ class DaoLogin
         if ($conecta) {
             try {
                 $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $st = $conecta->prepare("select * from usuario where cpf = ? and senha = ? limit 1");
-                $st->bindParam(1, $cpf);
+                $st = $conecta->prepare("select * from usuario where email = ? and senha = ? limit 1");
+                $st->bindParam(1, $email);
                 $st->bindParam(2, $senha);
                 if ($st->rowCount() > 0) {
                     while ($linha = $st->fetch(PDO::FETCH_OBJ)) {
