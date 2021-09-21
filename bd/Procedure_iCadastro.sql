@@ -5,7 +5,7 @@ create procedure iCadastro
 begin
 declare idp int(11) default 0;
  
-select idcadastro into idp from cpf where cpf = cpfp;
+select idcadastro into idp from emailp where email = emailp;
 if(idp > 0)then
 set msg = "Usuario já cadastrado anteriormente.";
 else 

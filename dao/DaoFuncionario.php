@@ -16,18 +16,18 @@ if($conecta){
     try{
         $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $nomeFuncionario = $cadastro->getNomeFuncionario();
+        $nome = $cadastro->getNome();
         $contato = $cadastro->getContato();
         $email = $cadastro->getEmail();
         $senha = $cadastro->getSenha();
         $cpf = $cadastro->getCpf();
         $dtNasc = $cadastro->getDtNasc();
         $perfil = $cadastro->getPerfil();
-        $msg->setMsg("$nomeFuncionario, $contato,$email,  $senha, $cpf, $dtNasc,$perfil");
+        $msg->setMsg("$nome, $contato,$email,  $senha, $cpf, $dtNasc,$perfil");
         
         
-        $stmt = $conecta->prepare("insert into funcionario values (null,?,?,?,?,?,?,?)");
-        $stmt->bindParam(1, $nomeFuncionario);
+        $stmt = $conecta->prepare("insert into usuario values (null,?,?,?,?,?,?,?)");
+        $stmt->bindParam(1, $nome);
         $stmt->bindParam(2, $contato);
         $stmt->bindParam(3, $email);
         $stmt->bindParam(4, $senha);

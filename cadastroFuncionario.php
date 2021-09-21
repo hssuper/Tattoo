@@ -36,8 +36,8 @@ $btEnviar = FALSE;
                 <h3>Cadastro de Funcionarios</h3>
                 <?php
                 if (isset($_POST['cadastrarFunc'])) {
-                    $nomeFuncionario = $_POST['nomeFuncionario'];
-                    if ($nomeFuncionario != "") {
+                    $nome = $_POST['nome'];
+                    if ($nome != "") {
                         $contato = $_POST['contato'];
                         $email = $_POST['email'];
                         $senha = $_POST['senha'];
@@ -46,11 +46,11 @@ $btEnviar = FALSE;
                         $perfil = $_POST['perfil'];
                         unset($_POST['cadastrarFunc']);
                         $cc = new cadastroFuncionarioController();
-                        //echo "$nomeFuncionario, $contato,  $senha, $cpf, $dtNasc";
-                        $msg = $cc->inserirCadastro($nomeFuncionario, $contato, $email, $senha, $cpf, $dtNasc, $perfil);
+                        echo "$nome, $contato,  $senha, $cpf, $dtNasc";
+                        $msg = $cc->inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc, $perfil);
                         echo $msg->getMsg();
-                        echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-URL='cadastroFuncionario.php'\">";
+                        //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+ // URL='cadastroFuncionario.php'\">";
                     }
                 }
                 ?>
@@ -59,7 +59,7 @@ URL='cadastroFuncionario.php'\">";
                 <form method="post" action="">
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe seu Nome" value="<?php echo $ct->getNomeFuncionario(); ?>">
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe seu Nome" value="<?php echo $ct->getNome(); ?>">
                     </div>
 
                     <div class="form-group">
@@ -84,7 +84,7 @@ URL='cadastroFuncionario.php'\">";
 
                     <div class="form-group">
                         <label for="dtNasc">Data De Nascimento</label>
-                        <input type="date" name="dtNasc" class="form-control" id="dtNasc" placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
+                        <input type="date" name="dtNasc" class="form-control"  placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
                     </div>
 
                     <label>Perfil</label>

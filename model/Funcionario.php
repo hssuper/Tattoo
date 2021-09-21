@@ -2,7 +2,7 @@
 class Funcionario{
 
 private $idcadastro;
-private $nomeFuncionario;
+private $nome;
 private $contato;
 private $email;
 private $senha;
@@ -17,12 +17,12 @@ function getIdcadastro(){
 function setIdcadastro($idcadastro){
     $this->idcadastro = $idcadastro;
 }
-function getNomeFuncionario(){
-    return $this->nomeFuncionario;
+function getNome(){
+    return $this->nome;
 
 }
-function setNomeFuncionario($nomeFuncionario){
-    $this->nomeFuncionario = $nomeFuncionario;
+function setNome($nome){
+    $this->nome = $nome;
 }
 
 function getContato(){
