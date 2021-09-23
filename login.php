@@ -60,10 +60,7 @@ include_once "include/menu.php";
                     <button type="button" class="btn btn-primary" id="cadastrar" onclick="cadastrarContato()">Entrar</button>
                 </form>
                 <br>
-                <div>
-                    <a style="color: #808080"  href="cadastro.php">Criar um Cadastro</a>
-                </div>
-                <div id="status"></div>
+                
             </div>
 
             <div class="col"></div>
