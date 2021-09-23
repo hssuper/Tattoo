@@ -1,11 +1,11 @@
 <?php
 require_once "C:/xampp/htdocs/tattoo/bd/bd.php";
 require_once "C:/xampp/htdocs/tattoo/model/mensagem.php";
-require_once "C:/xampp/htdocs/tattoo/model/cadastro.php";
+require_once "C:/xampp/htdocs/tattoo/model/usuario.php";
 
 class DaoLogin
 {
-    public function validarLogin($cpf, $senha)
+    public function validarLogin($email, $senha)
     {
         $conn = new Conecta();
         $conecta = $conn->conectadb();
