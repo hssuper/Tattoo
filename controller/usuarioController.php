@@ -1,6 +1,6 @@
 <?php
-include_once 'C:/xampp/htdocs/tattoo/dao/DaoFuncionario.php';
-include_once 'C:/xampp/htdocs/tattoo/model/Funcionario.php';
+include_once 'C:/xampp/htdocs/tattoo/dao/DaoUsuario.php';
+include_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 
 class
 cadastroFuncionarioController
@@ -9,7 +9,7 @@ cadastroFuncionarioController
     public function inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc)
     {
 
-        $cadastro = new Funcionario();
+        $cadastro = new usuario();
         $cadastro->setNome($nome);
         $cadastro->setContato($contato);
         $cadastro->setEmail($email);
@@ -26,7 +26,7 @@ cadastroFuncionarioController
         $dtNasc = $cadastro->getDtNasc();
 
 
-        $cadastroDao = new DaoFuncionario();
+        $cadastroDao = new DaoUsuario();
         return $cadastroDao->inserir($cadastro);
         /* return ("$nomeFuncionario, $contato,  $senha, $cpf, $dtNasc"); */
     }

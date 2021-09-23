@@ -1,5 +1,5 @@
 <?php
-class Funcionario
+class usuario
 {
 
     private $idcadastro;

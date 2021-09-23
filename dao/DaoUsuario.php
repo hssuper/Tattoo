@@ -1,14 +1,14 @@
 <?php
 
-require_once 'C:/xampp/htdocs/tattoo/model/Funcionario.php';
+require_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 require_once 'C:/xampp/htdocs/tattoo/bd/bd.php';
 require_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
 
 
-class DaoFuncionario
+class DaoUsuario
 {
 
-    public function inserir(Funcionario $cadastro)
+    public function inserir(usuario $cadastro)
     {
         $conn = new Conecta();
         $msg = new Mensagem();

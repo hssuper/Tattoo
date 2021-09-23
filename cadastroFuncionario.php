@@ -1,10 +1,10 @@
 <?php
 include_once "include/menuadm.php";
-include_once 'C:/xampp/htdocs/tattoo/controller/cadastroFuncionarioController.php';
-include_once 'C:/xampp/htdocs/tattoo/model/Funcionario.php';
+include_once 'C:/xampp/htdocs/tattoo/controller/usuarioController.php';
+include_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
 $msg = new mensagem();
-$ct = new Funcionario();
+$ct = new usuario();
 $btEnviar = FALSE;
 ?>
 
