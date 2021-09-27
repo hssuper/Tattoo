@@ -86,6 +86,20 @@ $btEnviar = FALSE;
                         <input type="date" name="dtNasc" class="form-control" id="dtNasc" placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
                     </div>
 
+                    <div class="form-group">
+                        <label for="dtNasc">Data De Efetivação</label>
+                        <input type="date" name="dtNasc" class="form-control" id="dtNasc" placeholder="Informe sua Data de Efetivação" value="<?php echo $ct->getDtNasc(); ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contato">Pis </label>
+                        <input type="text" class="form-control" id="contato" name="contato" placeholder="Informe o Pis" value="<?php echo $ct->getContato(); ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="contato">Carteira De Trabalho</label>
+                        <input type="text" class="form-control" id="contato" name="contato" placeholder="Informe Nº CTPS " value="<?php echo $ct->getContato(); ?>">
+                    </div>
+
                     <label>Perfil</label>
                     <select class="form-control" name="perfil">
                         <option>[--SELECIONE--]</option>

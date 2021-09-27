@@ -56,6 +56,13 @@ include_once "include/menu.php";
                         <label for="senha">Senha</label>
                         <input type="password" class="form-control" id="senha" placeholder="Informe uma Senha">
                     </div>
+        <label>Perfil</label>
+        <select class="form-control" name="perfil">
+<option >[--SELECIONE--]</option>
+<option  >Funcionario</option>
+<option >Administração</option>
+        </select>
+
 
                     <button type="button" class="btn btn-primary" id="cadastrar" onclick="cadastrarContato()">Entrar</button>
                 </form>

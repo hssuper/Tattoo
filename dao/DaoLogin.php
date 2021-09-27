@@ -16,21 +16,25 @@ class DaoLogin
                 $st = $conecta->prepare("select * from usuario where email = ? and senha = ? limit 1");
                 $st->bindParam(1, $email);
                 $st->bindParam(2, $senha);
-                if ($st->rowCount() > 0) {
-                    while ($linha = $st->fetch(PDO::FETCH_OBJ)) {
-                        $cadastro->setIdcadastro($linha->idcadastro);
-                        $cadastro->setNome($linha->nome);
-                        $cadastro->setContato($linha->contato);
-                        $cadastro->setEmail($linha->email);
-                        $cadastro->setSenha($linha->senha);
-                        $cadastro->setCpf($linha->cpf);
-                        $cadastro->setDtNasc($linha->dtNasc);
+                if($st->execute()){
+
+                    if ($st->rowCount() > 0) {
+                        while ($linha = $st->fetch(PDO::FETCH_OBJ)) {
+                            $cadastro->setIdcadastro($linha->idcadastro);
+                            $cadastro->setNome($linha->nome);
+                            $cadastro->setContato($linha->contato);
+                            $cadastro->setEmail($linha->email);
+                            $cadastro->setSenha($linha->senha);
+                            $cadastro->setCpf($linha->cpf);
+                            $cadastro->setDtNasc($linha->dtNasc);
+                        }
+                        return $cadastro;
+                    } else {
+                        return "<p style='color: red;'>"
+                            . "Usuário inexistente.</p>";
                     }
-                    return $cadastro;
-                } else {
-                    return "<p style='color: red;'>"
-                        . "Usuário inexistente.</p>";
                 }
+               
             } catch (PDOException $ex) {
 
                 return "<p style='color: red;'>Não foi possível acessar os dados!</p>";

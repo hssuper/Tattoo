@@ -18,7 +18,7 @@ if(isset($_POST)){
 
 $daoLogin = new DaoLogin();
 
-$resp = new Cadastro();
+$resp = new Mensagem();
 $resp = $daoLogin->validarLogin($email,$senha);
 
 if(gettype($resp) == "object"){
