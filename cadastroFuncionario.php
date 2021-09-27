@@ -88,31 +88,31 @@ $btEnviar = FALSE;
 
                     <div class="form-group">
                         <label for="dtNasc">Data De Efetivação</label>
-                        <input type="date" name="dtNasc" class="form-control" id="dtNasc" placeholder="Informe sua Data de Efetivação" value="<?php echo $ct->getDtNasc(); ?>">
+                        <input type="date" name="dtEft" class="form-control"  placeholder="Informe sua Data de Efetivação" value="<?php echo $ct->getDtNasc(); ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="contato">Pis </label>
-                        <input type="text" class="form-control" id="contato" name="contato" placeholder="Informe o Pis" value="<?php echo $ct->getContato(); ?>">
+                        <input type="text" class="form-control"  name="pis" placeholder="Informe o Pis" value="<?php echo $ct->getContato(); ?>">
                     </div>
                     <div class="form-group">
                         <label for="contato">Carteira De Trabalho</label>
-                        <input type="text" class="form-control" id="contato" name="contato" placeholder="Informe Nº CTPS " value="<?php echo $ct->getContato(); ?>">
+                        <input type="text" class="form-control"  name="ctps" placeholder="Informe Nº CTPS " value="<?php echo $ct->getContato(); ?>">
                     </div>
 
-                    <label>Perfil</label>
+                  <!-- <label>Perfil</label>
                     <select class="form-control" name="perfil">
                         <option>[--SELECIONE--]</option>
                         <option <?php
-                                if ($ct == "Funcionario") {
-                                    echo "selected = 'selected'";
-                                }
+                                //if ($ct == "Funcionario") {
+                                  //  echo "selected = 'selected'";
+                               // }
                                 ?>>Funcionario</option>
                         <option <?php
-                                if ($ct == "Adm") {
-                                    echo "selected = 'selected'";
-                                }
-                                ?>>Adm</option>
+                                //if ($ct == "Adm") {
+                                   // echo "selected = 'selected'";
+                                //}
+                                ?>>Adm</option> -->
 
 
 

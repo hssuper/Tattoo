@@ -16,17 +16,16 @@ if($conecta){
     $nome = $cadastro->getNome();
     $contato = $cadastro->getContato();
     $email = $cadastro->getEmail();
-    $senha = $cadastro->getSenha();
     $cpf = $cadastro->getCpf();
     $dtNasc = $cadastro->getDtNasc();
    
-    $stmt = $conecta->prepare("insert into cadastro values (null,?,?,?,?,?,?)");
+    $stmt = $conecta->prepare("insert into cadastro values (null,?,?,?,?,?)");
     $stmt->bindParam(1, $nome);
     $stmt->bindParam(2, $contato);
     $stmt->bindParam(3, $email);
-    $stmt->bindParam(4, $senha);
-    $stmt->bindParam(5, $cpf);
-    $stmt->bindParam(6, $dtNasc);
+    $stmt->bindParam(4, $cpf);
+    $stmt->bindParam(5, $dtNasc);
+    
     $stmt->execute();
 
 

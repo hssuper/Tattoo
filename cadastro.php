@@ -86,6 +86,9 @@ URL='cadastro.php'\">";
                             <input type="date" class="form-control" name="dtNascs" placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
                         </div>
 
+
+
+                       
                       
                         
                     <br>
