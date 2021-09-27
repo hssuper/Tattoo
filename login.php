@@ -45,26 +45,22 @@ include_once "include/menu.php";
                     $_SESSION['msg'] = "";
                 }
                 ?>
-                <form action="./controller/validaLogin.php">
+                <form action="./controller/validaLogin.php" method="POST">
                     <div class="form-group">
                         <label for="email">E-Mail</label>
-                        <input type="text" class="form-control" id="email" placeholder="Informe seu Email">
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Informe seu Email">
                     </div>
 
 
                     <div class="form-group">
                         <label for="senha">Senha</label>
-                        <input type="password" class="form-control" id="senha" placeholder="Informe uma Senha">
+                        <input type="password" class="form-control" name="senha" id="senha" placeholder="Informe uma Senha">
                     </div>
-        <label>Perfil</label>
-        <select class="form-control" name="perfil">
-<option >[--SELECIONE--]</option>
-<option  >Funcionario</option>
-<option >Administração</option>
-        </select>
+        
+    
 
 
-                    <button type="button" class="btn btn-primary" id="cadastrar" onclick="cadastrarContato()">Entrar</button>
+                    <input type="submit" class="btn btn-primary" value="Entrar">
                 </form>
                 <br>
                 

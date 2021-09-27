@@ -9,7 +9,7 @@ require_once "C:/xampp/htdocs/tattoo/model/mensagem.php";
 require_once "C:/xampp/htdocs/tattoo/model/cadastro.php";
 
 if(isset($_POST)){
-    $cpf = $_POST['email'];
+    $email = $_POST['email'];
     $senha = $_POST['senha'];
 
 }else{
@@ -32,11 +32,11 @@ if(gettype($resp) == "object"){
         $_SESSION['nr'] = rand(1,1000000);
         $_SESSION['confereNr'] = $_SESSION['nr'];
 
-        header("Location: ../principal.php");
+        header("Location: ../adm.php");
         exit;
 
     }else{
-        $_SESSION['msg'] = $resp;
+        $_SESSION['msg'] =  "Usuario Inexistente!!!";
         if(isset($_SESSION['email'])){
             $_SESSION['idp'] = null;
             $_SESSION['nomep'] = null;
@@ -47,5 +47,16 @@ if(gettype($resp) == "object"){
         header("Location: ../login.php");
         exit;
     }
+}else{
+    $_SESSION['msg'] = $resp;
+    if(isset($_SESSION['email'])){
+        $_SESSION['idp'] = null;
+        $_SESSION['nomep'] = null;
+        $_SESSION['contatop'] = null;
+        $_SESSION['senhap'] = null;
+        $_SESSION['cpfp'] = null;
+    }
+    header("Location: ../login.php");
+    exit;
 }
 ob_end_flush();

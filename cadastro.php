@@ -58,32 +58,32 @@ URL='cadastro.php'\">";
                     <form>
                         <div class="form-group">
                             <label for="nome">Nome</label>
-                            <input type="text" class="form-control"  id="nome" placeholder="Informe seu Nome" value="<?php echo $ct->getNome(); ?>">
+                            <input type="text" class="form-control"  name="nome" placeholder="Informe seu Nome" value="<?php echo $ct->getNome(); ?>">
                         </div>
 
                         <div class="form-group">
                             <label for="contato">Contato (WhatsApp)</label>
-                            <input type="text" class="form-control" id="contato" placeholder="Informe seu contato" value="<?php echo $ct->getContato(); ?>">
+                            <input type="text" class="form-control" name="contato" placeholder="Informe seu contato" value="<?php echo $ct->getContato(); ?>">
                         </div>
 
                         <div class="form-group">
                             <label for="email">E-mail</label>
-                            <input onkeypress="mascara(this, '###.###.###-##')" maxlength="14" name="cpf" type="text" class="form-control" id="email" placeholder="Informe seu E-Mail" value="<?php echo $ct->getEmail(); ?>">
+                            <input  type="text" class="form-control" name="email" placeholder="Informe seu E-Mail" value="<?php echo $ct->getEmail(); ?>">
                         </div>
 
                         <div class="form-group">
                             <label for="senha">Senha</label>
-                            <input type="password" class="form-control" id="senha" placeholder="Informe uma Senha" value="<?php echo $ct->getSenha(); ?>">
+                            <input type="password" class="form-control" name="senha" placeholder="Informe uma Senha" value="<?php echo $ct->getSenha(); ?>">
                         </div>
 
                         <div class="form-group">
                             <label for="cpf">Cpf</label>
-                            <input type="text" class="form-control" id="cpf" placeholder="Informe seu cpf" value="<?php echo $ct->getCpf(); ?>">
+                            <input type="text" class="form-control" onkeypress="mascara(this, '###.###.###-##')" maxlength="14" name="cpf" placeholder="Informe seu cpf" value="<?php echo $ct->getCpf(); ?>">
                         </div>
 
                         <div class="form-group">
                             <label for="dtNasc">Data De Nascimento</label>
-                            <input type="date" class="form-control" id="dtNasc" placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
+                            <input type="date" class="form-control" name="dtNascs" placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
                         </div>
 
                       

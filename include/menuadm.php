@@ -49,7 +49,7 @@
     <span class="sr-only">Dropright</span>
   </button>
   <div class="dropdown-menu">
-  <a class="dropdown-item" style="color:black" href="home.php">Sair</a>
+  <a class="dropdown-item" style="color:black" href="sessionDestroy.php">Sair</a>
     <a class="dropdown-item" style="color:black" href="#">Caixa</a>
     <a class="dropdown-item" style="color:black" href="#">Agendamento</a>
     <a class="dropdown-item" style="color:black" href="cadastro.php">cadastrar Cliente</a>
