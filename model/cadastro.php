@@ -5,7 +5,6 @@ private $idcadastro;
 private $nome;
 private $contato;
 private $email;
-private $senha;
 private $cpf;
 private $dtNasc;
 

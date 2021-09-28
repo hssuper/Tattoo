@@ -19,7 +19,7 @@ if($conecta){
     $cpf = $cadastro->getCpf();
     $dtNasc = $cadastro->getDtNasc();
    
-    $stmt = $conecta->prepare("insert into cadastro values (null,?,?,?,?,?)");
+    $stmt = $conecta->prepare("insert into cliente values (null,?,?,?,?,?)");
     $stmt->bindParam(1, $nome);
     $stmt->bindParam(2, $contato);
     $stmt->bindParam(3, $email);

@@ -39,13 +39,12 @@ if(isset($_POST['cadastrar'])){
 if($nome != ""){
     $contato = $_POST['contato'];
     $email = $_POST['email'];
-    $senha = $_POST['senha'];
     $cpf = $_POST['cpf'];
     $dtNasc = $_POST['dtNasc'];
 
     $cc = new cadastroController();
 unset($_POST['cadastrar']);
-$msg = $cc->inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc);
+$msg = $cc->inserirCadastro($nome, $contato, $email,  $cpf, $dtNasc);
 echo $msg ->getMsg();
 echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
 URL='cadastro.php'\">";
@@ -69,11 +68,6 @@ URL='cadastro.php'\">";
                         <div class="form-group">
                             <label for="email">E-mail</label>
                             <input  type="text" class="form-control" name="email" placeholder="Informe seu E-Mail" value="<?php echo $ct->getEmail(); ?>">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="senha">Senha</label>
-                            <input type="password" class="form-control" name="senha" placeholder="Informe uma Senha" value="<?php echo $ct->getSenha(); ?>">
                         </div>
 
                         <div class="form-group">
