@@ -13,6 +13,11 @@ $msg = new Mensagem();
 $conecta = $conn->conectadb();
 
 if($conecta){
+
+try{
+
+    $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     $nome = $cadastro->getNome();
     $contato = $cadastro->getContato();
     $email = $cadastro->getEmail();
@@ -28,8 +33,9 @@ if($conecta){
     
     $stmt->execute();
 
-
-
+}catch (PDOException $ex) {
+                $msg->setMsg(var_dump($ex->errorInfo));
+            }
 
 } else {
     $msg->setMsg("<p style='color:red;'>Erro na conexão com o banco de dados.</p>");

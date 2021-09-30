@@ -24,16 +24,18 @@ class DaoUsuario
                 $senha = $cadastro->getSenha();
                 $cpf = $cadastro->getCpf();
                 $dtNasc = $cadastro->getDtNasc();
-                $msg->setMsg("$nome, $contato,$email,  $senha, $cpf, $dtNasc");
+                $dtEft = $cadastro->getDtEft();
+                $msg->setMsg("$nome, $contato,$email,  $senha, $cpf, $dtNasc,$dtEft");
 
 
-                $stmt = $conecta->prepare("insert into usuario values (null,?,?,?,?,?,?,'Funcionario')");
+                $stmt = $conecta->prepare("insert into usuario values (null,?,?,?,?,?,?,?,'Funcionario')");
                 $stmt->bindParam(1, $nome);
                 $stmt->bindParam(2, $contato);
                 $stmt->bindParam(3, $email);
                 $stmt->bindParam(4, $senha);
                 $stmt->bindParam(5, $cpf);
                 $stmt->bindParam(6, $dtNasc);
+                $stmt->bindParam(7, $dtEft);
                 $stmt->execute();
 
                 $msg->setMsg("<p style='color:gree;'>Dados Cadastrados com sucesso.</p>");

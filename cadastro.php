@@ -46,15 +46,15 @@ if($nome != ""){
 unset($_POST['cadastrar']);
 $msg = $cc->inserirCadastro($nome, $contato, $email,  $cpf, $dtNasc);
 echo $msg ->getMsg();
-echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-URL='cadastro.php'\">";
+//echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+//URL='cadastro.php'\">";
 
 }
 }
 ?>
 
 
-                    <form>
+                    <form method="POST">
                         <div class="form-group">
                             <label for="nome">Nome</label>
                             <input type="text" class="form-control"  name="nome" placeholder="Informe seu Nome" value="<?php echo $ct->getNome(); ?>">
@@ -77,7 +77,7 @@ URL='cadastro.php'\">";
 
                         <div class="form-group">
                             <label for="dtNasc">Data De Nascimento</label>
-                            <input type="date" class="form-control" name="dtNascs" placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
+                            <input type="date" class="form-control" name="dtNasc" placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
                         </div>
 
 

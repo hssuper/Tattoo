@@ -9,6 +9,7 @@ class usuario
     private $senha;
     private $cpf;
     private $dtNasc;
+    private $dtEft;
 
 
     function getIdcadastro()
@@ -70,5 +71,18 @@ class usuario
     function setDtNasc($dtNasc)
     {
         $this->dtNasc = $dtNasc;
+    }
+
+    public function getDtEft()
+    {
+        return $this->dtEft;
+    }
+
+    
+    public function setDtEft($dtEft)
+    {
+        $this->dtEft = $dtEft;
+
+        return $this;
     }
 }

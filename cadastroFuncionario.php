@@ -22,6 +22,7 @@ $btEnviar = FALSE;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -43,11 +44,12 @@ $btEnviar = FALSE;
                         $senha = $_POST['senha'];
                         $cpf = $_POST['cpf'];
                         $dtNasc = $_POST['dtNasc'];
+                        $dtEft = $_POST['dtEft'];
                         unset($_POST['cadastrarFunc']);
                         $cc = new cadastroFuncionarioController();
                         //echo "$nome, $contato,  $senha, $cpf, $dtNasc";
-                        $msg = $cc->inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc);
-                        // echo $msg->getMsg();
+                        $msg = $cc->inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc, $dtEft);
+                        echo $msg->getMsg();
                         //  echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         //URL='cadastroFuncionario.php'\">";
                     }
@@ -88,33 +90,8 @@ $btEnviar = FALSE;
 
                     <div class="form-group">
                         <label for="dtNasc">Data De Efetivação</label>
-                        <input type="date" name="dtEft" class="form-control"  placeholder="Informe sua Data de Efetivação" value="<?php echo $ct->getDtNasc(); ?>">
+                        <input type="date" name="dtEft" class="form-control"  placeholder="Informe sua Data de Efetivação" value="<?php echo $ct->getDtEft(); ?>">
                     </div>
-
-                    <div class="form-group">
-                        <label for="contato">Pis </label>
-                        <input type="text" class="form-control"  name="pis" placeholder="Informe o Pis" value="<?php echo $ct->getContato(); ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="contato">Carteira De Trabalho</label>
-                        <input type="text" class="form-control"  name="ctps" placeholder="Informe Nº CTPS " value="<?php echo $ct->getContato(); ?>">
-                    </div>
-
-                  <!-- <label>Perfil</label>
-                    <select class="form-control" name="perfil">
-                        <option>[--SELECIONE--]</option>
-                        <option <?php
-                                //if ($ct == "Funcionario") {
-                                  //  echo "selected = 'selected'";
-                               // }
-                                ?>>Funcionario</option>
-                        <option <?php
-                                //if ($ct == "Adm") {
-                                   // echo "selected = 'selected'";
-                                //}
-                                ?>>Adm</option> -->
-
-
 
 
                         <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
