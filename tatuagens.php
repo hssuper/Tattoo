@@ -1,3 +1,16 @@
+<?php
+include_once "include/menuadm.php";
+include_once 'C:/xampp/htdocs/tattoo/controller/agendamentoController.php';
+include_once 'C:/xampp/htdocs/tattoo/model/agendamento.php';
+include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
+$msg = new mensagem();
+$ag = new Agendamento();
+$btEnviar = FALSE;
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,6 +21,7 @@
     <!-- CSS do Bootstrap e CSS customizado -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/style.css">
+    <link rel="stylesheet" href="bootstrap/css/back.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,28 +31,58 @@
 include_once "include/menu.php";
 ?>
 
-<body>
+<body class="imgB">
 
 
     <div class="container" style="font-family: 'Rye', cursive;">
-        <h1 class="titulo">Agendamento De Tatuagens</h1>
-        <form method="POST">
         <div class="row">
-            <div class="col-lg-2">
+            <div class="col-md-6">
+                <h1 class="titulo">Agendamento De Tatuagens</h1>
+                <?php
+                if (isset($_POST['cadastrar'])) {
+                    $nome = trim($_POST['cadastrar']);
+                    if ($nome != "") {
 
-                <h3>Descrição</h3>
-                <textarea rows="8" cols="50" name="desc" id="coment" maxlength="200" minlength="20"></textarea>
+                        $email = $_POST['email'];
+                        $informacao = $_POST['informacao'];
+                        $img = $_POST['img'];
 
-                <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" >
+                        $ac = new agendamentoController();
+                        unset($_POST['cadastrar']);
+                        $msg = $ia->inserirAgendamento($email, $informacao, $img);
+                        echo $msg->getMsg();
+                        //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                        //URL='cadastro.php'\">";
+
+                    }
+                }
+                ?>
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input type="text" class="form-control" name="email" placeholder="Informe seu E-Mail" value="<?php echo $ag->getEmail(); ?>">
+
+                                <h3>Descrição</h3>
+                                <textarea rows="8" cols="50" name="informacao" maxlength="200" minlength="20" value="<?php echo $ag->getInformacao(); ?>"></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
+
+
+                </form>
             </div>
-            
-            <br>
-            
+            <div class="col-md-6">
+                <h1 class="titulo">Tatuagens</h1>
 
-
+            </div>
         </div>
-    </div> <!-- fecha /container -->
-    </form>
+    </div>
+    </body>
     <footer id="myFooter" style="padding-top: 200px;">
         <div class="container">
             <div class="row" style="color: #808080">
@@ -99,6 +143,6 @@ include_once "include/menu.php";
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- JavaScript customizado -->
     <script src="js/scripts.js"></script>
-</body>
+
 
 </html>
