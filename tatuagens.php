@@ -24,13 +24,14 @@ include_once "include/menu.php";
         <h1 class="titulo">Agendamento De Tatuagens</h1>
         <form method="POST">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-2">
 
                 <h3>Descrição</h3>
                 <textarea rows="8" cols="50" name="desc" id="coment" maxlength="200" minlength="20"></textarea>
 
                 <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" >
             </div>
+            
             <br>
             
 
