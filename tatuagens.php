@@ -31,7 +31,7 @@ include_once "include/menu.php";
 </head>
 
 
-<body  >
+<body class="img" >
 
 
     <div class="container" style="font-family: 'Rye', cursive;">
