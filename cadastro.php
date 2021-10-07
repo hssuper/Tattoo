@@ -135,9 +135,7 @@ $btEnviar = FALSE;
                     <a style="color: #808080" href="..." class="instagram"><i class="fa fa-instagram"></i></a>
                     <a style="color: #808080" href="..." class="whatsapp"><i class="fa fa-whatsapp"></i></a>
                 </div>
-                <a href="...">
-                    <button type="button" class="btn btn-default">Contato</button>
-                </a>
+               
             </div>
         </div>
     </div>
