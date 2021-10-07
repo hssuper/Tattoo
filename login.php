@@ -30,7 +30,7 @@ $_SESSION['confereNr'] = "-2";
 include_once "include/menu.php";
 ?>
 
-<body>
+<body class="img">
 
 
     <div class="container" style="font-family: 'Rye', cursive;">

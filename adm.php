@@ -16,7 +16,7 @@
     include_once "include/menuadm.php";
     
     ?>
-<body>
+<body class="img">
     
 
     <div class="container">

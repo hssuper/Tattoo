@@ -25,7 +25,7 @@ $btEnviar = FALSE;
 
 </head>
 
-<body>
+<body class="img">
 
 
 

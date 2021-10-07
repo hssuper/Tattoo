@@ -1,5 +1,12 @@
 
-
+body{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+}
 
 
 .img{

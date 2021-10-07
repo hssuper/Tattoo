@@ -18,7 +18,7 @@ include_once "include/menucliente.php";
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="img">
 
 
     </div>
