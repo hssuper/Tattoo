@@ -57,7 +57,7 @@ $btEnviar = FALSE;
             </div>
         </div>
     </div> <!-- fecha /container -->
-
+    </body>
     <footer id="myFooter" style="padding-top: 200px;">
         <div class="container" >
             <div class="row" style="color: #808080">
@@ -118,5 +118,5 @@ $btEnviar = FALSE;
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- JavaScript customizado -->
     <script src="js/scripts.js"></script>
-</body>
+
 </html>

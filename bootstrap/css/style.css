@@ -8,16 +8,12 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
-    
+    background-color: #232323;
     font-family: Verdana, sans-serif;
     font-size: 16px;
     color: #ffffff;
-
-    background-image: url(../../img/logoback.jpg);
     
-    
-   /* background-color: #232323;*/
-    opacity: 0.5 ;
+   
 }
 
 

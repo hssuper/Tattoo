@@ -10,7 +10,9 @@ $btEnviar = FALSE;
 
 
 
-
+<?php
+include_once "include/menu.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -21,17 +23,14 @@ $btEnviar = FALSE;
     <!-- CSS do Bootstrap e CSS customizado -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/style.css">
-    <link rel="stylesheet" href="bootstrap/css/back.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
 </head>
-<?php
-include_once "include/menu.php";
-?>
 
-<body class="imgB">
+
+<body  >
 
 
     <div class="container" style="font-family: 'Rye', cursive;">
@@ -58,7 +57,7 @@ include_once "include/menu.php";
                 }
                 ?>
                 <form method="POST">
-                    <div class="row">
+                    <div class="row" >
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email">E-mail</label>
@@ -83,7 +82,7 @@ include_once "include/menu.php";
         </div>
     </div>
     </body>
-    <footer id="myFooter" style="padding-top: 200px;">
+    <footer   id="myFooter" style="padding-top: 200px;">
         <div class="container">
             <div class="row" style="color: #808080">
                 <div class="col-sm-3">

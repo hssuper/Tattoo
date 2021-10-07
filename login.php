@@ -69,7 +69,7 @@ include_once "include/menu.php";
             <div class="col"></div>
         </div>
     </div>
-
+    </body>
     <!-- fecha /container -->
 
 
@@ -130,6 +130,6 @@ include_once "include/menu.php";
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- JavaScript customizado -->
     <script src="js/scripts.js"></script>
-</body>
+
 
 </html>
