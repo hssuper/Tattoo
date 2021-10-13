@@ -17,4 +17,18 @@ if($_FILES['imagem']['error'] != 0){
     die("Não foi possivel fazer o Upload, erro: ".$_UP['erros'][$_FILES['imagem']['error']]);
     exit;
 }
+
+$extensao = strtolower(end(explode('.', $_FILES['imagem'])));
+if(array_search($extensao, $_UP['extensoes']) === false){
+    $query = mysqli_query($conn,"INSERT INTO carousels){
+        imagem,
+        created)VALUES('imagem',NOW())");
+        echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/tatuagens.php'>
+        <script type=\"text/javascript\">
+        alert(\"A imagem Não foi Cadastrada favor, envie arquivos com as seguintes extensões: png, jpg, jpeg, gif.
+        As informações do carrosel foram cadastradas.\");
+        </script>
+        ";
+    }
+
 ?>
