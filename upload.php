@@ -58,6 +58,12 @@ if(array_search($extensao, $_UP['extensoes']) === false){
                 alert(\"A imagem foi cadastrada.\");
                 </script>
                 ";
+        }else{
+            echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/tatuagens.php'>
+                <script type=\"text/javascript\">
+                alert(\"A imagem não foi cadastrada.\");
+                </script>
+                ";
         }
     }
 
