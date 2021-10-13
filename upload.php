@@ -6,7 +6,7 @@
 
 <?php
 require_once 'C:/xampp/htdocs/tattoo/bd/bd.php';
-$imagem = $_FILES['imagem']['imagem'];
+$imagem = $_FILES['arquivo']['imagem'];
 $_UP['pasta'] = 'imagens/';
 
 $_UP['tamanho'] = 1024*1024*100;
@@ -19,12 +19,12 @@ $_UP['erros'] [2] = 'O arquivo ultrapassa o tamanho' ;
 $_UP['erros'] [3] = 'Upload do arquivo foi feito parcialmente' ;
 $_UP['erros'] [4] = 'Não Foi feito o Upload do arquivo' ;
 
-if($_FILES['imagem']['error'] != 0){
-    die("Não foi possivel fazer o Upload, erro: ".$_UP['erros'][$_FILES['imagem']['error']]);
+if($_FILES['arquivo']['error'] != 0){
+    die("Não foi possivel fazer o Upload, erro: ".$_UP['erros'][$_FILES['arquivo']['error']]);
     exit;
 }
 
-$extensao = strtolower(end(explode('.', $_FILES['imagem'])));
+$extensao = strtolower(end(explode('.', $_FILES['arquivo'])));
 if(array_search($extensao, $_UP['extensoes']) === false){
     $query = mysqli_query($conn,"INSERT INTO orcamento){
         imagem,
@@ -36,7 +36,7 @@ if(array_search($extensao, $_UP['extensoes']) === false){
         </script>
         ";
     }
-    else if($_UP['tamanho'] < $_FILES['imagem']['size'] ){
+    else if($_UP['tamanho'] < $_FILES['arquivo']['size'] ){
         echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/tatuagens.php'>
         <script type=\"text/javascript\">
         alert(\"Arquivo muito grande.\");
@@ -47,9 +47,9 @@ if(array_search($extensao, $_UP['extensoes']) === false){
         if($_UP['renomeia'] == true){
             $imagem_final = time().'.jpg';
         }else{
-            $imagem_final = $_FILES['imagem']['imagem'];
+            $imagem_final = $_FILES['arquivo']['imagem'];
         }
-        if(move_uploaded_file($_FILES['imagem']['tmp_imagem'],$_UP['imagens']. $imagem_final )){
+        if(move_uploaded_file($_FILES['arquivo']['tmp_imagem'],$_UP['imagens']. $imagem_final )){
             $query = mysqli_query($conn,"INSERT INTO orcamento){
                 imagem,
                 created)VALUES('imagem_final',NOW())");

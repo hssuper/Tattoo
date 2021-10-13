@@ -68,7 +68,7 @@ include_once "include/menu.php";
                                 <h3>Descrição</h3>
                                 <textarea rows="8" cols="50" name="informacao" maxlength="200" minlength="20" value="<?php echo $ag->getInformacao(); ?>"></textarea>
                                 <h3>Envie a Imagem</h3>
-                    <input name="imagem" type="file">
+                    <input name="arquivo" type="file">
 
 
                             </div>
