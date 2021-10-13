@@ -45,11 +45,11 @@ include_once "include/menu.php";
 
                         $email = $_POST['email'];
                         $informacao = $_POST['informacao'];
-                        $img = $_POST['imagem'];
+                        
 
                         $ac = new agendamentoController();
                         unset($_POST['cadastrar']);
-                        $msg = $ia->inserirAgendamento($email, $informacao, $imagem);
+                        $msg = $ia->inserirAgendamento($email, $informacao);
                         echo $msg->getMsg();
                         //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         //URL='cadastro.php'\">";
