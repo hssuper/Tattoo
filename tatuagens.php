@@ -45,11 +45,11 @@ include_once "include/menu.php";
 
                         $email = $_POST['email'];
                         $informacao = $_POST['informacao'];
-                        $img = $_POST['img'];
+                        $img = $_POST['imagem'];
 
                         $ac = new agendamentoController();
                         unset($_POST['cadastrar']);
-                        $msg = $ia->inserirAgendamento($email, $informacao, $img);
+                        $msg = $ia->inserirAgendamento($email, $informacao, $imagem);
                         echo $msg->getMsg();
                         //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         //URL='cadastro.php'\">";
@@ -57,15 +57,18 @@ include_once "include/menu.php";
                     }
                 }
                 ?>
-                <form method="POST">
+                <form method="POST" action="upload.php" enctype="multipart/form-data">
                     <div class="row" >
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="email">E-mail</label>
+                               <h3> <label for="email">E-mail</label></h3>
                                 <input type="text" class="form-control" name="email" placeholder="Informe seu E-Mail" value="<?php echo $ag->getEmail(); ?>">
 
                                 <h3>Descrição</h3>
                                 <textarea rows="8" cols="50" name="informacao" maxlength="200" minlength="20" value="<?php echo $ag->getInformacao(); ?>"></textarea>
+                                <h3>Envie a Imagem</h3>
+                    <input name="imagem" type="file">
+
 
                             </div>
                         </div>

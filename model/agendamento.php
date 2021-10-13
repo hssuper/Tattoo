@@ -4,7 +4,7 @@
 
 private $email;
 private $informacao;
-private $img;
+
 
 
 
@@ -23,18 +23,7 @@ return $this;
 }
 
 
-public function getImg()
-{
-return $this->img;
-}
 
-
-public function setImg($img)
-{
-$this->img = $img;
-
-return $this;
-}
 
 
 public function getEmail()

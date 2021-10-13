@@ -10,11 +10,11 @@ class agendamentoController
         $agendamento = new Agendamento();
         $agendamento->setEmail($email);
         $agendamento->setInformacao($informacao);
-        $agendamento->setImg($img);
+       
        
         $email = $agendamento->getemail();
         $informacao= $agendamento->getInformacao();
-        $img = $agendamento->getImg();
+        
         
         
 
