@@ -29,7 +29,7 @@ if(array_search($extensao, $_UP['extensoes']) === false){
     $query = mysqli_query($conn,"INSERT INTO orcamento){
         imagem,
         created)VALUES('imagem',NOW())");
-        echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/tatuagens.php'>
+        echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/upload.php'>
         <script type=\"text/javascript\">
         alert(\"A imagem Não foi Cadastrada favor, envie arquivos com as seguintes extensões: png, jpg, jpeg, gif.
         As informações do carrosel foram cadastradas.\");
@@ -37,7 +37,7 @@ if(array_search($extensao, $_UP['extensoes']) === false){
         ";
     }
     else if($_UP['tamanho'] < $_FILES['arquivo']['size'] ){
-        echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/tatuagens.php'>
+        echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/upload.php'>
         <script type=\"text/javascript\">
         alert(\"Arquivo muito grande.\");
         </script>
@@ -53,13 +53,13 @@ if(array_search($extensao, $_UP['extensoes']) === false){
             $query = mysqli_query($conn,"INSERT INTO orcamento){
                 imagem,
                 created)VALUES('imagem_final',NOW())");
-                echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/tatuagens.php'>
+                echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/upload.php'>
                 <script type=\"text/javascript\">
                 alert(\"A imagem foi cadastrada.\");
                 </script>
                 ";
         }else{
-            echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/tatuagens.php'>
+            echo "<META HTTP-EQUIV-REFRESH CONTENT = '0;URL=http://localhost/tattoo/upload.php'>
                 <script type=\"text/javascript\">
                 alert(\"A imagem não foi cadastrada.\");
                 </script>
