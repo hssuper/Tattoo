@@ -3,6 +3,7 @@ include_once "include/menuadm.php";
 include_once 'C:/xampp/htdocs/tattoo/controller/agendamentoController.php';
 include_once 'C:/xampp/htdocs/tattoo/model/agendamento.php';
 include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
+include_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 
 $msg = new mensagem();
 $ag = new Agendamento();
@@ -99,7 +100,7 @@ include_once "include/menu.php";
             
                         $ac = new agendamentoController();
                         unset($_POST['cadastrar']);
-                        $msg = $ac->inserirAgendamento($email, $informacao , $imagem);
+                        $msg = $ac->inserirAgendamento($email, $informacao , $imagem, $fkusuario);
                         echo $msg->getMsg();
                         // echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         //  URL='tatuagens.php'\">";

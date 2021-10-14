@@ -5,7 +5,7 @@
 private $email;
 private $informacao;
 private $imagem;
-
+private $usuario;
 
 
  
@@ -55,4 +55,16 @@ return $this;
 
 
 
+
+public function getUsuario()
+{
+return $this->usuario;
+}
+
+public function setUsuario($usuario)
+{
+$this->usuario = $usuario;
+
+return $this;
+}
 }

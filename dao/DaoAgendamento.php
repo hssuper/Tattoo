@@ -3,6 +3,7 @@
 require_once 'C:/xampp/htdocs/tattoo/model/agendamento.php';
 require_once 'C:/xampp/htdocs/tattoo/bd/bd.php';
 require_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
+require_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 
 
 class DaoAgendamento{
@@ -20,13 +21,16 @@ try{
     $email = $agendamento->getEmail();
     $informacao = $agendamento->getInformacao();
     $imagem = $agendamento->getImagem();
+    $fkusuario = $agendamento->getUsuario();
     
+    ;
    
    
-    $stmt = $conecta->prepare("insert into imagenstatoo values (null,?,?,?,'1')");
+    $stmt = $conecta->prepare("insert into imagenstatoo values (null,?,?,?,?)");
     $stmt->bindParam(1, $imagem);
     $stmt->bindParam(2, $informacao);
     $stmt->bindParam(3, $email);
+    $stmt->bindParam(4, $fkusuario);
     
     
     
