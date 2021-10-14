@@ -22,7 +22,8 @@ background-size: cover;
 
 
 .navbar {
-    background-color: #808080;
+    background-color: #000000;
+    position: absolute;
 }
 
 .navbar-header {
