@@ -4,8 +4,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a href="home.php" class="navbar-brand">
-            <span>Agenda de Contatos</span>
+        <a href="home.php"  class="navbar-brand">
+       
+           <img src="img/logo.jfif" height="80px" width="80px"> <span style="font-family: 'Rye', cursive;">Fabio Carvalho Estudio</span>
         </a>
 
         <div class="collapse navbar-collapse" id="menu">
@@ -42,13 +43,13 @@
                 
                 <!-- Botão dropright dividido -->
 <div class="btn-group dropright">
-  <button type="button" class="btn btn-secondary">
-  <img src="img/Menu.png" height="30px" width="30px">
+  <!-- <button type="button" class="btn btn-secondary">
+  <img src="img/Menu.png" height="30px" width="30px"> -->
   </button>
   <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Dropright</span>
+    <span class="sr-only" >Dropright</span>
   </button>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu" >
   <a class="dropdown-item" style="color:black" href="sessionDestroy.php">Sair</a>
     <a class="dropdown-item" style="color:black" href="#">Caixa</a>
     <a class="dropdown-item" style="color:black" href="#">Agendamento</a>

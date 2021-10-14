@@ -94,11 +94,10 @@ include_once "include/menu.php";
                     <h2 class="logo"><a href="tatuagens.php"><img src="img/logo2.jfif" height="80px" width="80px"></h2>
                 </div>
                 <div class="col-sm-2">
-                    <h5 style="color: #808080">Inicio</h5>
+                <h5 style="color: #808080">Início</h5>
                     <ul>
                         <li><a style="color: #808080" href="home.php">Home</a></li>
                         <li><a style="color: #808080" href="tatuagens.php">tatuagens</a></li>
-                        <li><a style="color: #808080" href="cadastro.php">cadastrar</a></li>
                         <li><a style="color: #808080" href="login.php">login</a></li>
                     </ul>
                 </div>

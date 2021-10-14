@@ -115,7 +115,6 @@ $btEnviar = FALSE;
                 <ul>
                     <li><a style="color: #808080" href="home.php">Home</a></li>
                     <li><a style="color: #808080" href="tatuagens.php">tatuagens</a></li>
-                    <li><a style="color: #808080" href="cadastro.php">cadastrar</a></li>
                     <li><a style="color: #808080" href="login.php">login</a></li>
                 </ul>
             </div>
