@@ -19,12 +19,16 @@ try{
     $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $email = $agendamento->getEmail();
     $informacao = $agendamento->getInformacao();
+    $imagem = $agendamento->getImagem();
     
    
    
-    $stmt = $conecta->prepare("insert into cliente values (null,?,?,?)");
+    $stmt = $conecta->prepare("insert into imagenstatoo values (null,?,?,?,'1')");
+    $stmt->bindParam(1, $imagem);
+    $stmt->bindParam(2, $informacao);
     $stmt->bindParam(3, $email);
-    $stmt->bindParam(1, $informacao);
+    
+    
     
     
   

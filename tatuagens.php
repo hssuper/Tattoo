@@ -3,7 +3,7 @@ include_once "include/menuadm.php";
 include_once 'C:/xampp/htdocs/tattoo/controller/agendamentoController.php';
 include_once 'C:/xampp/htdocs/tattoo/model/agendamento.php';
 include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
-include_once 'C:/xampp/htdocs/tattoo/upload.php';
+
 $msg = new mensagem();
 $ag = new Agendamento();
 $btEnviar = FALSE;
@@ -41,24 +41,73 @@ include_once "include/menu.php";
                 <h1 class="titulo">Agendamento De Tatuagens</h1>
                 <?php
                 if (isset($_POST['cadastrar'])) {
-                    $nome = trim($_POST['cadastrar']);
-                    if ($nome != "") {
-
-                        $email = $_POST['email'];
+                    $email = trim($_POST['email']);
+                    if ($email != "") {
                         $informacao = $_POST['informacao'];
-                        
-
+                         
+                        if (isset($_FILES['imagem']) && basename($_FILES["imagem"]["name"]) != "") {
+                            $target_dir = "img/";
+                            $target_file = $target_dir . basename($_FILES["imagem"]["name"]);
+                            $imagem = $target_file;
+                            $uploadOk = 1;
+                            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+            
+                            // Check if image file is a actual image or fake image
+                            $check = getimagesize($_FILES["imagem"]["tmp_name"]);
+                            if ($check !== false) {
+                                $uploadOk = 1;
+                            } else {
+                                $msg->setMsg("File is not an image.");
+                                $uploadOk = 0;
+                            }
+            
+                            // Check if file already exists
+                            if (file_exists($target_file)) {
+                                $imagem = $target_file;
+                                $uploadOk = 0;
+                            }
+            
+                            // Check file size
+                            if ($_FILES["imagem"]["size"] > 500000) {
+                                $msg->setMsg("O arquivo excedeu o limite do tamanho permitido (500KB).");
+                                $uploadOk = 0;
+                            }
+            
+                            // Allow certain file formats
+                            if (
+                                $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                                && $imageFileType != "jfif" && $imageFileType != "gif"
+                            ) {
+                                $msg->setMsg("A extensão da imagem deve ser JPG, JPEG, PNG & "
+                                    . "GIF.");
+                                $uploadOk = 0;
+                            }
+            
+                            // Check if $uploadOk is set to 0 by an error
+                            if ($uploadOk == 0) {
+                                $msg->setMsg("A imagem não foi gravada.");
+                                // if everything is ok, try to upload file
+                            } else {
+                                move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file);
+                            }
+                        } else {
+                            $imagem = "img/semImagem.jpg";
+                        }
+            
+            
+            
+            
                         $ac = new agendamentoController();
                         unset($_POST['cadastrar']);
-                        $msg = $ia->inserirAgendamento($email, $informacao);
+                        $msg = $ac->inserirAgendamento($email, $informacao , $imagem);
                         echo $msg->getMsg();
-                        //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-                        //URL='cadastro.php'\">";
-
+                        // echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                        //  URL='tatuagens.php'\">";
+            
                     }
                 }
                 ?>
-                <form method="POST" action="upload.php" enctype="multipart/form-data">
+                <form method="POST"  enctype="multipart/form-data">
                     <div class="row" >
                         <div class="col-md-6">
                             <div class="form-group">
@@ -68,7 +117,7 @@ include_once "include/menu.php";
                                 <h3>Descrição</h3>
                                 <textarea rows="8" cols="50" name="informacao" maxlength="200" minlength="20" value="<?php echo $ag->getInformacao(); ?>"></textarea>
                                 <h3>Envie a Imagem</h3>
-                    <input name="arquivo" type="file">
+                    <input name="imagem" type="file">
 
 
                             </div>
