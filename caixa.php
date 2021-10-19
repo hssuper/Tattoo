@@ -1,3 +1,13 @@
+<?php
+include_once "include/menuadm.php";
+include_once 'C:/xampp/htdocs/tattoo/controller/caixaContoller.php';
+include_once 'C:/xampp/htdocs/tattoo/model/caixa.php';
+include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
+$msg = new mensagem();
+$cx = new Caixa();
+$btEnviar = FALSE;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,10 +23,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
 </head>
-<?php
-include_once "include/menuadm.php";
 
-?>
+
 
 <body class="img">
     <div class="container" style="font-family: 'Rye', cursive;">
@@ -27,14 +35,14 @@ include_once "include/menuadm.php";
             <div class="form-group">
                 <div class="col-md-4">
                     <label for="NrPar">Numero De Parcelas</label>
-                    <input type="Number" class="form-control" name="NrPar" placeholder="Informe o Numero De Parcelas">
+                    <input type="Number" class="form-control" name="NrPar" placeholder="Informe o Numero De Parcelas" value="<?php echo $cx->getNrPar(); ?>">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-4">
                     <label for="dtPag">Data De Pagamento</label>
-                    <input type="date" class="form-control" name="dtPag" placeholder="Informe sua Data de Pagamento">
+                    <input type="date" class="form-control" name="dtPag" placeholder="Informe sua Data de Pagamento" value="<?php echo $cx->getDtPag(); ?>">
                 </div>
             </div>
             <div class="form-group">
@@ -43,13 +51,21 @@ include_once "include/menuadm.php";
                     <label id="valCep" style="color: red; font-size: 11px;"></label>
                     <select class="form-select" name="frPag">
                         <option>[--Selecione--]</option>
-                        <option>Cartão</option>
-                        <option>Dinheiro</option>
+                        <option <?php
+                                            if ($pe->getFrPag() == "Cartao") {
+                                                echo "selected = 'selected'";
+                                            }
+                                            ?>>Cartão</option>
+                        <option <?php
+                                            if ($pe->getFrPag() == "Dinheiro") {
+                                                echo "selected = 'selected'";
+                                            }
+                                            ?>>Dinheiro</option>
                     </select>
                 </div>
             </div>
             <br>
-            <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar">
+            <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
 
 
 
