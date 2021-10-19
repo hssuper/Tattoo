@@ -6,6 +6,9 @@ include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
 $msg = new mensagem();
 $ct = new usuario();
 $btEnviar = FALSE;
+$btAtualizar = FALSE;
+$btExcluir = FALSE;
+
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +57,39 @@ $btEnviar = FALSE;
                         //URL='cadastroFuncionario.php'\">";
                     }
                 }
+
+                if (isset($_POST['atualizarUsuario'])) {
+                    $nome = trim($_POST['nome']);
+                    if ($nome != "") {
+                        $idcadastro = $_POST['idcadastro'];
+                        $contato = $_POST['contato'];
+                        $email = $_POST['email'];
+                        $senha = $_POST['senha'];
+                        $cpf = $_POST['cpf'];
+                        $dtNasc = $_POST['dtNasc'];
+                        $dtEft = $_POST['dtEft'];
+                        
+                        $au =  new cadastroFuncionarioController();
+                        unset($_POST['atualizarUsuario']);
+                        $msg = $au->atualizarUsuarioController($idcadastro, $nome, $contato, $email, $senha, $cpf, $dtNasc, $dtEft);
+                        echo $msg->getMsg();
+                        echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                        URL='cadastro.php'\">";
+                    }
+                }
+
+                if (isset($_POST['excluir'])) {
+                    if ($ct != null) {
+                        $id = $_POST['ide'];
+
+                        $ct = new cadastroFuncionarioController();
+                        unset($_POST['excluir']);
+                        $msg = $ct->excluirUsuario($id);
+                        echo $msg->getMsg();
+                        echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                        URL='cadastro.php'\">";
+                    }
+                }
                 ?>
 
 
@@ -95,6 +131,16 @@ $btEnviar = FALSE;
 
 
                     <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
+
+                    <input type="submit" name="atualizarUsuario"
+                                                   class="btn btn-secondary btInput" value="Atualizar"
+                                                   <?php if ($btAtualizar == FALSE) echo "disabled"; ?>>
+                                            <button type="button" class="btn btn-warning btInput" 
+                                                    data-bs-toggle="modal" data-bs-target="#ModalExcluir"
+                                                    <?php if ($btExcluir == FALSE) echo "disabled"; ?>>
+                                                Excluir
+                                            </button>
+
                 </form>
 
                 <div id="status"></div>

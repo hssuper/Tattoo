@@ -2,8 +2,7 @@
 include_once 'C:/xampp/htdocs/tattoo/dao/DaoUsuario.php';
 include_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 
-class
-cadastroFuncionarioController
+class cadastroFuncionarioController
 {
 
     public function inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc, $dtEft)
@@ -32,4 +31,26 @@ cadastroFuncionarioController
         return $cadastroDao->inserir($cadastro);
         /* return ("$nomeFuncionario, $contato,  $senha, $cpf, $dtNasc"); */
     }
+    public function atualizarUsuarioController( $idcadastro,$nome, $contato,$email,  $senha, $cpf, $dtNasc,$dtEft){
+        $usuario =  new Usuario();
+        $usuario->setIdcadastro($idcadastro);
+        $usuario->setNome($nome);
+        $usuario->setContato($contato);
+        $usuario->setEmail($email);
+        $usuario->setSenha($senha);
+        $usuario->setCpf($cpf);
+        $usuario->setDtNasc($dtNasc);
+        $usuario->setDtEft($dtEft);
+
+        $daoUsuario = new DaoUsuario();
+        return $daoUsuario->atualizarUsuarioDao($usuario);
+
+
+
+
+   }
+   public function excluirUsuario($id){
+    $daoUsuario = new DaoUsuario();
+    return $daoUsuario->excluirUsuarioDAO($id);
+}
 }

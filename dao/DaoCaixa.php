@@ -19,20 +19,52 @@ if($conecta){
      $dtPag = $caixa->getDtPag();
      $frPag = $caixa->getFrPag();
      
-     $stmt = $conecta->prepare("insert into caixa values (null,?,?,?,'1')");
+     $stmt = $conecta->prepare("insert into pagamento values (null,?,?,?,'1')");
      $stmt->bindParam(1, $NrPar);
      $stmt->bindParam(2, $dtPag);
      $stmt->bindParam(3, $frPag);
 
 
+     
+
     }catch (PDOException $ex) {
         $msg->setMsg(var_dump($ex->errorInfo));
     }
+    
 }else {
  
     $msg->setMsg("<p style='color:red;'>Erro na conexão com o banco de dados.</p>");
 }
 $conn = null;
 return $msg;
-    }
 }
+}
+    /* public function listarCaixaDao(){
+        $conn = new Conecta();
+        $conecta = $conn->conectadb();
+        if ($conecta) {
+        try {
+            $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $rs = $conecta->query("select * from pagamento inner join NrPar");
+            $lista = array();
+            $a = 0;
+            if ($rs->execute()) {
+                if ($rs->rowCount() > 0) {
+                    while ($linha = $rs->fetch(PDO::FETCH_OBJ)) {
+                        $caixa = new Caixa();
+                        $caixa->setNrPar($linha->NrPar);
+                        $caixa->setDtPag($linha->dtPag);
+                        $caixa->setFrPag($linha->frPag);
+                        
+                        $lista[$a] = $caixa;
+                        $a++;
+                    }
+                }
+            }
+        } catch (PDOException $ex) {
+            $msg->setMsg(var_dump($ex->errorInfo));
+        }
+$conn = null;
+return $msg;
+    }
+} */

@@ -42,25 +42,29 @@ $btEnviar = FALSE;
             <div class="form-group">
                 <div class="col-md-4">
                     <label for="dtPag">Data De Pagamento</label>
-                    <input type="date" class="form-control" name="dtPag" placeholder="Informe sua Data de Pagamento" value="<?php echo $cx->getDtPag(); ?>">
+                    <input type="datetime-local" class="form-control" name="dtPag" placeholder="Informe sua Data de Pagamento" value="<?php echo $cx->getDtPag(); ?>">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-4">
                     <label>Forma De Pagamento</label>
-                    <label id="valCep" style="color: red; font-size: 11px;"></label>
+                    <label id="frPag" style="color: red; font-size: 11px;"></label>
                     <select class="form-select" name="frPag">
                         <option>[--Selecione--]</option>
-                        <option <?php
-                                            if ($pe->getFrPag() == "Cartao") {
+                        <option 
+                        <?php
+                                            if ($cx->getFrPag() == "Cartao") {
                                                 echo "selected = 'selected'";
                                             }
-                                            ?>>Cartão</option>
-                        <option <?php
-                                            if ($pe->getFrPag() == "Dinheiro") {
+                                            ?>
+                                            >Cartão</option>
+                        <option 
+                        <?php
+                                            if ($cx->getFrPag() == "Dinheiro") {
                                                 echo "selected = 'selected'";
                                             }
-                                            ?>>Dinheiro</option>
+                                            ?>
+                                            >Dinheiro</option>
                     </select>
                 </div>
             </div>
@@ -80,6 +84,12 @@ $btEnviar = FALSE;
                             <th scope="col">Agendamento</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <?php
+                        
+                        
+                        ?>
+                    </tbody>
                 </table>
 
 

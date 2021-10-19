@@ -19,11 +19,13 @@ class caixaController
         $dtPag= $caixa->getDtPag();
         $frPag= $caixa->getFrPag();
         
-        
-        
-        
 
         $DaoCaixa = new DaoCaixa();
         return $DaoCaixa->inserir($caixa);
+
     }
+    /* public function listarCaixa(){
+        $daoCaixa = new DaoCaixa();
+        return $daoCaixa->listarCaixaDAO();
+    } */
 }
