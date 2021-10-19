@@ -23,7 +23,7 @@ try{
     $imagem = $agendamento->getImagem();
     $fkusuario = $agendamento->getUsuario();
     
-    ;
+    
    
    
     $stmt = $conecta->prepare("insert into imagenstatoo values (null,?,?,?,?)");
