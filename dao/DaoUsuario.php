@@ -28,7 +28,7 @@ class DaoUsuario
                 $msg->setMsg("$nome, $contato,$email,  $senha, $cpf, $dtNasc,$dtEft");
 
 
-                $stmt = $conecta->prepare("insert into usuario values (null,?,?,?,?,?,?,?)");
+                $stmt = $conecta->prepare("insert into usuario values (null,?,?,?,?,?,?,'Funcionario')");
                 $stmt->bindParam(1, $nome);
                 $stmt->bindParam(2, $contato);
                 $stmt->bindParam(3, $email);
@@ -114,8 +114,8 @@ class DaoUsuario
                     . "senha = ?, "
                     . "cpf = ?, "
                     . "dtNasc = ?, "
-                    . "dtEft = ?, "
-                    . "where idcadastro = ?");
+                
+                    . "where idUsuario = ?");
                 $stmt->bindParam(1, $nome);
                 $stmt->bindParam(2, $contato);
                 $stmt->bindParam(3, $email);
@@ -159,6 +159,36 @@ class DaoUsuario
         }
         $conn = null;
         return $msg;
+    }
+    public function listarUsuarioDao()
+    {
+        $conn = new Conecta();
+        $conecta = $conn->conectadb();
+        if ($conecta) {
+            try {
+                $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $rs = $conecta->query("select * from usuario");
+                $lista = array();
+                $a = 0;
+                if ($rs->execute()) {
+                    if ($rs->rowCount() > 0) {
+                        while ($linha = $rs->fetch(PDO::FETCH_OBJ)) {
+                            $usuario = new Usuario();
+                            $usuario->setNome($linha->nome);
+                            $usuario->setContato($linha->contato);
+                            $usuario->setCpf($linha->cpf);
+
+                            $lista[$a] = $usuario;
+                            $a++;
+                        }
+                    }
+                }
+            } catch (PDOException $ex) {
+               
+            }
+            $conn = null;
+           
+        }
     }
 
 }

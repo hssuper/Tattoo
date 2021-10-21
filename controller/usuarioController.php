@@ -53,4 +53,8 @@ class cadastroFuncionarioController
     $daoUsuario = new DaoUsuario();
     return $daoUsuario->excluirUsuarioDAO($id);
 }
+public function listarUsuario(){
+    $daoUsuario= new DaoUsuario();
+    return $daoUsuario->listarUsuarioDAO();
+} 
 }

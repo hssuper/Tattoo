@@ -42,7 +42,7 @@ class DaoCaixa
         if ($conecta) {
             try {
                 $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $rs = $conecta->query("select * from pagamento inner join NrPar");
+                $rs = $conecta->query("select * from pagamento ");
                 $lista = array();
                 $a = 0;
                 if ($rs->execute()) {
@@ -59,7 +59,7 @@ class DaoCaixa
                     }
                 }
             } catch (PDOException $ex) {
-               
+                
             }
             $conn = null;
            

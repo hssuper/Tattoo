@@ -28,8 +28,23 @@ $btEnviar = FALSE;
 
 <body class="img">
     <div class="container" style="font-family: 'Rye', cursive;">
-
-
+    <?php
+                if (isset($_POST['cadastrar'])) {
+                    $NrPar = $_POST['NrPar'];
+                    if ($NrPar != "") {
+                        $dtPag = $_POST['dtPag'];
+                        $frPag = $_POST['frPag'];
+                       
+                        unset($_POST['cadastrar']);
+                        $cc = new caixaController();
+                        
+                        $msg = $cc->inserirCaixa($NrPar,$dtPag,$frPag);
+                        echo $msg->getMsg();
+                        //  echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                        //URL='cadastroFuncionario.php'\">";
+                    }
+                }
+?>
 
         <form method="post" action="">
             <div class="form-group">
@@ -72,10 +87,11 @@ $btEnviar = FALSE;
             <table class="table table-dark">
                 <thead>
                     <tr>
-                        <th scope="col">Parcelas</th>
+                    <th scope="col">Codigo</th>       
+                                     <th scope="col">Parcelas</th>
                         <th scope="col">Data De Pagamento</th>
                         <th scope="col">Forma De Pagamento</th>
-                        <th scope="col">Agendamento</th>
+                        
                     </tr>
                 </thead>
                 <tbody>

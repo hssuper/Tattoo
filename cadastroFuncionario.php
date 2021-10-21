@@ -141,6 +141,67 @@ $btExcluir = FALSE;
                                                 Excluir
                                             </button>
 
+                                            <table class="table table-dark m-2">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome Funcionarios</th>
+                        <th scope="col">Contato</th>
+                        <th scope="col">Cpf</th>
+                        <th scope="col">Data Efetivação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $fcTable = new cadastroFuncionarioController();
+                    $listaUsuario = $fcTable->listarUsuario();
+                    $a = 0;
+                    if ($listaUsuario != null) {
+                        foreach ($listarUsuario as $lu) {
+                            $a++;
+                      
+                    ?>
+                    <tr>
+                        
+                        <td><?php print_r($lu->getIdCadastro()); ?></td>
+                        <td><?php print_r($lu->getNome()); ?></td>
+                        <td><?php print_r($lu->getContato()); ?></td>
+                        <td><?php print_r($lu->getCpf()); ?></td>
+                        <td><?php print_r($lu->getDtEft()); ?></td>
+                    
+
+                    <td><a href="caixa.php?id=<?php echo $lu->getIdPagamento(); ?>" class="btn btn-light">
+                            <img src="img/edita.png" width="24"></a>
+
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $a; ?>">
+                            <img src="img/delete.png" width="24"></button>
+                    </td>
+                    </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal<?php echo $a; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="">
+                                        <label><strong>Deseja excluir o Funcionario
+                                                <?php echo $lf->getNrPar(); ?>?</strong></label>
+                                        <input type="hidden" name="id" value="<?php echo $lf->getIdPagamento(); ?>">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                                </div>
+                                <?php
+        }
+    }
+                    ?>
+                </tbody>
+            </table>
                 </form>
 
                 <div id="status"></div>
