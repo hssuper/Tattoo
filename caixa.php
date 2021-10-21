@@ -28,8 +28,8 @@ $btEnviar = FALSE;
 
 <body class="img">
     <div class="container" style="font-family: 'Rye', cursive;">
-        
-        
+
+
 
         <form method="post" action="">
             <div class="form-group">
@@ -51,50 +51,88 @@ $btEnviar = FALSE;
                     <label id="frPag" style="color: red; font-size: 11px;"></label>
                     <select class="form-select" name="frPag">
                         <option>[--Selecione--]</option>
-                        <option 
-                        <?php
-                                            if ($cx->getFrPag() == "Cartao") {
-                                                echo "selected = 'selected'";
-                                            }
-                                            ?>
-                                            >Cartão</option>
-                        <option 
-                        <?php
-                                            if ($cx->getFrPag() == "Dinheiro") {
-                                                echo "selected = 'selected'";
-                                            }
-                                            ?>
-                                            >Dinheiro</option>
+                        <option <?php
+                                if ($cx->getFrPag() == "Cartao") {
+                                    echo "selected = 'selected'";
+                                }
+                                ?>>Cartão</option>
+                        <option <?php
+                                if ($cx->getFrPag() == "Dinheiro") {
+                                    echo "selected = 'selected'";
+                                }
+                                ?>>Dinheiro</option>
                     </select>
                 </div>
             </div>
+            <div>
+                <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
+            </div>
             <br>
-            <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
-
-
-
-
-            <table class="table table-striped" style="border-radius: 3px; overflow:hidden;">
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col">Parcelas</th>
-                            <th scope="col">Data De Pagamento</th>
-                            <th scope="col">Forma De Pagamento</th>
-                            <th scope="col">Agendamento</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+            <br>
+            <table class="table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">Parcelas</th>
+                        <th scope="col">Data De Pagamento</th>
+                        <th scope="col">Forma De Pagamento</th>
+                        <th scope="col">Agendamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $fcTable = new caixaController();
+                    $listaCaixa = $fcTable->listarCaixa();
+                    $a = 0;
+                    if ($listaCaixa != null) {
+                        foreach ($listar as $lc) {
+                            $a++;
+                      
+                    ?>
+                    <tr>
                         
-                        
-                        ?>
-                    </tbody>
-                </table>
+                        <td><?php print_r($lc->getIdPagamento()); ?></td>
+                        <td><?php print_r($lc->getNrPar()); ?></td>
+                        <td><?php print_r($lc->getDtPag()); ?></td>
+                        <td><?php print_r($lc->getFrPag()); ?></td>
+                    
 
+                    <td><a href="caixa.php?id=<?php echo $lc->getIdPagamento(); ?>" class="btn btn-light">
+                            <img src="img/edita.png" width="24"></a>
 
-                </div>
-        </form>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $a; ?>">
+                            <img src="img/delete.png" width="24"></button>
+                    </td>
+                    </tr>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal<?php echo $a; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="">
+                                        <label><strong>Deseja excluir o pagamento
+                                                <?php echo $lf->getNrPar(); ?>?</strong></label>
+                                        <input type="hidden" name="id" value="<?php echo $lf->getIdPagamento(); ?>">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                                </div>
+                                <?php
+        }
+    }
+                    ?>
+                </tbody>
+            </table>
+
+    </div>
+    </form>
+
 
 </body>
 <!-- fecha /container -->
@@ -143,13 +181,23 @@ $btEnviar = FALSE;
         <p>© 2021 Copyright - FC Estudio</p>
     </div>
 </footer>
+
 <!-- jQuery (online) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <!-- JavaScript customizado -->
 <script src="js/scripts.js"></script>
+<script>
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function() {
+        myInput.focus()
+    })
+</script>
 
 </html>

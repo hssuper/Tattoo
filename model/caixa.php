@@ -1,6 +1,7 @@
 <?php
 class caixa
 {
+    private $idPagamento;
     private $NrPar;
     private $dtPag;
     private $frPag;
@@ -43,6 +44,20 @@ class caixa
     public function setFrPag($frPag)
     {
         $this->frPag = $frPag;
+
+        return $this;
+    }
+
+    
+    public function getIdPagamento()
+    {
+        return $this->idPagamento;
+    }
+
+    
+    public function setIdPagamento($idPagamento)
+    {
+        $this->idPagamento = $idPagamento;
 
         return $this;
     }

@@ -24,8 +24,8 @@ class caixaController
         return $DaoCaixa->inserir($caixa);
 
     }
-    /* public function listarCaixa(){
+     public function listarCaixa(){
         $daoCaixa = new DaoCaixa();
         return $daoCaixa->listarCaixaDAO();
-    } */
+    } 
 }
