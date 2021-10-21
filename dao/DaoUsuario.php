@@ -69,7 +69,7 @@ class DaoUsuario
                 //processo para pegar o idendereco da tabela endereco, conforme 
                 //o cep, o logradouro e o complemento informado.
                 $st = $conecta->prepare("select idUsuario "
-                    . "from usuario where nome = ? and "
+                    . "from usuario where nomeUsuario = ? and "
                     . "contato = ? and email = ? limit 1");
                 $st->bindParam(1, $nome);
                 $st->bindParam(2, $contato);
@@ -84,7 +84,7 @@ class DaoUsuario
                         //$msg->setMsg("$fkEnd");
                     } else {
                         $st2 = $conecta->prepare("insert into "
-                            . "usuario values (null,?,?,?,?,?,?)");
+                            . "usuario values (null,?,?,?,?,?,'Funcionario')");
                         $st2->bindParam(1, $contato);
                         $st2->bindParam(2, $email);
                         $st2->bindParam(3, $senha);
@@ -94,8 +94,8 @@ class DaoUsuario
                         $st2->execute();
 
                         $st3 = $conecta->prepare("select idUsuario "
-                            . "from endereco where cep = ? and "
-                            . "logradouro = ? and complemento = ? limit 1");
+                            . "from nomeUsuario where contato = ? and "
+                            . "email  = ? limit 1");
                         $st3->bindParam(1, $nome);
                         $st3->bindParam(2, $contato);
                         $st3->bindParam(3, $email);
@@ -108,7 +108,7 @@ class DaoUsuario
                     }
                 }
                 $stmt = $conecta->prepare("update usuario set "
-                    . "nome = ?,"
+                    . "nomeUsuario = ?,"
                     . "contato = ?, "
                     . "email = ?, "
                     . "senha = ?, "

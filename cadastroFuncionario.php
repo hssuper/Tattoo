@@ -59,9 +59,9 @@ $btExcluir = FALSE;
                 }
 
                 if (isset($_POST['atualizarUsuario'])) {
-                    $nome = trim($_POST['nome']);
-                    if ($nome != "") {
-                        $idcadastro = $_POST['idcadastro'];
+                    $idcadastro = trim($_POST['idcadastro']);
+                    if ($idcadastro != "") {
+                        $nome = $_POST['nome'];
                         $contato = $_POST['contato'];
                         $email = $_POST['email'];
                         $senha = $_POST['senha'];
@@ -69,9 +69,9 @@ $btExcluir = FALSE;
                         $dtNasc = $_POST['dtNasc'];
                         $dtEft = $_POST['dtEft'];
                         
-                        $au =  new cadastroFuncionarioController();
+                        $ct =  new cadastroFuncionarioController();
                         unset($_POST['atualizarUsuario']);
-                        $msg = $au->atualizarUsuarioController($idcadastro, $nome, $contato, $email, $senha, $cpf, $dtNasc, $dtEft);
+                        $msg = $ct->atualizarUsuarioController($idcadastro, $nome, $contato, $email, $senha, $cpf, $dtNasc, $dtEft);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         URL='cadastro.php'\">";
