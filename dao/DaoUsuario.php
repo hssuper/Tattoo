@@ -114,7 +114,7 @@ class DaoUsuario
                     . "senha = ?, "
                     . "cpf = ?, "
                     . "dtNasc = ?, "
-                
+                    . "dtEft = ? "
                     . "where idUsuario = ?");
                 $stmt->bindParam(1, $nome);
                 $stmt->bindParam(2, $contato);
