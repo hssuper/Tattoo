@@ -100,7 +100,7 @@ $btEnviar = FALSE;
                     $listaCaixa = $fcTable->listarCaixa();
                     $a = 0;
                     if ($listaCaixa != null) {
-                        foreach ($listar as $lc) {
+                        foreach ($listaCaixa as $lc) {
                             $a++;
                       
                     ?>

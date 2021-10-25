@@ -42,16 +42,18 @@ class DaoCaixa
         if ($conecta) {
             try {
                 $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $rs = $conecta->query("select * from pagamento ");
+                $rs = $conecta->query("select * from pagamento");
                 $lista = array();
                 $a = 0;
                 if ($rs->execute()) {
                     if ($rs->rowCount() > 0) {
                         while ($linha = $rs->fetch(PDO::FETCH_OBJ)) {
+
                             $caixa = new Caixa();
-                            $caixa->setNrPar($linha->NrPar);
-                            $caixa->setDtPag($linha->dtPag);
-                            $caixa->setFrPag($linha->frPag);
+                            $caixa->setIdPagamento($linha->idpagamento);
+                            $caixa->setNrPar($linha->nrParcelas);
+                            $caixa->setDtPag($linha->dataPagamento);
+                            $caixa->setFrPag($linha->formaPgto);
 
                             $lista[$a] = $caixa;
                             $a++;
@@ -59,10 +61,10 @@ class DaoCaixa
                     }
                 }
             } catch (PDOException $ex) {
-                
+                $msg->setMsg(var_dump($ex->errorInfo));
             }
             $conn = null;
-           
+            return $lista;
         }
     }
 }

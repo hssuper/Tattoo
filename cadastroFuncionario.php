@@ -68,7 +68,7 @@ $btExcluir = FALSE;
                         $cpf = $_POST['cpf'];
                         $dtNasc = $_POST['dtNasc'];
                         $dtEft = $_POST['dtEft'];
-                        
+
                         $ct =  new cadastroFuncionarioController();
                         unset($_POST['atualizarUsuario']);
                         $msg = $ct->atualizarUsuarioController($idcadastro, $nome, $contato, $email, $senha, $cpf, $dtNasc, $dtEft);
@@ -132,76 +132,73 @@ $btExcluir = FALSE;
 
                     <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
 
-                    <input type="submit" name="atualizarUsuario"
-                                                   class="btn btn-secondary btInput" value="Atualizar"
-                                                   <?php if ($btAtualizar == FALSE) echo "disabled"; ?>>
-                                            <button type="button" class="btn btn-warning btInput" 
-                                                    data-bs-toggle="modal" data-bs-target="#ModalExcluir"
-                                                    <?php if ($btExcluir == FALSE) echo "disabled"; ?>>
-                                                Excluir
-                                            </button>
+                    <input type="submit" name="atualizarUsuario" class="btn btn-secondary btInput" value="Atualizar" <?php if ($btAtualizar == FALSE) echo "disabled"; ?>>
+                    <button type="button" class="btn btn-warning btInput" data-bs-toggle="modal" data-bs-target="#ModalExcluir" <?php if ($btExcluir == FALSE) echo "disabled"; ?>>
+                        Excluir
+                    </button>
 
-                                            <table class="table table-dark m-2">
-                <thead>
-                    <tr>
-                        <th scope="col">Nome Funcionarios</th>
-                        <th scope="col">Contato</th>
-                        <th scope="col">Cpf</th>
-                        <th scope="col">Data Efetivação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $fcTable = new cadastroFuncionarioController();
-                    $listaUsuario = $fcTable->listarUsuario();
-                    $a = 0;
-                    if ($listaUsuario != null) {
-                        foreach ($listarUsuario as $lu) {
-                            $a++;
-                      
-                    ?>
-                    <tr>
-                        
-                        <td><?php print_r($lu->getIdCadastro()); ?></td>
-                        <td><?php print_r($lu->getNome()); ?></td>
-                        <td><?php print_r($lu->getContato()); ?></td>
-                        <td><?php print_r($lu->getCpf()); ?></td>
-                        <td><?php print_r($lu->getDtEft()); ?></td>
-                    
+                    <table class="table table-dark m-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Nome Funcionarios</th>
+                                <th scope="col">Contato</th>
+                                <th scope="col">Cpf</th>
+                                <th scope="col">Data Efetivação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $fcTable = new cadastroFuncionarioController();
+                            $listaUsuario = $fcTable->listarUsuario();
+                            $a = 0;
+                            if ($listaUsuario != null) {
+                                foreach ($listaUsuario as $lu) {
+                                    $a++;
 
-                    <td><a href="caixa.php?id=<?php echo $lu->getIdPagamento(); ?>" class="btn btn-light">
-                            <img src="img/edita.png" width="24"></a>
+                            ?>
+                                    <tr>
 
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $a; ?>">
-                            <img src="img/delete.png" width="24"></button>
-                    </td>
-                    </tr>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal<?php echo $a; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="post" action="">
-                                        <label><strong>Deseja excluir o Funcionario
-                                                <?php echo $lf->getNrPar(); ?>?</strong></label>
-                                        <input type="hidden" name="id" value="<?php echo $lf->getIdPagamento(); ?>">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
-                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                                </div>
-                                <?php
-        }
-    }
-                    ?>
-                </tbody>
-            </table>
+                                        <td><?php print_r($lu->getIdCadastro()); ?></td>
+                                        <td><?php print_r($lu->getNome()); ?></td>
+                                        <td><?php print_r($lu->getContato()); ?></td>
+                                        <td><?php print_r($lu->getCpf()); ?></td>
+                                        <td><?php print_r($lu->getDtEft()); ?></td>
+
+
+                                        <td><a href="caixa.php?id=<?php echo $lu->getIdCadastro(); ?>" class="btn btn-light">
+                                                <img src="img/edita.png" width="24"></a>
+
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $a; ?>">
+                                                <img src="img/delete.png" width="24"></button>
+                                        </td>
+                                    </tr>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal<?php echo $a; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="post" action="">
+                                                        <label><strong>Deseja excluir o Funcionario
+                                                                <?php echo $lu->getNome(); ?>?</strong></label>
+                                                        <input type="hidden" name="id" value="<?php echo $lu->getIdCadastro(); ?>">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
+                                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                                                </div>
+                                        <?php
+                                    }
+                                }
+                                        ?>
+                        </tbody>
+                    </table>
                 </form>
 
                 <div id="status"></div>
@@ -248,7 +245,7 @@ $btExcluir = FALSE;
                     <a style="color: #808080" href="..." class="instagram"><i class="fa fa-instagram"></i></a>
                     <a style="color: #808080" href="..." class="whatsapp"><i class="fa fa-whatsapp"></i></a>
                 </div>
-                
+
             </div>
         </div>
     </div>

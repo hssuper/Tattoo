@@ -79,7 +79,7 @@ class DaoUsuario
                     if ($st->rowCount() > 0) {
                         //$msg->setMsg("".$st->rowCount());
                         while ($linha = $st->fetch(PDO::FETCH_OBJ)) {
-                            $fkEnd = $linha->idendereco;
+                            $usuario = $linha->idCadastro;
                         }
                         //$msg->setMsg("$fkEnd");
                     } else {
@@ -137,7 +137,7 @@ class DaoUsuario
         $conn = null;
         return $msg;
     }
-    public function excluirUsuarioDAO($id)
+    public function excluirUsuarioDAO($idCadastro)
     {
         $conn = new Conecta();
         $conecta = $conn->conectadb();
@@ -147,7 +147,7 @@ class DaoUsuario
                 $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $conecta->prepare("delete from usuario "
                     . "where idUsuario = ?");
-                $stmt->bindParam(1, $id);
+                $stmt->bindParam(1, $idCadastro);
                 $stmt->execute();
                 $msg->setMsg("<p style='color: #d6bc71;'>"
                     . "Dados excluídos com sucesso.</p>");
@@ -174,9 +174,11 @@ class DaoUsuario
                     if ($rs->rowCount() > 0) {
                         while ($linha = $rs->fetch(PDO::FETCH_OBJ)) {
                             $usuario = new Usuario();
-                            $usuario->setNome($linha->nome);
+                            $usuario->setIdcadastro($linha->idUsuario);
+                            $usuario->setNome($linha->nomeUsuario);
                             $usuario->setContato($linha->contato);
                             $usuario->setCpf($linha->cpf);
+                            $usuario->setDtEft($linha->dtEft);
 
                             $lista[$a] = $usuario;
                             $a++;
@@ -184,10 +186,11 @@ class DaoUsuario
                     }
                 }
             } catch (PDOException $ex) {
-               
+                $msg->setMsg(var_dump($ex->errorInfo));
             }
+            
             $conn = null;
-           
+        return $lista;
         }
     }
 
