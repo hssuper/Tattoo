@@ -137,6 +137,37 @@ $btExcluir = FALSE;
                         Excluir
                     </button>
 
+<!-- Modal para excluir -->
+<div class="modal fade" id="ModalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" 
+                                                                id="exampleModalLabel">
+                                                                Confirmar Exclusão</h5>
+                                                            <button type="button" 
+                                                                    class="btn-close" 
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close">
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h5>Deseja Excluir?</h5>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <input type="submit" name="excluir"
+                                                                   class="btn btn-success "
+                                                                   value="Sim">
+                                                            <input type="submit" 
+                                                                   class="btn btn-light btInput" 
+                                                                   name="limpar" value="Não">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- fim do modal para excluir -->
+
+
                     <table class="table table-dark m-2">
                         <thead>
                             <tr>
@@ -187,7 +218,7 @@ $btExcluir = FALSE;
                                                     <form method="post" action="">
                                                         <label><strong>Deseja excluir o Funcionario
                                                                 <?php echo $lu->getNome(); ?>?</strong></label>
-                                                        <input type="hidden" name="id" value="<?php echo $lu->getIdCadastro(); ?>">
+                                                        <input type="hidden" name="ide" value="<?php echo $lu->getIdCadastro(); ?>">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
@@ -263,6 +294,13 @@ $btExcluir = FALSE;
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- JavaScript customizado -->
 <script src="js/scripts.js"></script>
+<script>
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
 
+    myModal.addEventListener('shown.bs.modal', function() {
+        myInput.focus()
+    })
+</script>
 
 </html>
