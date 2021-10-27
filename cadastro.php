@@ -30,9 +30,9 @@ $btEnviar = FALSE;
 
     <div class="container" style="font-family: 'Rye', cursive;">
         <div class="row">
-            <div class="col"></div>
-
-            <div class="col-lg-4">
+        <div class="col"></div>
+         <div class="col-lg-4">
+         
                 <h3>Cadastro de Cliente</h3>
                 <?php
                 if (isset($_POST['cadastrar'])) {
@@ -88,11 +88,8 @@ $btEnviar = FALSE;
 
                     <br>
                     <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
-                </form>
-
-                <div id="status"></div>
+                </form>        
             </div>
-
             <div class="col"></div>
         </div>
     </div> <!-- fecha /container -->

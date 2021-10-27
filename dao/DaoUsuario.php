@@ -193,5 +193,37 @@ class DaoUsuario
         return $lista;
         }
     }
-
+    
+    public function pesquisarIdDao($id){
+        $conn = new Conecta();
+        $conecta = $conn->conectadb();
+        $usuario = new Usuario();
+        if($conecta){
+            try {
+                $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $rs = $conecta->prepare("select * from usuario");
+                $rs->bindParam(1, $id);
+                if($rs->execute()){
+                    if($rs->rowCount() > 0){
+                        while($linha = $rs->fetch(PDO::FETCH_OBJ)){
+                            $usuario->setIdcadastro($linha->idUsuario);
+                            $usuario->setNome($linha->nomeUsuario);
+                            $usuario->setContato($linha->contato);
+                            $usuario->setCpf($linha->cpf);
+                            $usuario->setDtEft($linha->dtEft);
+                            
+                        }
+                    }
+                }
+            } catch (PDOException $ex) {
+                $msg->setMsg(var_dump($ex->errorInfo));
+            }  
+            $conn = null;
+        }else{
+            echo "<script>alert('Banco inoperante!')</script>";
+            echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
+			 URL='../tatto/cadastrofuncionario.php'\">"; 
+        }
+        return $usuario;
+    }
 }

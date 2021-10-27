@@ -4,7 +4,7 @@ include_once 'C:/xampp/htdocs/tattoo/controller/usuarioController.php';
 include_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
 $msg = new mensagem();
-$ct = new usuario();
+$pu = new usuario();
 $btEnviar = FALSE;
 $btAtualizar = FALSE;
 $btExcluir = FALSE;
@@ -34,9 +34,8 @@ $btExcluir = FALSE;
 
     <div class="container" style="font-family: 'Rye', cursive;">
         <div class="row">
-            <div class="col"></div>
-
-            <div class="col-lg-4">
+        <div class="col"></div>
+        <div class="col-lg-offset-8"  >
                 <h3>Cadastro de Funcionarios</h3>
                 <?php
                 if (isset($_POST['cadastrarFunc'])) {
@@ -59,7 +58,7 @@ $btExcluir = FALSE;
                 }
 
                 if (isset($_POST['atualizarUsuario'])) {
-                    $idcadastro = trim($_POST['idcadastro']);
+                    $idcadastro = trim($_GET['id']);
                     if ($idcadastro != "") {
                         $nome = $_POST['nome'];
                         $contato = $_POST['contato'];
@@ -90,85 +89,93 @@ $btExcluir = FALSE;
                         URL='cadastro.php'\">";
                     }
                 }
+                if (isset($_GET['id'])) {
+                    $btEnviar = TRUE;
+                    $btAtualizar = TRUE;
+                    $btExcluir = TRUE;
+                    $idcadastro = $_GET['id'];
+                    $ct = new cadastroFuncionarioController();
+                    $pu = $ct->pesquisarId($idcadastro);
+                }
                 ?>
 
 
                 <form method="post" action="">
                     <div class="form-group">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe seu Nome" value="<?php echo $ct->getNome(); ?>">
+                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Informe seu Nome" value="<?php echo $pu->getNome(); ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="contato">Contato (WhatsApp)</label>
-                        <input type="text" class="form-control" id="contato" name="contato" placeholder="Informe seu contato" value="<?php echo $ct->getContato(); ?>">
+                        <input type="text" class="form-control" id="contato" name="contato" placeholder="Informe seu contato" value="<?php echo $pu->getContato(); ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="email">E-mail</label>
-                        <input name="email" type="text" class="form-control" id="email" placeholder="Informe seu E-Mail" value="<?php echo $ct->getEmail(); ?>">
+                        <input name="email" type="text" class="form-control" id="email" placeholder="Informe seu E-Mail" value="<?php echo $pu->getEmail(); ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="senha">Senha</label>
-                        <input type="password" name="senha" class="form-control" id="senha" placeholder="Informe uma Senha" value="<?php echo $ct->getSenha(); ?>">
+                        <input type="password" name="senha" class="form-control" id="senha" placeholder="Informe uma Senha" value="<?php echo $pu->getSenha(); ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="cpf">Cpf</label>
-                        <input type="text" name="cpf" onkeypress="mascara(this, '###.###.###-##')" maxlength="14" class="form-control" id="cpf" placeholder="Informe seu cpf" value="<?php echo $ct->getCpf(); ?>">
+                        <input type="text" name="cpf" onkeypress="mascara(this, '###.###.###-##')" maxlength="14" class="form-control" id="cpf" placeholder="Informe seu cpf" value="<?php echo $pu->getCpf(); ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="dtNasc">Data De Nascimento</label>
-                        <input type="date" name="dtNasc" class="form-control" id="dtNasc" placeholder="Informe sua Data de Nascimento" value="<?php echo $ct->getDtNasc(); ?>">
+                        <input type="date" name="dtNasc" class="form-control" id="dtNasc" placeholder="Informe sua Data de Nascimento" value="<?php echo $pu->getDtNasc(); ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="dtNasc">Data De Efetivação</label>
-                        <input type="date" name="dtEft" class="form-control" placeholder="Informe sua Data de Efetivação" value="<?php echo $ct->getDtEft(); ?>">
+                        <input type="date" name="dtEft" class="form-control" placeholder="Informe sua Data de Efetivação" value="<?php echo $pu->getDtEft(); ?>">
                     </div>
 
 
-                    <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
+                    <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled = 'disabled'"; ?>>
 
-                    <input type="submit" name="atualizarUsuario" class="btn btn-secondary btInput" value="Atualizar" <?php if ($btAtualizar == FALSE) echo "disabled"; ?>>
-                    <button type="button" class="btn btn-warning btInput" data-bs-toggle="modal" data-bs-target="#ModalExcluir" <?php if ($btExcluir == FALSE) echo "disabled"; ?>>
+                    <input type="submit" name="atualizarUsuario" class="btn btn-secondary btInput" value="Atualizar" <?php if ($btAtualizar == false) echo "disabled = 'disabled'"; ?>>
+                    <button type="button" class="btn btn-warning btInput" data-bs-toggle="modal" data-bs-target="#ModalExcluir" <?php if ($btExcluir == false) echo "disabled = 'disabled'"; ?>>
                         Excluir
                     </button>
 
-<!-- Modal para excluir -->
-<div class="modal fade" id="ModalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" 
-                                                                id="exampleModalLabel">
-                                                                Confirmar Exclusão</h5>
-                                                            <button type="button" 
-                                                                    class="btn-close" 
-                                                                    data-bs-dismiss="modal"
-                                                                    aria-label="Close">
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <h5>Deseja Excluir?</h5>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <input type="submit" name="excluir"
-                                                                   class="btn btn-success "
-                                                                   value="Sim">
-                                                            <input type="submit" 
-                                                                   class="btn btn-light btInput" 
-                                                                   name="limpar" value="Não">
-                                                        </div>
-                                                    </div>
+                     <!-- Modal para excluir -->
+                     <div class="modal fade" id="ModalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" 
+                                                        id="exampleModalLabel">
+                                                        Confirmar Exclusão</h5>
+                                                    <button type="button" 
+                                                            class="btn-close" 
+                                                            data-bs-dismiss="modal"
+                                                            aria-label="Close">
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5>Deseja Excluir?</h5>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="submit" name="excluirFornecedor"
+                                                           class="btn btn-success "
+                                                           value="Sim">
+                                                    <input type="submit" 
+                                                        class="btn btn-light btInput" 
+                                                        name="limpar" value="Não">
                                                 </div>
                                             </div>
-                                            <!-- fim do modal para excluir -->
+                                        </div>
+                                    </div>
+                                    <!-- fim do modal para excluir -->
 
 
-                    <table class="table table-dark m-2">
+                    <table class="table table-dark m-2" >
                         <thead>
                             <tr>
                                 <th scope="col">Codigo</th>
@@ -180,6 +187,18 @@ $btExcluir = FALSE;
                         </thead>
                         <tbody>
                             <?php
+
+
+                                 if (isset($_SESSION['pesquisa']) && $_SESSION['pesquisa'] != "") {
+                                    $pesquisa = $_SESSION['pesquisa'];
+                                    $pu = new cadastroFuncionarioController();
+                                    $listarUsuario = $pu->listarUsuario($pesquisa);
+                                }else{
+                                    $pcTable = new cadastroFuncionarioController();
+                                    $listarUsuario = $pcTable->listarUsuario();
+                                }
+                                $a = 0;
+
                             $fcTable = new cadastroFuncionarioController();
                             $listaUsuario = $fcTable->listarUsuario();
                             $a = 0;
@@ -197,7 +216,7 @@ $btExcluir = FALSE;
                                         <td><?php print_r($lu->getDtEft()); ?></td>
 
 
-                                        <td><a href="caixa.php?id=<?php echo $lu->getIdCadastro(); ?>" class="btn btn-light">
+                                        <td><a href="cadastroFuncionario.php?id=<?php echo $lu->getIdCadastro(); ?>" class="btn btn-light">
                                                 <img src="img/edita.png" width="24"></a>
 
                                         </td>
@@ -205,36 +224,37 @@ $btExcluir = FALSE;
                                             <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $a; ?>">
                                                 <img src="img/delete.png" width="24"></button>
                                         </td>
-                                    </tr>
-                                    <!-- Modal -->
+
+                                        <!-- Modal -->
                                     <div class="modal fade" id="exampleModal<?php echo $a; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <button type="button" class="btn-close" 
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form method="post" action="">
                                                         <label><strong>Deseja excluir o Funcionario
                                                                 <?php echo $lu->getNome(); ?>?</strong></label>
-                                                        <input type="hidden" name="ide" value="<?php echo $lu->getIdCadastro(); ?>">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
-                                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                                                </div>
-                                        <?php
-                                    }
+                                                        <input type="hidden" name="ide" 
+                                                               value="<?php echo $lu->getIdCadastro(); ?>">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
+                                                            <button type="reset" class="btn btn-secondary" 
+                                                                    data-bs-dismiss="modal">Não</button>
+                                                        </div>
+                            <?php
+
                                 }
-                                        ?>
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </form>
-
-                <div id="status"></div>
             </div>
-
             <div class="col"></div>
         </div>
     </div> <!-- fecha /container -->

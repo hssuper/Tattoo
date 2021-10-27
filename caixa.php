@@ -27,7 +27,7 @@ $btEnviar = FALSE;
 
 
 <body class="img">
-    <div class="container" style="font-family: 'Rye', cursive;">
+    <div class="container" style="font-family: 'Rye', cursive;" >
     <?php
                 if (isset($_POST['cadastrar'])) {
                     $NrPar = $_POST['NrPar'];

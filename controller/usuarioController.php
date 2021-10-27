@@ -56,5 +56,9 @@ class cadastroFuncionarioController
 public function listarUsuario(){
     $daoUsuario= new DaoUsuario();
     return $daoUsuario->listarUsuarioDAO();
+}
+public function pesquisarId($id){
+    $daoUsuario = new DaoUsuario();
+    return $daoUsuario->pesquisarIdDao($id);
 } 
 }
