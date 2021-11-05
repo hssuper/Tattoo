@@ -37,6 +37,7 @@ class DaoCaixa
     }
     public function listarCaixaDao()
     {
+        $msg = new mensagem();
         $conn = new Conecta();
         $conecta = $conn->conectadb();
         if ($conecta) {

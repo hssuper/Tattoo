@@ -8,7 +8,7 @@ class cadastroFuncionarioController
     public function inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc, $dtEft)
     {
 
-        $cadastro = new usuario();
+        $cadastro = new Usuario();
         $cadastro->setNome($nome);
         $cadastro->setContato($contato);
         $cadastro->setEmail($email);
@@ -29,9 +29,9 @@ class cadastroFuncionarioController
 
         $cadastroDao = new DaoUsuario();
         return $cadastroDao->inserir($cadastro);
-        /* return ("$nomeFuncionario, $contato,  $senha, $cpf, $dtNasc"); */
+         //return ("$nome, $contato,  $senha, $cpf, $dtNasc"); 
     }
-    public function atualizarUsuarioController( $idcadastro,$nome, $contato,$email,  $senha, $cpf, $dtNasc,$dtEft){
+    public function atualizarUsuarioController( $idcadastro, $nome, $contato, $email,  $senha, $cpf, $dtNasc, $dtEft){
         $usuario =  new Usuario();
         $usuario->setIdcadastro($idcadastro);
         $usuario->setNome($nome);

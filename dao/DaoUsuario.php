@@ -25,10 +25,10 @@ class DaoUsuario
                 $cpf = $cadastro->getCpf();
                 $dtNasc = $cadastro->getDtNasc();
                 $dtEft = $cadastro->getDtEft();
-                $msg->setMsg("$nome, $contato,$email,  $senha, $cpf, $dtNasc,$dtEft");
+                $msg->setMsg(" $nome, $contato,$email,  $senha, $cpf, $dtNasc,$dtEft");
 
 
-                $stmt = $conecta->prepare("insert into usuario values (null,?,?,?,?,?,?,'Funcionario')");
+                $stmt = $conecta->prepare("insert into usuario values (null,?,?,?,?,?,?,?,'Funcionario')");
                 $stmt->bindParam(1, $nome);
                 $stmt->bindParam(2, $contato);
                 $stmt->bindParam(3, $email);
@@ -54,7 +54,7 @@ class DaoUsuario
         $msg = new Mensagem();
         $conecta = $conn->conectadb();
         if ($conecta) {
-            $idCadastro = $usuario->getIdCadastro();
+            $idcadastro = $usuario->getIdCadastro();
             $nome = $usuario->getNome();
             $contato = $usuario->getContato();
             $email = $usuario->getEmail();
@@ -62,51 +62,7 @@ class DaoUsuario
             $cpf = $usuario->getCpf();
             $dtNasc = $usuario->getDtNasc();
             $dtEft = $usuario->getDtEft();
-
-
             try {
-                $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                //processo para pegar o idendereco da tabela endereco, conforme 
-                //o cep, o logradouro e o complemento informado.
-                $st = $conecta->prepare("select idUsuario "
-                    . "from usuario where nomeUsuario = ? and "
-                    . "contato = ? and email = ? limit 1");
-                $st->bindParam(1, $nome);
-                $st->bindParam(2, $contato);
-                $st->bindParam(3, $email);
-                
-                if ($st->execute()) {
-                    if ($st->rowCount() > 0) {
-                        //$msg->setMsg("".$st->rowCount());
-                        while ($linha = $st->fetch(PDO::FETCH_OBJ)) {
-                            $usuario = $linha->idCadastro;
-                        }
-                        //$msg->setMsg("$fkEnd");
-                    } else {
-                        $st2 = $conecta->prepare("insert into "
-                            . "usuario values (null,?,?,?,?,?,'Funcionario')");
-                        $st2->bindParam(1, $contato);
-                        $st2->bindParam(2, $email);
-                        $st2->bindParam(3, $senha);
-                        $st2->bindParam(4, $cpf);
-                        $st2->bindParam(5, $dtNasc);
-                        $st2->bindParam(6, $dtEft);
-                        $st2->execute();
-
-                        $st3 = $conecta->prepare("select idUsuario "
-                            . "from nomeUsuario where contato = ? and "
-                            . "email  = ? limit 1");
-                        $st3->bindParam(1, $nome);
-                        $st3->bindParam(2, $contato);
-                        $st3->bindParam(3, $email);
-                        if ($st3->execute()) {
-                            if ($st3->rowCount() > 0) {
-                                $linha = $st3->fetch(PDO::FETCH_OBJ);
-                                
-                            }
-                        }
-                    }
-                }
                 $stmt = $conecta->prepare("update usuario set "
                     . "nomeUsuario = ?,"
                     . "contato = ?, "
@@ -114,7 +70,8 @@ class DaoUsuario
                     . "senha = ?, "
                     . "cpf = ?, "
                     . "dtNasc = ?, "
-                    . "dtEft = ? "
+                    . "dtEft = ?, "
+                    . "perfil = 'Funcionario'"
                     . "where idUsuario = ?");
                 $stmt->bindParam(1, $nome);
                 $stmt->bindParam(2, $contato);
@@ -123,7 +80,7 @@ class DaoUsuario
                 $stmt->bindParam(5, $cpf);
                 $stmt->bindParam(6, $dtNasc);
                 $stmt->bindParam(7, $dtEft);
-                $stmt->bindParam(8, $idCadastro);
+                $stmt->bindParam(8, $idcadastro);
                 $stmt->execute();
                 $msg->setMsg("<p style='color: blue;'>"
                     . "Dados atualizados com sucesso</p>");
@@ -137,7 +94,7 @@ class DaoUsuario
         $conn = null;
         return $msg;
     }
-    public function excluirUsuarioDAO($idCadastro)
+    public function excluirUsuarioDAO($idcadastro)
     {
         $conn = new Conecta();
         $conecta = $conn->conectadb();
@@ -147,7 +104,7 @@ class DaoUsuario
                 $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $stmt = $conecta->prepare("delete from usuario "
                     . "where idUsuario = ?");
-                $stmt->bindParam(1, $idCadastro);
+                $stmt->bindParam(1, $idcadastro);
                 $stmt->execute();
                 $msg->setMsg("<p style='color: #d6bc71;'>"
                     . "Dados excluídos com sucesso.</p>");
@@ -162,6 +119,7 @@ class DaoUsuario
     }
     public function listarUsuarioDao()
     {
+        $msg = new mensagem();
         $conn = new Conecta();
         $conecta = $conn->conectadb();
         if ($conecta) {
@@ -188,41 +146,42 @@ class DaoUsuario
             } catch (PDOException $ex) {
                 $msg->setMsg(var_dump($ex->errorInfo));
             }
-            
+
             $conn = null;
-        return $lista;
+            return $lista;
         }
     }
-    
-    public function pesquisarIdDao($id){
+
+    public function pesquisarIdDao($idcadastro)
+    {
+        $msg = new mensagem();
         $conn = new Conecta();
         $conecta = $conn->conectadb();
         $usuario = new Usuario();
-        if($conecta){
+        if ($conecta) {
             try {
                 $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $rs = $conecta->prepare("select * from usuario");
-                $rs->bindParam(1, $id);
-                if($rs->execute()){
-                    if($rs->rowCount() > 0){
-                        while($linha = $rs->fetch(PDO::FETCH_OBJ)){
+                $rs->bindParam(1, $idcadastro);
+                if ($rs->execute()) {
+                    if ($rs->rowCount() > 0) {
+                        while ($linha = $rs->fetch(PDO::FETCH_OBJ)) {
                             $usuario->setIdcadastro($linha->idUsuario);
                             $usuario->setNome($linha->nomeUsuario);
                             $usuario->setContato($linha->contato);
                             $usuario->setCpf($linha->cpf);
                             $usuario->setDtEft($linha->dtEft);
-                            
                         }
                     }
                 }
             } catch (PDOException $ex) {
                 $msg->setMsg(var_dump($ex->errorInfo));
-            }  
+            }
             $conn = null;
-        }else{
+        } else {
             echo "<script>alert('Banco inoperante!')</script>";
             echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
-			 URL='../tatto/cadastrofuncionario.php'\">"; 
+			 URL='../tattoo/cadastroFuncionario.php'\">";
         }
         return $usuario;
     }
