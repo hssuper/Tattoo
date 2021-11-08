@@ -30,9 +30,9 @@ try{
     $stmt->bindParam(3, $email);
     $stmt->bindParam(4, $cpf);
     $stmt->bindParam(5, $dtNasc);
-    
     $stmt->execute();
-
+    
+    $msg->setMsg("<p style='color:gree;'>Dados Cadastrados com sucesso.</p>");
 }catch (PDOException $ex) {
                 $msg->setMsg(var_dump($ex->errorInfo));
             }
