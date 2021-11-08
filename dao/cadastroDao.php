@@ -32,7 +32,8 @@ try{
     $stmt->bindParam(5, $dtNasc);
     $stmt->execute();
 
-    $msg->setMsg("<p style='color: #d6bc71;'>Dados Cadastrados com sucesso.</p>");
+    $msg->setMsg("<p style='color: #d6bc71;'>"
+   . "Dados Cadastrados com sucesso.</p>");
 }catch (PDOException $ex) {
                 $msg->setMsg(var_dump($ex->errorInfo));
             }
@@ -58,7 +59,7 @@ return $msg;
             $dtNasc = $cadastro->getDtNasc();
 
             try {
-                $stmt = $conecta->prepare("update usuario set "
+                $stmt = $conecta->prepare("update cliente set "
                     . "nomeUsuario = ?,"
                     . "contato = ?, "
                     . "email = ?, "
