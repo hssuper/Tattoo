@@ -37,7 +37,7 @@ $btAtualizar = FALSE;
                 <h3>Cadastro de Cliente</h3>
                 <?php
                 if (isset($_POST['cadastrar'])) {
-                    $nome = trim($_POST['cadastrar']);
+                    $nome = trim($_POST['nome']);
                     if ($nome != "") {
                         $contato = $_POST['contato'];
                         $email = $_POST['email'];
@@ -48,8 +48,8 @@ $btAtualizar = FALSE;
                         unset($_POST['cadastrar']);
                         $msg = $cc->inserirCadastro($nome, $contato, $email,  $cpf, $dtNasc);
                         echo $msg->getMsg();
-                        //echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-                        //URL='cadastro.php'\">";
+                        echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                        URL='cadastro.php'\">";
 
                     }
                 }
