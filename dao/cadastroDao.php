@@ -32,7 +32,7 @@ try{
     $stmt->bindParam(5, $dtNasc);
     $stmt->execute();
 
-    $msg->setMsg("<p style='color:gree;'>Dados Cadastrados com sucesso.</p>");
+    $msg->setMsg("<p style='color: #d6bc71;'>Dados Cadastrados com sucesso.</p>");
 }catch (PDOException $ex) {
                 $msg->setMsg(var_dump($ex->errorInfo));
             }
@@ -72,7 +72,7 @@ return $msg;
                 $stmt->bindParam(6, $dtNasc);
                 $stmt->bindParam(8, $idcadastro);
                 $stmt->execute();
-                $msg->setMsg("<p style='color: blue;'>"
+                $msg->setMsg("<p style='color: #d6bc71;'>"
                     . "Dados atualizados com sucesso</p>");
             } catch (PDOException $ex) {
                 $msg->setMsg(var_dump($ex->errorInfo));
