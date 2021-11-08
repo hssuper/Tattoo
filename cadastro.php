@@ -6,6 +6,7 @@ include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
 $msg = new mensagem();
 $ct = new Cadastro();
 $btEnviar = FALSE;
+$btAtualizar = FALSE;
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +53,23 @@ $btEnviar = FALSE;
 
                     }
                 }
+                if (isset($_POST['atualizarCliente'])) {
+                    $idcadastro = trim($_GET['id']);
+                    if ($idcadastro != "") {
+                        $nome = $_POST['nome'];
+                        $contato = $_POST['contato'];
+                        $email = $_POST['email'];
+                        $cpf = $_POST['cpf'];
+                        $dtNasc = $_POST['dtNasc'];
+
+                        $cc =  new cadastroController();
+                        unset($_POST['atualizarCliente']);
+                        $msg = $cc->atualizarClienteController($idcadastro, $nome, $contato, $email,  $cpf, $dtNasc);
+                        echo $msg->getMsg();
+                        echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                        URL='cadastro.php'\">";
+                    }
+                }
                 ?>
 
 
@@ -88,6 +106,7 @@ $btEnviar = FALSE;
 
                     <br>
                     <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
+                    <input type="submit" name="atualizarCliente" class="btn btn-secondary btInput" value="Atualizar" <?php if ($btAtualizar == false) echo "disabled = 'disabled'"; ?>>
                 </form>        
             </div>
             <div class="col"></div>

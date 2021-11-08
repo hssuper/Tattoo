@@ -23,4 +23,20 @@ class cadastroController
         $cadastroDao = new DaoCadastro();
         return $cadastroDao->inserir($cadastro);
     }
+    public function atualizarClienteController( $idcadastro, $nome, $contato, $email,  $cpf, $dtNasc){
+        $cadastro =  new Cadastro();
+        $cadastro->setIdcadastro($idcadastro);
+        $cadastro->setNome($nome);
+        $cadastro->setContato($contato);
+        $cadastro->setEmail($email);
+        $cadastro->setCpf($cpf);
+        $cadastro->setDtNasc($dtNasc);
+
+        $daoCadastro = new DaoCadastro();
+        return $daoCadastro->atualizarClienteDao($cadastro);
+
+
+
+
+   }
 }
