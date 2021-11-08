@@ -52,8 +52,8 @@ $btExcluir = FALSE;
                         //echo "$nome, $contato,  $senha, $cpf, $dtNasc";
                         $msg = $cc->inserirCadastro($nome, $contato, $email, $senha, $cpf, $dtNasc, $dtEft);
                         echo $msg->getMsg();
-                        //  echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-                        //URL='cadastroFuncionario.php'\">";
+                          echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                        URL='cadastroFuncionario.php'\">";
                     }
                 }
 
@@ -78,24 +78,29 @@ $btExcluir = FALSE;
                 }
 
                 if (isset($_POST['excluir'])) {
-                    if ($ct != null) {
-                        $id = $_POST['ide'];
+                    if ($pu != null) {
+                        $id = $_POST['id'];
 
                         $ct = new cadastroFuncionarioController();
-                        unset($_POST['excluir']);
+                   unset($_POST['excluir']);
                         $msg = $ct->excluirUsuario($id);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-                        URL='cadastro.php'\">";
-                    }
-                }
+                    URL='cadastroFuncionario.php'\">";
+                  }
+               }
+               if (isset($_POST['limpar'])) {
+                $pu = null;
+                unset($_GET['id']);
+                header("Location: cadastroFuncionario.php");
+            }
                 if (isset($_GET['id'])) {
-                    $btEnviar = TRUE;
-                    $btAtualizar = TRUE;
+                 $btEnviar = TRUE;
+                  $btAtualizar = TRUE;
                     $btExcluir = TRUE;
-                    $idcadastro = $_GET['id'];
-                    $ct = new cadastroFuncionarioController();
-                    $pu = $ct->pesquisarId($idcadastro);
+                   $idcadastro = $_GET['id'];
+                   $ct = new cadastroFuncionarioController();
+                   $pu = $ct->pesquisarId($idcadastro);
                 }
                 ?>
 
@@ -144,35 +149,7 @@ $btExcluir = FALSE;
                         Excluir
                     </button>
 
-                     <!-- Modal para excluir -->
-                     <div class="modal fade" id="ModalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" 
-                                                        id="exampleModalLabel">
-                                                        Confirmar Exclusão</h5>
-                                                    <button type="button" 
-                                                            class="btn-close" 
-                                                            data-bs-dismiss="modal"
-                                                            aria-label="Close">
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <h5>Deseja Excluir?</h5>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="submit" name="excluirFornecedor"
-                                                           class="btn btn-success "
-                                                           value="Sim">
-                                                    <input type="submit" 
-                                                        class="btn btn-light btInput" 
-                                                        name="limpar" value="Não">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- fim do modal para excluir -->
+                     
 
 
                     <table class="table table-dark m-2" >
@@ -209,19 +186,19 @@ $btExcluir = FALSE;
                             ?>
                                     <tr>
 
-                                        <td><?php print_r($lu->getIdCadastro()); ?></td>
+                                        <td><?php print_r($lu->getIdcadastro()); ?></td>
                                         <td><?php print_r($lu->getNome()); ?></td>
                                         <td><?php print_r($lu->getContato()); ?></td>
                                         <td><?php print_r($lu->getCpf()); ?></td>
                                         <td><?php print_r($lu->getDtEft()); ?></td>
 
 
-                                        <td><a href="cadastroFuncionario.php?id=<?php echo $lu->getIdCadastro(); ?>" class="btn btn-light">
+                                        <td><a href="cadastroFuncionario.php?id=<?php echo $lu->getIdcadastro(); ?>" class="btn btn-light">
                                                 <img src="img/edita.png" width="24"></a>
 
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $a; ?>">
+                                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal<?php echo $a; ?>">
                                                 <img src="img/delete.png" width="24"></button>
                                         </td>
 
@@ -230,20 +207,20 @@ $btExcluir = FALSE;
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                    <h5 class="modal-title" style="color:black;" id="exampleModalLabel">Excluir Usuario</h5>
                                                     <button type="button" class="btn-close" 
                                                             data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body" style="color:black;">
                                                     <form method="post" action="">
                                                         <label><strong>Deseja excluir o Funcionario
                                                                 <?php echo $lu->getNome(); ?>?</strong></label>
-                                                        <input type="hidden" name="ide" 
-                                                               value="<?php echo $lu->getIdCadastro(); ?>">
+                                                        <input type="hidden" name="id" 
+                                                               value="<?php echo $lu->getIdcadastro(); ?>">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
-                                                            <button type="reset" class="btn btn-secondary" 
+                                                            <button type="submit" value="Limpar" class="btn btn-secondary" 
                                                                     data-bs-dismiss="modal">Não</button>
                                                         </div>
                             <?php
