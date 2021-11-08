@@ -78,7 +78,7 @@ $btExcluir = FALSE;
 
                         $ct = new cadastroController();
                    unset($_POST['excluir']);
-                        $msg = $cc->excluirCliente($id);
+                        $msg = $ct->excluirCliente($id);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                     URL='cadastro.php'\">";
