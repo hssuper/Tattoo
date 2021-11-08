@@ -86,7 +86,7 @@ return $msg;
     }
 
 
-public function excluirUsuarioDAO($idcadastro)
+public function excluirClienteDAO($idcadastro)
     {
         $conn = new Conecta();
         $conecta = $conn->conectadb();
@@ -109,7 +109,7 @@ public function excluirUsuarioDAO($idcadastro)
         $conn = null;
         return $msg;
     }
-    public function listarUsuarioDao()
+    public function listarClienteDao()
     {
         $msg = new mensagem();
         $conn = new Conecta();

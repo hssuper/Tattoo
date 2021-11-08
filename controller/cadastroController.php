@@ -34,9 +34,22 @@ class cadastroController
 
         $daoCadastro = new DaoCadastro();
         return $daoCadastro->atualizarClienteDao($cadastro);
-
-
-
-
    }
+   public function excluirCliente($id){
+    $daoCadastro = new DaoCadastro();
+    return $daoCadastro->excluirClienteDAO($id);
+   }
+   public function listarCliente(){
+    $daoCadastro= new DaoCadastro();
+    return $daoCadastro->listarClienteDAO();
+   }
+   public function pesquisarIdCliente($id){
+    $daoUsuario = new DaoCadastro();
+    return $daoUsuario->pesquisarIdDao($id);
+   } 
+
 }
+
+
+
+
