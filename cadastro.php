@@ -7,6 +7,7 @@ $msg = new mensagem();
 $ct = new Cadastro();
 $btEnviar = FALSE;
 $btAtualizar = FALSE;
+$btExcluir = FALSE;
 ?>
 
 <!DOCTYPE html>
@@ -44,9 +45,9 @@ $btAtualizar = FALSE;
                         $cpf = $_POST['cpf'];
                         $dtNasc = $_POST['dtNasc'];
 
-                        $cc = new cadastroController();
+                        $ct = new cadastroController();
                         unset($_POST['cadastrar']);
-                        $msg = $cc->inserirCadastro($nome, $contato, $email,  $cpf, $dtNasc);
+                        $msg = $ct->inserirCadastro($nome, $contato, $email,  $cpf, $dtNasc);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         URL='cadastro.php'\">";
@@ -62,13 +63,39 @@ $btAtualizar = FALSE;
                         $cpf = $_POST['cpf'];
                         $dtNasc = $_POST['dtNasc'];
 
-                        $cc =  new cadastroController();
+                        $ct =  new cadastroController();
                         unset($_POST['atualizarCliente']);
-                        $msg = $cc->atualizarClienteController($idcadastro, $nome, $contato, $email,  $cpf, $dtNasc);
+                        $msg = $ct->atualizarClienteController($idcadastro, $nome, $contato, $email,  $cpf, $dtNasc);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         URL='cadastro.php'\">";
                     }
+                }
+
+                if (isset($_POST['excluir'])) {
+                    if ($ct != null) {
+                        $id = $_POST['id'];
+
+                        $ct = new cadastroController();
+                   unset($_POST['excluir']);
+                        $msg = $cc->excluirCliente($id);
+                        echo $msg->getMsg();
+                        echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                    URL='cadastro.php'\">";
+                  }
+               }
+               if (isset($_POST['limpar'])) {
+                $ct = null;
+                unset($_GET['id']);
+                header("Location: cadastro.php");
+            }
+                if (isset($_GET['id'])) {
+                 $btEnviar = TRUE;
+                  $btAtualizar = TRUE;
+                    $btExcluir = TRUE;
+                   $idcadastro = $_GET['id'];
+                   $ct = new cadastroController();
+                   $ct = $ct->pesquisarIdCliente($idcadastro);
                 }
                 ?>
 
@@ -107,6 +134,92 @@ $btAtualizar = FALSE;
                     <br>
                     <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
                     <input type="submit" name="atualizarCliente" class="btn btn-secondary btInput" value="Atualizar" <?php if ($btAtualizar == false) echo "disabled = 'disabled'"; ?>>
+                    <button type="button" class="btn btn-warning btInput" data-bs-toggle="modal" data-bs-target="#ModalExcluir" <?php if ($btExcluir == false) echo "disabled = 'disabled'"; ?>>
+                        Excluir
+                    </button>
+
+
+                    <table class="table table-dark m-2" >
+                        <thead>
+                            <tr>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Nome Cliente</th>
+                                <th scope="col">Contato</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Cpf</th>
+                                <th scope="col">Data Nascimento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+
+
+                                 if (isset($_SESSION['pesquisa']) && $_SESSION['pesquisa'] != "") {
+                                    $pesquisa = $_SESSION['pesquisa'];
+                                    $ct = new cadastroController();
+                                    $listarCliente = $ct->listarCliente($pesquisa);
+                                }else{
+                                    $pcTable = new cadastroController();
+                                    $listarCliente = $pcTable->listarCliente();
+                                }
+                                $a = 0;
+
+                            $fcTable = new cadastroController();
+                            $listarCliente = $fcTable->listarCliente();
+                            $a = 0;
+                            if ($listarCliente != null) {
+                                foreach ($listarCliente as $lc) {
+                                    $a++;
+
+                            ?>
+                                    <tr>
+
+                                        <td><?php print_r($lc->getIdcadastro()); ?></td>
+                                        <td><?php print_r($lc->getNome()); ?></td>
+                                        <td><?php print_r($lc->getContato()); ?></td>
+                                        <td><?php print_r($lc->getEmail()); ?></td>
+                                        <td><?php print_r($lc->getCpf()); ?></td>
+                                        <td><?php print_r($lc->getDtNasc()); ?></td>
+
+
+                                        <td><a href="cadastroFuncionario.php?id=<?php echo $lc->getIdcadastro(); ?>" class="btn btn-light">
+                                                <img src="img/edita.png" width="24"></a>
+
+                                        </td>
+                                        <td>
+                                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal<?php echo $a; ?>">
+                                                <img src="img/delete.png" width="24"></button>
+                                        </td>
+
+                                        <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal<?php echo $a; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" style="color:black;" id="exampleModalLabel">Excluir Cliente</h5>
+                                                    <button type="button" class="btn-close" 
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body" style="color:black;">
+                                                    <form method="post" action="">
+                                                        <label><strong>Deseja excluir o Cliente
+                                                                <?php echo $lc->getNome(); ?>?</strong></label>
+                                                        <input type="hidden" name="id" 
+                                                               value="<?php echo $lc->getIdcadastro(); ?>">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
+                                                            <button type="submit" value="Limpar" class="btn btn-secondary" 
+                                                                    data-bs-dismiss="modal">Não</button>
+                                                        </div>
+                            <?php
+
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+
                 </form>        
             </div>
             <div class="col"></div>
