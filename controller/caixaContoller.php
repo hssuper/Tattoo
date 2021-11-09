@@ -12,14 +12,10 @@ class caixaController
         $caixa->setDtPag($dtPag);
         $caixa->setFrPag($frPag);
         
-        
-       
-       
         $NrPar = $caixa->getNrPar();
         $dtPag= $caixa->getDtPag();
         $frPag= $caixa->getFrPag();
         
-
         $DaoCaixa = new DaoCaixa();
         return $DaoCaixa->inserir($caixa);
 
@@ -28,4 +24,28 @@ class caixaController
         $daoCaixa = new DaoCaixa();
         return $daoCaixa->listarCaixaDAO();
     } 
+    public function atualizarCaixaController( $idPagamento, $NrPar, $dtPag, $frPag){
+        $caixa =  new Caixa();
+        $caixa->setIdPagamento($idPagamento);
+        $caixa->setNrPar($NrPar);
+        $caixa->setDtPag($dtPag);
+        $caixa->setFrPag($frPag);
+       
+
+        $daoCaixa = new DaoCaixa();
+        return $daoCaixa->atualizarCaixaDao($caixa);
+
+
+
+
+   }
+   public function excluirCaixa($id){
+    $daoCaixa = new DaoCaixa();
+    return $daoCaixa->excluirClienteDAO($id);
+}
+
+public function pesquisarId($id){
+    $daoCaixa = new Daocaixa();
+    return $daoCaixa->pesquisarIdDao($id);
+} 
 }

@@ -181,7 +181,7 @@ $btExcluir = FALSE;
                                         <td><?php print_r($lc->getDtNasc()); ?></td>
 
 
-                                        <td><a href="cadastroFuncionario.php?id=<?php echo $lc->getIdcadastro(); ?>" class="btn btn-light">
+                                        <td><a href="cadastro.php?id=<?php echo $lc->getIdcadastro(); ?>" class="btn btn-light">
                                                 <img src="img/edita.png" width="24"></a>
 
                                         </td>

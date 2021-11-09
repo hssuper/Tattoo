@@ -73,7 +73,7 @@ $btExcluir = FALSE;
                         $msg = $ct->atualizarUsuarioController($idcadastro, $nome, $contato, $email, $senha, $cpf, $dtNasc, $dtEft);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-                        URL='cadastro.php'\">";
+                        URL='cadastroFuncionario.php'\">";
                     }
                 }
 
@@ -223,6 +223,9 @@ $btExcluir = FALSE;
                                                             <button type="submit" value="Limpar" class="btn btn-secondary" 
                                                                     data-bs-dismiss="modal">Não</button>
                                                         </div>
+                                            </div>
+                                        </div>
+                                    </div>
                             <?php
 
                                 }

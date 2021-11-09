@@ -51,7 +51,7 @@ return $msg;
         $msg = new Mensagem();
         $conecta = $conn->conectadb();
         if ($conecta) {
-            $idcadastro = $cadastro->getIdCadastro();
+            $idcadastro = $cadastro->getIdcadastro();
             $nome = $cadastro->getNome();
             $contato = $cadastro->getContato();
             $email = $cadastro->getEmail();
@@ -69,10 +69,12 @@ return $msg;
                 $stmt->bindParam(1, $nome);
                 $stmt->bindParam(2, $contato);
                 $stmt->bindParam(3, $email);
-                $stmt->bindParam(5, $cpf);
-                $stmt->bindParam(6, $dtNasc);
-                $stmt->bindParam(8, $idcadastro);
+                $stmt->bindParam(4, $cpf);
+                $stmt->bindParam(5, $dtNasc);
+                $stmt->bindParam(6, $idcadastro);
+
                 $stmt->execute();
+
                 $msg->setMsg("<p style='color: #d6bc71;'>"
                     . "Dados atualizados com sucesso</p>");
             } catch (PDOException $ex) {

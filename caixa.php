@@ -6,6 +6,8 @@ include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
 $msg = new mensagem();
 $cx = new Caixa();
 $btEnviar = FALSE;
+$btAtualizar = FALSE;
+$btExcluir = FALSE;
 ?>
 
 <!DOCTYPE html>
@@ -27,24 +29,67 @@ $btEnviar = FALSE;
 
 
 <body class="img">
-    <div class="container" style="font-family: 'Rye', cursive;" >
-    <?php
-                if (isset($_POST['cadastrar'])) {
-                    $NrPar = $_POST['NrPar'];
-                    if ($NrPar != "") {
-                        $dtPag = $_POST['dtPag'];
-                        $frPag = $_POST['frPag'];
-                       
-                        unset($_POST['cadastrar']);
-                        $cc = new caixaController();
-                        
-                        $msg = $cc->inserirCaixa($NrPar,$dtPag,$frPag);
-                        echo $msg->getMsg();
-                        //  echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-                        //URL='cadastroFuncionario.php'\">";
-                    }
-                }
-?>
+    <div class="container" style="font-family: 'Rye', cursive;">
+        <?php
+        if (isset($_POST['cadastrar'])) {
+            $NrPar = $_POST['NrPar'];
+            if ($NrPar != "") {
+                $dtPag = $_POST['dtPag'];
+                $frPag = $_POST['frPag'];
+
+                unset($_POST['cadastrar']);
+                $cx = new caixaController();
+
+                $msg = $cx->inserirCaixa($NrPar, $dtPag, $frPag);
+                echo $msg->getMsg();
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                URL='caixa.php'\">";
+            }
+        }
+        if (isset($_POST['atualizarCaixa'])) {
+            $idPagamento = trim($_GET['id']);
+            if ($idPagamento != "") {
+                $NrPar = $_POST['NrPar'];
+                $dtPag = $_POST['dtPag'];
+                $frPag = $_POST['frPag'];
+
+
+                $cx =  new caixaController();
+                unset($_POST['atualizarUsuario']);
+                $msg = $cx->atualizarCaixaController($idPagamento, $NrPar, $dtPag, $frPag);
+                echo $msg->getMsg();
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                URL='caixa.php'\">";
+            }
+        }
+
+        if (isset($_POST['excluir'])) {
+            if ($cx != null) {
+                $id = $_POST['id'];
+
+                $cx = new caixaController();
+                unset($_POST['excluir']);
+                $msg = $ct->excluirClienteDAO($id);
+                echo $msg->getMsg();
+                echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+            URL='caixa.php'\">";
+            }
+        }
+        if (isset($_POST['limpar'])) {
+            $pu = null;
+            unset($_GET['id']);
+            header("Location: caixa.php");
+        }
+
+        if (isset($_GET['id'])) {
+            $btEnviar = TRUE;
+            $btAtualizar = TRUE;
+            $btExcluir = TRUE;
+            $idPagamento = $_GET['id'];
+            $cx = new caixaController();
+            $cx = $cx->pesquisarId($idPagamento);
+        }
+        ?>
 
         <form method="post" action="">
             <div class="form-group">
@@ -81,17 +126,21 @@ $btEnviar = FALSE;
             </div>
             <div>
                 <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
+                <input type="submit" name="atualizarCaixa" class="btn btn-secondary btInput" value="Atualizar" <?php if ($btAtualizar == false) echo "disabled = 'disabled'"; ?>>
+                <button type="button" class="btn btn-warning btInput" data-bs-toggle="modal" data-bs-target="#ModalExcluir" <?php if ($btExcluir == false) echo "disabled = 'disabled'"; ?>>
+                    Excluir
+                </button>
             </div>
             <br>
             <br>
             <table class="table table-dark">
                 <thead>
                     <tr>
-                    <th scope="col">Codigo</th>       
-                                     <th scope="col">Parcelas</th>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Parcelas</th>
                         <th scope="col">Data De Pagamento</th>
                         <th scope="col">Forma De Pagamento</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -102,54 +151,58 @@ $btEnviar = FALSE;
                     if ($listaCaixa != null) {
                         foreach ($listaCaixa as $lc) {
                             $a++;
-                      
+
                     ?>
-                    <tr>
-                        
-                        <td><?php print_r($lc->getIdPagamento()); ?></td>
-                        <td><?php print_r($lc->getNrPar()); ?></td>
-                        <td><?php print_r($lc->getDtPag()); ?></td>
-                        <td><?php print_r($lc->getFrPag()); ?></td>
-                    
+                            <tr>
 
-                    <td><a href="caixa.php?id=<?php echo $lc->getIdPagamento(); ?>" class="btn btn-light">
-                            <img src="img/edita.png" width="24"></a>
+                                <td><?php print_r($lc->getIdPagamento()); ?></td>
+                                <td><?php print_r($lc->getNrPar()); ?></td>
+                                <td><?php print_r($lc->getDtPag()); ?></td>
+                                <td><?php print_r($lc->getFrPag()); ?></td>
 
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $a; ?>">
-                            <img src="img/delete.png" width="24"></button>
-                    </td>
-                    </tr>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal<?php echo $a; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                                <td><a href="caixa.php?id=<?php echo $lc->getIdPagamento(); ?>" class="btn btn-light">
+                                        <img src="img/edita.png" width="24"></a>
+
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $a; ?>">
+                                        <img src="img/delete.png" width="24"></button>
+                                </td>
+                            </tr>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal<?php echo $a; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" style="color:black;" id="exampleModalLabel">Excluir Pagamento</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" style="color:black;">
+                                            <form method="post" action="">
+                                                <label><strong>Deseja excluir o Pagamento
+                                                        <?php echo $lc->getNome(); ?>?</strong></label>
+                                                <input type="hidden" name="id" value="<?php echo $lc->getIdcadastro(); ?>">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
+                                            <button type="submit" value="Limpar" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <form method="post" action="">
-                                        <label><strong>Deseja excluir o pagamento
-                                                <?php echo $lf->getNrPar(); ?>?</strong></label>
-                                        <input type="hidden" name="id" value="<?php echo $lf->getIdPagamento(); ?>">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
-                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-                                </div>
-                                <?php
-        }
-    }
+                            </div>
+                    <?php
+                        }
+                    }
                     ?>
                 </tbody>
             </table>
-
     </div>
     </form>
-
-
+    </div>
+    <div class="col"></div>
+    </div>
+    </div>
 </body>
 <!-- fecha /container -->
 <footer id="myFooter" style="padding-top: 200px;">
