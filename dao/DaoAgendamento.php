@@ -21,7 +21,7 @@ try{
     $email = $agendamento->getEmail();
     $informacao = $agendamento->getInformacao();
     $imagem = $agendamento->getImagem();
-    $usuario = $agendamento->getUsuario();
+   
     
     
    
@@ -30,7 +30,7 @@ try{
     $stmt->bindParam(1, $imagem);
     $stmt->bindParam(2, $informacao);
     $stmt->bindParam(3, $email);
-    $stmt->bindParam(4, $usuario);
+    
     
     $stmt->execute();
 

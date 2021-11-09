@@ -5,7 +5,7 @@
 private $email;
 private $informacao;
 private $imagem;
-private $usuario;
+private $fkUsuario;
 
 
  
@@ -56,14 +56,17 @@ return $this;
 
 
 
-public function getUsuario()
+
+
+public function getFkUsuario()
 {
-return $this->usuario;
+return $this->fkUsuario;
 }
 
-public function setUsuario($usuario)
+
+public function setFkUsuario($fkUsuario)
 {
-$this->usuario = $usuario;
+$this->fkUsuario = $fkUsuario;
 
 return $this;
 }
