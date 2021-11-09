@@ -5,13 +5,13 @@ include_once 'C:/xampp/htdocs/tattoo/model/agendamento.php';
 class agendamentoController
 {
 
-    public function inserirAgendamento($email, $informacao, $imagem,$fkUsuario )
+    public function inserirAgendamento($email, $informacao, $imagem )
     {
         $agendamento = new Agendamento();
         $agendamento->setEmail($email);
         $agendamento->setInformacao($informacao);
         $agendamento->setImagem($imagem);
-        $agendamento->setFkUsuario($fkUsuario);
+        
        
         
        
@@ -19,7 +19,7 @@ class agendamentoController
         $email = $agendamento->getemail();
         $informacao= $agendamento->getInformacao();
         $imagem= $agendamento->getImagem();
-        $fkUsuario= $agendamento->getFkUsuario();
+        
         
         
         
