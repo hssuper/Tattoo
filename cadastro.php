@@ -45,9 +45,9 @@ $btExcluir = FALSE;
                         $cpf = $_POST['cpf'];
                         $dtNasc = $_POST['dtNasc'];
 
-                        $ct = new cadastroController();
+                        $cu = new cadastroController();
                         unset($_POST['cadastrar']);
-                        $msg = $ct->inserirCadastro($nome, $contato, $email,  $cpf, $dtNasc);
+                        $msg = $cu->inserirCadastro($nome, $contato, $email,  $cpf, $dtNasc);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         URL='cadastro.php'\">";
@@ -62,9 +62,9 @@ $btExcluir = FALSE;
                         $cpf = $_POST['cpf'];
                         $dtNasc = $_POST['dtNasc'];
 
-                        $ct =  new cadastroController();
+                        $cc =  new cadastroController();
                         unset($_POST['atualizarCliente']);
-                        $msg = $ct->atualizarClienteController($idcadastro, $nome, $contato, $email,  $cpf, $dtNasc);
+                        $msg = $cc->atualizarClienteController($idcadastro, $nome, $contato, $email,  $cpf, $dtNasc);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         URL='cadastro.php'\">";
@@ -75,9 +75,9 @@ $btExcluir = FALSE;
                     if ($ct != null) {
                         $id = $_POST['id'];
 
-                        $ct = new cadastroController();
+                        $cc = new cadastroController();
                         unset($_POST['excluir']);
-                        $msg = $ct->excluirCliente($id);
+                        $msg = $cc->excluirCliente($id);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                     URL='cadastro.php'\">";
@@ -93,8 +93,8 @@ $btExcluir = FALSE;
                     $btAtualizar = TRUE;
                     $btExcluir = TRUE;
                     $idcadastro = $_GET['id'];
-                    $ct = new cadastroController();
-                    $ct = $ct->pesquisarIdCliente($idcadastro);
+                    $cc = new cadastroController();
+                    $ct = $cc->pesquisarIdCliente($idcadastro);
                 }
                 ?>
 
