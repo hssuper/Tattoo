@@ -102,8 +102,8 @@ include_once "include/menu.php";
                         unset($_POST['cadastrar']);
                         $msg = $ag->inserirAgendamento($email, $informacao , $imagem);
                         echo $msg->getMsg();
-                        // echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-                        //  URL='tatuagens.php'\">";
+                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                         URL='tatuagens.php'\">";
             
                     }
                 }
@@ -112,7 +112,7 @@ include_once "include/menu.php";
                     <div class="row" >
                         <div class="col-md-6">
                             <div class="form-group">
-                               <h3> <label for="email">E-mail</label></h3>
+                               <h3><label for="email">E-mail</label></h3>
                                 <input type="text" class="form-control" name="email" placeholder="Informe seu E-Mail" value="<?php echo $ag->getEmail(); ?>">
 
                                 <h3>Descrição</h3>

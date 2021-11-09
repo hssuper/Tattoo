@@ -33,7 +33,8 @@ try{
     
     
     $stmt->execute();
-
+    $msg->setMsg("<p style='color: #d6bc71;'>"
+    . "Dados Cadastrados com sucesso.</p>");
 }catch (PDOException $ex) {
                 $msg->setMsg(var_dump($ex->errorInfo));
             }
