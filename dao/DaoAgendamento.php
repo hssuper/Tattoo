@@ -26,7 +26,7 @@ try{
     
    
    
-    $stmt = $conecta->prepare("insert into imagenstatoo values (null,?,?,?,?)");
+    $stmt = $conecta->prepare("insert into imagenstatoo values (null,?,?,?,'2')");
     $stmt->bindParam(1, $imagem);
     $stmt->bindParam(2, $informacao);
     $stmt->bindParam(3, $email);

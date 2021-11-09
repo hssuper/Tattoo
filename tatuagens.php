@@ -98,9 +98,9 @@ include_once "include/menu.php";
             
             
             
-                        $ac = new agendamentoController();
+                        $ag = new agendamentoController();
                         unset($_POST['cadastrar']);
-                        $msg = $ac->inserirAgendamento($email, $informacao , $imagem, $usuario);
+                        $msg = $ag->inserirAgendamento($email, $informacao , $imagem, $usuario);
                         echo $msg->getMsg();
                         // echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         //  URL='tatuagens.php'\">";
