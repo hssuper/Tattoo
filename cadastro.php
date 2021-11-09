@@ -30,10 +30,10 @@ $btExcluir = FALSE;
 
 
 
-<div class="container" style="font-family: 'Rye', cursive;">
+    <div class="container" style="font-family: 'Rye', cursive;">
         <div class="row">
-        <div class="col"></div>
-        <div class="col-lg-offset-8"  >
+            
+            <div class="col-lg-offset-8">
 
                 <h3>Cadastro de Cliente</h3>
                 <?php
@@ -51,7 +51,6 @@ $btExcluir = FALSE;
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                         URL='cadastro.php'\">";
-
                     }
                 }
                 if (isset($_POST['atualizarCliente'])) {
@@ -77,25 +76,25 @@ $btExcluir = FALSE;
                         $id = $_POST['id'];
 
                         $ct = new cadastroController();
-                   unset($_POST['excluir']);
+                        unset($_POST['excluir']);
                         $msg = $ct->excluirCliente($id);
                         echo $msg->getMsg();
                         echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                     URL='cadastro.php'\">";
-                  }
-               }
-               if (isset($_POST['limpar'])) {
-                $ct = null;
-                unset($_GET['id']);
-                header("Location: cadastro.php");
-            }
+                    }
+                }
+                if (isset($_POST['limpar'])) {
+                    $ct = null;
+                    unset($_GET['id']);
+                    header("Location: cadastro.php");
+                }
                 if (isset($_GET['id'])) {
-                 $btEnviar = TRUE;
-                  $btAtualizar = TRUE;
+                    $btEnviar = TRUE;
+                    $btAtualizar = TRUE;
                     $btExcluir = TRUE;
-                   $idcadastro = $_GET['id'];
-                   $ct = new cadastroController();
-                   $ct = $ct->pesquisarIdCliente($idcadastro);
+                    $idcadastro = $_GET['id'];
+                    $ct = new cadastroController();
+                    $ct = $ct->pesquisarIdCliente($idcadastro);
                 }
                 ?>
 
@@ -139,7 +138,7 @@ $btExcluir = FALSE;
                     </button>
 
 
-                    <table class="table table-dark m-2" >
+                    <table class="table table-dark m-2">
                         <thead>
                             <tr>
                                 <th scope="col">Codigo</th>
@@ -154,15 +153,15 @@ $btExcluir = FALSE;
                             <?php
 
 
-                                 if (isset($_SESSION['pesquisa']) && $_SESSION['pesquisa'] != "") {
-                                    $pesquisa = $_SESSION['pesquisa'];
-                                    $ct = new cadastroController();
-                                    $listarCliente = $ct->listarCliente($pesquisa);
-                                }else{
-                                    $pcTable = new cadastroController();
-                                    $listarCliente = $pcTable->listarCliente();
-                                }
-                                $a = 0;
+                            if (isset($_SESSION['pesquisa']) && $_SESSION['pesquisa'] != "") {
+                                $pesquisa = $_SESSION['pesquisa'];
+                                $ct = new cadastroController();
+                                $listarCliente = $ct->listarCliente($pesquisa);
+                            } else {
+                                $pcTable = new cadastroController();
+                                $listarCliente = $pcTable->listarCliente();
+                            }
+                            $a = 0;
 
                             $fcTable = new cadastroController();
                             $listarCliente = $fcTable->listarCliente();
@@ -187,42 +186,39 @@ $btExcluir = FALSE;
 
                                         </td>
                                         <td>
-                                        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal<?php echo $a; ?>">
+                                            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal<?php echo $a; ?>">
                                                 <img src="img/delete.png" width="24"></button>
                                         </td>
 
                                         <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal<?php echo $a; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" style="color:black;" id="exampleModalLabel">Excluir Cliente</h5>
-                                                    <button type="button" class="btn-close" 
-                                                            data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body" style="color:black;">
-                                                    <form method="post" action="">
-                                                        <label><strong>Deseja excluir o Cliente
-                                                                <?php echo $lc->getNome(); ?>?</strong></label>
-                                                        <input type="hidden" name="id" 
-                                                               value="<?php echo $lc->getIdcadastro(); ?>">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
-                                                            <button type="submit" value="Limpar" class="btn btn-secondary" 
-                                                                    data-bs-dismiss="modal">Não</button>
-                                                        </div>
-                            <?php
+                                        <div class="modal fade" id="exampleModal<?php echo $a; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" style="color:black;" id="exampleModalLabel">Excluir Cliente</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body" style="color:black;">
+                                                        <form method="post" action="">
+                                                            <label><strong>Deseja excluir o Cliente
+                                                                    <?php echo $lc->getNome(); ?>?</strong></label>
+                                                            <input type="hidden" name="id" value="<?php echo $lc->getIdcadastro(); ?>">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" name="excluir" class="btn btn-primary">Sim</button>
+                                                        <button type="submit" value="Limpar" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                                                    </div>
+                                            <?php
 
-                                }
-                            }
-                            ?>
+                                        }
+                                    }
+                                            ?>
                         </tbody>
                     </table>
 
-                </form>        
+                </form>
             </div>
-            <div class="col"></div>
+
         </div>
     </div> <!-- fecha /container -->
 </body>
@@ -263,7 +259,7 @@ $btExcluir = FALSE;
                     <a style="color: #808080" href="..." class="instagram"><i class="fa fa-instagram"></i></a>
                     <a style="color: #808080" href="..." class="whatsapp"><i class="fa fa-whatsapp"></i></a>
                 </div>
-               
+
             </div>
         </div>
     </div>
