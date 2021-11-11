@@ -116,7 +116,7 @@ include_once "include/menu.php";
                                 <input type="text" class="form-control" name="email" placeholder="Informe seu E-Mail" value="<?php echo $ag->getEmail(); ?>">
 
                                 <h3>Descrição</h3>
-                                <textarea rows="8" cols="50" name="informacao" maxlength="200" minlength="20" value="<?php echo $ag->getInformacao(); ?>"></textarea>
+                                <textarea rows="8" cols="50" name="informacao" maxlength="20000" minlength="20" value="<?php echo $ag->getInformacao(); ?>"></textarea>
                                 <h3>Envie a Imagem</h3>
                     <input name="imagem" type="file">
 
