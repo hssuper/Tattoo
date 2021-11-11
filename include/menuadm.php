@@ -55,6 +55,7 @@
     <a class="dropdown-item" style="color:black" href="#">Agendamento</a>
     <a class="dropdown-item" style="color:black" href="cadastro.php">cadastrar Cliente</a>
     <a class="dropdown-item" style="color:black" href="cadastroFuncionario.php">cadastrar Funcionario</a>
+    <a class="dropdown-item" style="color:black" href="orcamento.php">cadastrar Funcionario</a>
     <div class="dropdown-divider"></div>
   </div>
   <div class="dropdown-menu">
