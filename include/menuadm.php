@@ -52,7 +52,6 @@
   <div class="dropdown-menu" >
   <a class="dropdown-item" style="color:black" href="sessionDestroy.php">Sair</a>
     <a class="dropdown-item" style="color:black" href="caixa.php">Caixa</a>
-    <a class="dropdown-item" style="color:black" href="orcamento.php">fazer o Orçamento</a>
     <a class="dropdown-item" style="color:black" href="#">Agendamento</a>
     <a class="dropdown-item" style="color:black" href="cadastro.php">cadastrar Cliente</a>
     <a class="dropdown-item" style="color:black" href="cadastroFuncionario.php">cadastrar Funcionario</a>
