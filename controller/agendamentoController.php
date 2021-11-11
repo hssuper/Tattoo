@@ -27,4 +27,11 @@ class agendamentoController
         $DaoAgendamento = new DaoAgendamento();
         return $DaoAgendamento->inserir($agendamento);
     }
+
+    public function listarAgendamento(){
+        $DaoAgendamento= new DaoAgendamento();
+        return $DaoAgendamento->listarAgendamento();
+    }
+
+
 }

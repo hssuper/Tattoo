@@ -46,4 +46,41 @@ $conn = null;
 return $msg;
 
     }
+    public function listarAgendamento()
+    {
+        $msg = new mensagem();
+        $conn = new Conecta();
+        $conecta = $conn->conectadb();
+        if ($conecta) {
+            try {
+                $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $rs = $conecta->query("select * from imagenstatoo");
+                $lista = array();
+                $a = 0;
+                if ($rs->execute()) {
+                    if ($rs->rowCount() > 0) {
+                        while ($linha = $rs->fetch(PDO::FETCH_OBJ)) {
+                            $agendamento = new Agendamento();
+                            $agendamento->setIdimagem($linha->idimagem);
+                            $agendamento->setImagem($linha->img);
+                            $agendamento->setInformacao($linha->informacao);
+                            $agendamento->setEmail($linha->email);
+                            
+                            
+                           
+                           
+
+                            $lista[$a] = $agendamento;
+                            $a++;
+                        }
+                    }
+                }
+            } catch (PDOException $ex) {
+                $msg->setMsg(var_dump($ex->errorInfo));
+            }
+
+            $conn = null;
+            return $lista;
+        }
+    }
 }

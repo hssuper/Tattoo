@@ -1,7 +1,7 @@
 <?php
  
  class agendamento{
-
+private $idimagem;
 private $email;
 private $informacao;
 private $imagem;
@@ -67,6 +67,20 @@ return $this->fkUsuario;
 public function setFkUsuario($fkUsuario)
 {
 $this->fkUsuario = $fkUsuario;
+
+return $this;
+}
+
+
+public function getIdimagem()
+{
+return $this->idimagem;
+}
+
+
+public function setIdimagem($idimagem)
+{
+$this->idimagem = $idimagem;
 
 return $this;
 }
