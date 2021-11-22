@@ -1,0 +1,37 @@
+*{margin:0; padding:0; box-sizing: border-box;font-family: Verdana, sans-serif;}
+body{
+    background-image: url(../includes/img/bg.jpg);
+}
+.calendar{
+    border: 20px inset blue;
+    border-radius: 20px;
+    width:100%;
+    margin: 30px auto;
+    height: 74vh;
+    background-color: aliceblue;
+}
+.text-center{
+    text-align: center;
+}
+.fc-daygrid-event{
+    color: black;
+    cursor: pointer;
+    max-height: 10%;
+}
+.fc-daygrid-event:hover{
+    box-shadow: 5px 5px 5px black
+}
+.fc-daygrid-day-frame{
+    cursor: pointer;
+}
+.fc-daygrid-day-frame:hover{
+    background-color: wheat;
+}
+.fc-daygrid-day-number {
+    text-decoration: none !important;
+    color: black;
+}
+.fc-col-header-cell-cushion {
+    text-decoration: none !important;
+    color: black;
+}

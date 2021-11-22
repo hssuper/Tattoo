@@ -1,3 +1,14 @@
+<?php
+include_once "include/menuadm.php";
+include_once "C:/xampp/htdocs/tattoo/";
+include_once 'C:/xampp/htdocs/tattoo/controller/cadastroController.php';
+include_once 'C:/xampp/htdocs/tattoo/model/cadastro.php';
+include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
+$msg = new mensagem();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,6 +23,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+
 </head>
 <?php
 include_once "include/menuadm.php";
@@ -19,7 +31,39 @@ include_once "include/menuadm.php";
 ?>
 
 <body class="img">
+ 
 
+<button type="button" hidden id="botaoModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="margin-top:9rem;vertical-align: middle;">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <h3 style="text-align: center; color: white"></h3>
+                    <form method="post" name = "formularioConsulta" id = "formularioConsulta" style="color: white">
+                        <div class="d-flex">
+                            <div class="form-group col-6 p-1">
+                                <label>Cliente Atendido</label>
+                                <select name="nome" class="selectpicker form-control" id = "nome" data-live-search="true" data-size=5>
+                                    <option selected hidden="">[SELECIONE]</option>
+                                    <?php
+
+                                    foreach ($idcadastro as $nome) {
+                                        $selected = ($idcadastro->nome == $nome->idcadastro ? 'selected = selected' : '');
+                                        echo "<option value = " . $nome->idcadastro . " " . $selected . ">" . $nome->idcadastro . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                                <div class="form-group">
+                                    <label>Data do Atendimento</label>
+                                    <input class="form-control" placeholder="YYYY- MM - DD" onkeypress="mascara(this, '####-##-##')" onchange="getHorarios(this.value)" type="text" id="datepicker" name="data" value="<?= $idcadastro->dataConsulta ?>">
+                                </div>
 
     <div class="container">
         <h1 class="titulo">Busca</h1>
