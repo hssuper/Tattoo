@@ -1,14 +1,15 @@
 *{margin:0; padding:0; box-sizing: border-box;font-family: Verdana, sans-serif;}
 body{
-    background-image: url(../includes/img/bg.jpg);
+    background-image: url(../img/back.png);
 }
 .calendar{
-    border: 20px inset blue;
+
+    border: 20px inset #212529;
     border-radius: 20px;
-    width:100%;
-    margin: 30px auto;
-    height: 74vh;
-    background-color: aliceblue;
+    width: 200%;
+    margin: 100px auto;
+    height: 100vh;
+    background-color: rgb(124, 124, 124);
 }
 .text-center{
     text-align: center;
@@ -25,7 +26,7 @@ body{
     cursor: pointer;
 }
 .fc-daygrid-day-frame:hover{
-    background-color: wheat;
+    background-color: rgb(245, 243, 153);
 }
 .fc-daygrid-day-number {
     text-decoration: none !important;

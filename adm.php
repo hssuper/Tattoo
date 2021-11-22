@@ -21,26 +21,17 @@ include_once "include/menuadm.php";
 <body class="img">
 
 
-    <div class="container">
-        <h1 class="titulo">Busca</h1>
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h3>Coluna 1</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut dolorem repellendus placeat reprehenderit? Earum libero fugit eveniet commodi ut sunt quia facere repellat, autem expedita illum, quidem, itaque et laboriosam!</p>
-            </div>
-
-            <div class="col-lg-4">
-                <h3>Coluna 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, asperiores odio unde quisquam labore nisi aliquid ullam sed vero, facere, officiis minus itaque quia! Optio fugiat dignissimos facilis ab et.</p>
-            </div>
-
-            <div class="col-lg-4">
-                <h3>Coluna 2</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum perferendis architecto earum, accusantium, sint inventore sapiente, ratione iusto quibusdam rerum praesentium officiis alias aliquid sequi maiores saepe ullam quaerat itaque.</p>
-            </div>
-        </div>
-    </div>
+<table class="table table-dark m-2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Email</th>
+                                <th scope="col">Informações</th>
+                                <th scope="col">Imagem</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+</table>   
     </body> <!-- fecha /container -->
     <footer id="myFooter" style="padding-top: 200px;">
         <div class="container">
