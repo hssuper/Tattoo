@@ -77,7 +77,7 @@ function Calendario() {
           end: "dayGridMonth,timeGridWeek,timeGridDay,listWeek,listMonth",
         },
         eventClick: function (info) {
-          window.location.href = "Consulta.php?id=" + info.event.id;
+          window.location.href = "agendamento.php?id=" + info.event.id;
   
           // change the border color just for fun
           info.el.style.borderColor = "red";
