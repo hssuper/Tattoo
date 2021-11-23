@@ -19,6 +19,9 @@ include_once "include/menu.php";
 <html lang="pt-br">
 
 <head>
+    
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/lightbox.min.css">
+    <script src="bootstrap/js/lightbox-plus-jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busca - Agenda PHP</title>
@@ -124,15 +127,7 @@ include_once "include/menu.php";
                             </div>
                         </div>
                     </div>
-                    <div class="gallery">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                              <img src="img/213131.jpg" />
-
-
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
 
@@ -141,7 +136,18 @@ include_once "include/menu.php";
             </div>
             <div class="col-md-6">
                 <h1 class="titulo">Tatuagens</h1>
-
+                <a href="img/1231.jpg" data-lightbox="mygallery" ><img src="img/1231_Easy-Resize.com.jpg"></a>
+                <a href="img/212sdasda.jpg" data-lightbox="mygallery" ><img src="img/212sdasda_Easy-Resize.com.jpg"></a>
+                <a href="img/213131.jpg" data-lightbox="mygallery" ><img src="img/213131_Easy-Resize.com.jpg"></a>
+                <a href="img/tattooo.jpeg" data-lightbox="mygallery" ><img src="img/tattooo_Easy-Resize.com.jpg"></a>
+                <a href="img/tatttttooo.jpg" data-lightbox="mygallery" ><img src="img/tatttttooo_Easy-Resize.com.jpg"></a>
+                <a href="img/wdaeq.jpg" data-lightbox="mygallery" ><img src="img/wdaeq_Easy-Resize.com.jpg"></a>
+                <a href="img/Tattoo1.jpg" data-lightbox="mygallery" ><img src="img/Tattoo1_Easy-Resize.com.jpg"></a>
+                <a href="img/tattoo.jpg" data-lightbox="mygallery" ><img src="img/tattoo_Easy-Resize.com.jpg"></a>
+                <a href="img/dadad.jpg" data-lightbox="mygallery" ><img src="img/dadad_Easy-Resize.com.jpg"></a>
+                <a href="img/sdqw12.jpg" data-lightbox="mygallery" ><img src="img/sdqw12_Easy-Resize.com.jpg"></a>
+                <a href="img/tattoototo.jpg" data-lightbox="mygallery" ><img src="img/tattoototo_Easy-Resize.com.jpg"></a>
+                <a href="img/dawdadw.jpg" data-lightbox="mygallery" ><img src="img/dawdadw_Easy-Resize.com.jpg"></a>
             </div>
         </div>
     </div>
