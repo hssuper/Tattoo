@@ -124,10 +124,10 @@ include_once "include/menu.php";
                             </div>
                         </div>
                     </div>
-                    <div class="row" >
+                    <div class="gallery">
                         <div class="col-md-6">
                             <div class="form-group">
-                              
+                              <img src="img/213131.jpg" />
 
 
                             </div>
