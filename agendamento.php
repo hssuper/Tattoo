@@ -36,9 +36,6 @@ $msg = new mensagem();
                     <div class="d-flex">
                         <div class="form-group col-6 p-1">
                             <label>Cliente Atendido</label>
-
-
-
                             <div id="calendar" class="calendar"></div>
 
                            

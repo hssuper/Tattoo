@@ -124,6 +124,15 @@ include_once "include/menu.php";
                             </div>
                         </div>
                     </div>
+                    <div class="row" >
+                        <div class="col-md-6">
+                            <div class="form-group">
+                              
+
+
+                            </div>
+                        </div>
+                    </div>
 
                     <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>
 
