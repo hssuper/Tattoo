@@ -19,7 +19,7 @@ include_once "include/menu.php";
 <html lang="pt-br">
 
 <head>
-    
+<link rel="stylesheet" href="bootstrap/css/style1.css"> 
     <link rel="stylesheet" type="text/css" href="bootstrap/css/lightbox.min.css">
     <script src="bootstrap/js/lightbox-plus-jquery.min.js"></script>
     <meta charset="UTF-8">
