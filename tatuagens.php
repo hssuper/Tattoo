@@ -134,7 +134,7 @@ include_once "include/menu.php";
 
                 </form>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" name="gallery">
                 <h1 class="titulo">Tatuagens</h1>
                 <a href="img/1231.jpg" data-lightbox="mygallery" ><img src="img/1231_Easy-Resize.com.jpg"></a>
                 <a href="img/212sdasda.jpg" data-lightbox="mygallery" ><img src="img/212sdasda_Easy-Resize.com.jpg"></a>
@@ -148,6 +148,7 @@ include_once "include/menu.php";
                 <a href="img/sdqw12.jpg" data-lightbox="mygallery" ><img src="img/sdqw12_Easy-Resize.com.jpg"></a>
                 <a href="img/tattoototo.jpg" data-lightbox="mygallery" ><img src="img/tattoototo_Easy-Resize.com.jpg"></a>
                 <a href="img/dawdadw.jpg" data-lightbox="mygallery" ><img src="img/dawdadw_Easy-Resize.com.jpg"></a>
+                <a href="img/tatuagens" data-lightbox="mygallery" ><img src="img/dawdadw_Easy-Resize.com.jpg"></a>
             </div>
         </div>
     </div>
