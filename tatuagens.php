@@ -148,7 +148,7 @@ include_once "include/menu.php";
                 <a href="img/sdqw12.jpg" data-lightbox="mygallery" ><img src="img/sdqw12_Easy-Resize.com.jpg"></a>
                 <a href="img/tattoototo.jpg" data-lightbox="mygallery" ><img src="img/tattoototo_Easy-Resize.com.jpg"></a>
                 <a href="img/dawdadw.jpg" data-lightbox="mygallery" ><img src="img/dawdadw_Easy-Resize.com.jpg"></a>
-                <a href="img/tatuagens" data-lightbox="mygallery" ><img src="img/dawdadw_Easy-Resize.com.jpg"></a>
+                <a href="img/tatuagensleao.jpg" data-lightbox="mygallery" ><img src="img/tatuagensleao_Easy-Resize.com.jpg"></a>
             </div>
         </div>
     </div>
