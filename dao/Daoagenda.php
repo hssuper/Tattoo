@@ -169,26 +169,27 @@ return $msg;
             return $lista;
         }
     }
-    public function pesquisarIdDao($idcadastro)
+    public function pesquisarIdDao($idagendamento)
     {
         $msg = new mensagem();
         $conn = new Conecta();
         $conecta = $conn->conectadb();
-        $cadastro = new Cadastro();
+        $agenda = new Agenda();
         if ($conecta) {
             try {
                 $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $rs = $conecta->prepare("select * from cliente");
-                $rs->bindParam(1, $idcadastro);
+                $rs = $conecta->prepare("select * from agendamento");
+                $rs->bindParam(1, $idagendamento);
                 if ($rs->execute()) {
                     if ($rs->rowCount() > 0) {
                         while ($linha = $rs->fetch(PDO::FETCH_OBJ)) {
-                            $cadastro->setIdcadastro($linha->idcliente);
-                            $cadastro->setNome($linha->nome);
-                            $cadastro->setContato($linha->contato);
-                            $cadastro->setEmail($linha->email);
-                            $cadastro->setCpf($linha->cpf);
-                            $cadastro->setDtNasc($linha->dtNasc);
+                            $agenda->setIdagendamento($linha->idagendamento);
+                            $agenda->setDesconto($linha->desconto);
+                            $agenda->setDataAgendamento($linha->dataAgendamento);
+                            $agenda->setHoraAgandamento($linha->horaAgendamento);
+                            $agenda->setStatusAgendamento($linha->statusAgendamento);
+                            $agenda->setFkcliente($linha->fkcliente);
+                            $agenda->setFkorcamento($linha->fkorcamento);
                         }
                     }
                 }
@@ -199,8 +200,8 @@ return $msg;
         } else {
             echo "<script>alert('Banco inoperante!')</script>";
             echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
-			 URL='../tattoo/cadastro.php'\">";
+			 URL='../tattoo/agenda.php'\">";
         }
-        return $cadastro;
+        return $agenda;
     }
 }
