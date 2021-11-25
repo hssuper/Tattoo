@@ -44,31 +44,39 @@ $btExcluir = FALSE;
 <body class="img" onload="Calendario()">
 
 
-    
-                
-<button type="button" hidden id="botaoModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-    Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" style="margin-top:9rem;vertical-align: middle;">
-        <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form method="post" name = "agenda" id = "agenda" style="color: white">
-            <div class="form-group">
-                <div class="col-md-4">
-                    <label for="desconto">Desconto</label>
-                    <input type="Number" class="form-control" name="desconto" placeholder="Informe o valor de Desconto" value="<?php echo $cx->getDesconto(); ?>">
+
+    <button type="button" hidden id="botaoModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" style="margin-top:9rem;vertical-align: middle;">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </div>
+                <form method="post" name="agenda" id="agenda" style="color: white">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label for="desconto">Desconto</label>
+                            <input type="decimal" class="form-control" name="desconto" placeholder="Informe o valor de Desconto" value="<?php echo $ag->getDesconto(); ?>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dataAgendamento">Data De Agendamento</label>
+                        <input type="date" name="dataAgendamento" class="form-control" id="dataAgendamento" placeholder="Informe data agendada" value="<?php echo $ag->getDataAgendamento(); ?>">
+                    </div>
+                    <div class="form-group">
+                    <label for="horaAgendada">Hora da tatuagem</label>
+                    <input type="time" class="form-control" name="horaAgendada" placeholder="Informe a hora Agendada" value="<?php echo $ag->getHoraAgandamento(); ?>">
+                </div>
 
-                           
 
-                                
+
+
 </body> <!-- fecha /container -->
 <footer id="myFooter" style="padding-top: 200px;">
     <div class="container">
