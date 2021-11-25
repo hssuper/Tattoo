@@ -67,7 +67,7 @@ $btExcluir = FALSE;
             <form method="POST" action="">
                 <div class="form-group">
                     <label for="orcamento">Orçamento</label>
-                    <input type="text" class="form-control" name="orcamento" placeholder="Informe o Orçamento" value="<?php echo $or->getOrcamento(); ?>">
+                    <input type="number" class="form-control" name="orcamento" placeholder="Informe o Orçamento" value="<?php echo $or->getOrcamento(); ?>">
                 </div>
 
                 <div class="form-group">
