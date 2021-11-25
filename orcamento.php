@@ -80,7 +80,7 @@ $btExcluir = FALSE;
                     <input type="time" class="form-control" name="hora" placeholder="Informe a hora do procedimento" value="<?php echo $or->getHora(); ?>">
                 </div>
                 <div class="form-group">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label>Funcionario/Adm</label>
                         <label id="idUsuario" style="color: red; font-size: 11px;"></label>
                         <select class="form-select" name="idUsuario">
@@ -107,38 +107,40 @@ $btExcluir = FALSE;
                             }
                             ?>
                         </select>
-                        <label>Agendamento Cliente</label>
-                        <label id="idimagem" style="color: red; font-size: 11px;"></label>
-                        <select class="form-select" name="idimagem">
-                            <option>[--Selecione--]</option>
-                            <?php
-                            $listaAgendamento = $ac->listarAgendamento();
-                            if ($listaAgendamento != null) {
-                                foreach ($listaAgendamento as $lu) {
-                            ?>
-                                    <option value="<?php echo $lu->getIdimagem(); ?>" <?php
-                                                                                        $lu->getIdimagem();
-                                                                                        if ($lu->getIdimagem() != "") {
-                                                                                            if (
-                                                                                                $lu->getIdimagem() ==
-                                                                                                $lu->getIdimagem()
-                                                                                            ) {
-                                                                                                echo "selected = 'selected'";
-                                                                                            }
-                                                                                        }
-                                                                                        ?>>
-                                        <?php echo $lu->getEmail(); ?></option>
-                            <?php
-                                }
-                            }
-                            ?>
-                        </select>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <label>Agendamento/Cliente</label>
+                                <label id="idimagem" style="color: red; font-size: 11px;"></label>
+                                <select class="form-select" name="idimagem">
+                                    <option>[--Selecione--]</option>
+                                    <?php
+                                    $listaAgendamento = $ac->listarAgendamento();
+                                    if ($listaAgendamento != null) {
+                                        foreach ($listaAgendamento as $lu) {
+                                    ?>
+                                            <option value="<?php echo $lu->getIdimagem(); ?>" <?php
+                                                                                                $lu->getIdimagem();
+                                                                                                if ($lu->getIdimagem() != "") {
+                                                                                                    if (
+                                                                                                        $lu->getIdimagem() ==
+                                                                                                        $lu->getIdimagem()
+                                                                                                    ) {
+                                                                                                        echo "selected = 'selected'";
+                                                                                                    }
+                                                                                                }
+                                                                                                ?>>
+                                                <?php echo $lu->getEmail(); ?></option>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
-
-
-        </div>
-    </div>
 </body> <!-- fecha /container -->
 <footer id="myFooter" style="padding-top: 200px;">
     <div class="container">
