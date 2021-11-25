@@ -141,6 +141,13 @@ $btExcluir = FALSE;
 
                     </div>
                 </div>
+
+                <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled = 'disabled'"; ?>>
+
+                    <input type="submit" name="atualizarUsuario" class="btn btn-secondary btInput" value="Atualizar" <?php if ($btAtualizar == false) echo "disabled = 'disabled'"; ?>>
+                    <button type="button" class="btn btn-warning btInput" data-bs-toggle="modal" data-bs-target="#ModalExcluir" <?php if ($btExcluir == false) echo "disabled = 'disabled'"; ?>>
+                        Excluir
+                    </button>
 </body> <!-- fecha /container -->
 <footer id="myFooter" style="padding-top: 200px;">
     <div class="container">

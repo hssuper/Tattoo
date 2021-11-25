@@ -1,8 +1,12 @@
 <?php
 include_once "include/menuadm.php";
+include_once 'C:/xampp/htdocs/tattoo/controller/agendaController.php';
+require_once 'C:/xampp/htdocs/tattoo/model/agenda.php';
+include_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 include_once 'C:/xampp/htdocs/tattoo/controller/cadastroController.php';
 include_once 'C:/xampp/htdocs/tattoo/model/cadastro.php';
 include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
+
 $msg = new mensagem();
 
 
@@ -32,7 +36,7 @@ $msg = new mensagem();
 
     
                 
-                <form method="post" name="formularioConsulta" id="formularioConsulta" style="color: white">
+                <form method="post" name="agenda" id="agenda" style="color: white">
                     <div class="d-flex">
                         <div class="form-group col-6 p-1">
                             <label>Cliente Atendido</label>
