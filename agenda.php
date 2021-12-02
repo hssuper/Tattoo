@@ -2,7 +2,6 @@
 include_once "include/menuadm.php";
 include_once 'C:/xampp/htdocs/tattoo/controller/agendaController.php';
 require_once 'C:/xampp/htdocs/tattoo/model/agenda.php';
-include_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 include_once 'C:/xampp/htdocs/tattoo/model/orcamento.php';
 include_once 'C:/xampp/htdocs/tattoo/controller/orcamentoController.php';
 include_once 'C:/xampp/htdocs/tattoo/controller/cadastroController.php';
@@ -11,7 +10,10 @@ include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
 
 $msg = new mensagem();
 $ag = new Agenda();
-
+$cadastro = new cadastro();
+$cc = new cadastroController();
+$orcamento = new Orcamento();
+$oc = new orcamentocontroller();
 $btEnviar = FALSE;
 $btAtualizar = FALSE;
 $btExcluir = FALSE;
@@ -44,9 +46,26 @@ $btExcluir = FALSE;
 
 <body class="img" >
 
+<?php
+                if (isset($_POST['cadastrar'])) {
+                    $desconto = trim($_POST['desconto']);
+                    if ($desconto != "") {
+                        $dataAgendamento = $_POST['dataAgendamento'];
+                        $horaAgandamento = $_POST['horaAgandamento'];
+                        $statusAgendamento = $_POST['statusAgendamento'];
+                        $fkcliente = $_POST['fkcliente'];
+                        $fkorcamento = $_POST['fkorcamento'];
 
+                        $ag = new agendaController();
+                        unset($_POST['cadastrar']);
+                        $msg = $ag->inserirAgenda($desconto, $dataAgendamento, $horaAgandamento,  $statusAgendamento, $fkcliente, $fkorcamento);
+                        echo $msg->getMsg();
+                        echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
+                        URL='agenda.php'\">";
+                    }
+                }
 
-
+?>
     
 
    
@@ -82,9 +101,10 @@ $btExcluir = FALSE;
                     </div>
                     <div class="form-group">
                         <label for="horaAgendada">Hora da tatuagem</label>
-                        <input type="time" class="form-control" name="dataAgendamento" placeholder="Informe a hora Agendada" value="<?php echo $ag->getHoraAgandamento(); ?>">
+                        <input type="time" class="form-control" name="horaAgandamento" placeholder="Informe a hora Agendada" value="<?php echo $ag->getHoraAgandamento(); ?>">
                     </div>
-                    <select class="form-select" name="horaAgendada">
+                    <label>Status</label>
+                    <select class="form-select" name="statusAgendamento">
                         <option>[--Selecione--]</option>
                         <option <?php
                                 if ($ag->getStatusAgendamento() == "Concluido") {
@@ -97,11 +117,62 @@ $btExcluir = FALSE;
                                 }
                                 ?>>Em andamento</option>
                     </select>
-                    
+                    <label>Agendamento/Cliente</label>
+                                <label id="fkcliente" style="color: red; font-size: 11px;"></label>
+                                <select class="form-select" name="fkcliente">
+                                    <option>[--Selecione--]</option>
+                                    <?php
+                                    $listarCliente = $cc->listarCliente();
+                                    if ($listarCliente != null) {
+                                        foreach ($listarCliente as $lu) {
+                                    ?>
+                                            <option value="<?php echo $lu->getIdcadastro(); ?>" <?php
+                                                                                                $lu->getIdcadastro();
+                                                                                                if ($lu->getIdcadastro() != "") {
+                                                                                                    if (
+                                                                                                        $lu->getIdcadastro() ==
+                                                                                                        $lu->getIdcadastro()
+                                                                                                    ) {
+                                                                                                        echo "selected = 'selected'";
+                                                                                                    }
+                                                                                                }
+                                                                                                ?>>
+                                                <?php echo $lu->getNome(); ?></option>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                                <label>Orçamento</label>
+                                <label id="fkorcamento" style="color: red; font-size: 11px;"></label>
+                                <select class="form-select" name="fkorcamento">
+                                    <option>[--Selecione--]</option>
+                                    <?php
+                                    $listarOrcamento = $oc->listarOrcamento();
+                                    if ($listarOrcamento != null) {
+                                        foreach ($listarOrcamento as $lu) {
+                                    ?>
+                                            <option value="<?php echo $lu->getIdorcamento(); ?>" <?php
+                                                                                                $lu->getIdorcamento();
+                                                                                                if ($lu->getIdorcamento() != "") {
+                                                                                                    if (
+                                                                                                        $lu->getIdorcamento() ==
+                                                                                                        $lu->getIdorcamento()
+                                                                                                    ) {
+                                                                                                        echo "selected = 'selected'";
+                                                                                                    }
+                                                                                                }
+                                                                                                ?>>
+                                                <?php echo $lu->getOrcamento(); ?></option>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
                                 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="button" name="dataAgendamento" id="dataAgendamento" class="btn btn-primary">Salvar</button>
+                        <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>Salvar</button>
                     </div>
                 </div>
             </div>
