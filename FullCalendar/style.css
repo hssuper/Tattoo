@@ -6,9 +6,9 @@ body{
 
     border: 20px inset #212529;
     border-radius: 20px;
-    width: 200%;
+    width: auto;
     margin: 100px auto;
-    height: 100vh;
+    height: auto;
     background-color: rgb(124, 124, 124);
 }
 .text-center{

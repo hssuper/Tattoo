@@ -31,7 +31,11 @@ class orcamentocontroller {
         return $orcamentoDao->inserir($Orcamento);
          //return ("$nome, $contato,  $senha, $cpf, $dtNasc"); 
     }
-
+    public function listarOrcamento(){
+        $daoOrcamento = new DaoOrcamento();
+        return $daoOrcamento->listarOrcamentoDAO();
+    } 
+    
 
 
 

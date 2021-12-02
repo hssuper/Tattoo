@@ -11,12 +11,7 @@ include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
 
 $msg = new mensagem();
 $ag = new Agenda();
-$cadastro = new Cadastro();
-$cc->setFkcliente($cadastro);
-$cc = new CadastroController();
-$orcamento = new Orcamento();
-$oc->setFkorcamento($orcamento);
-$oc =  new orcamentocontroller();
+
 $btEnviar = FALSE;
 $btAtualizar = FALSE;
 $btExcluir = FALSE;
@@ -39,30 +34,46 @@ $btExcluir = FALSE;
     <link rel='stylesheet' type='text/css' href='FullCalendar/main.min.css' />
     <link rel='stylesheet' type='text/css' href='FullCalendar/style.css' />
 
+    <script>
+        function click(id) {
+            var btn = document.getElementById(id);
+            btn.click();
+        }
+    </script>
 </head>
 
-<body class="img" onload="Calendario()">
+<body class="img" >
 
 
 
 
-    <button type="button" hidden id="botaoModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-        Launch demo modal
-    </button>
+    
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" style="margin-top:9rem;vertical-align: middle;">
-            <div class="modal-content">
-                <div class="modal-header bg-light">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="post" name="agenda" id="agenda" style="color: white">
-                    <div class="form-group">
-                        <div class="col-md-4">
+   
+    
+    <form method="post" name="dataAgendamento" id="dataAgendamento" style="color: white">
+        
+
+        <div id="calendar" class="calendar"></div>
+
+        <button type="button" hidden id="botaoModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="color:black;" id="exampleModalLabel">Cliente Atendido</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <div class="col-md-8">
                             <label for="desconto">Desconto</label>
-                            <input type="decimal" class="form-control" name="desconto" placeholder="Informe o valor de Desconto" value="<?php echo $ag->getDesconto(); ?>">
+                            <input type="number" class="form-control" name="desconto" placeholder="Informe o valor de Desconto" value="<?php echo $ag->getDesconto(); ?>">
                         </div>
                     </div>
                     <div class="form-group">
@@ -70,11 +81,32 @@ $btExcluir = FALSE;
                         <input type="date" name="dataAgendamento" class="form-control" id="dataAgendamento" placeholder="Informe data agendada" value="<?php echo $ag->getDataAgendamento(); ?>">
                     </div>
                     <div class="form-group">
-                    <label for="horaAgendada">Hora da tatuagem</label>
-                    <input type="time" class="form-control" name="horaAgendada" placeholder="Informe a hora Agendada" value="<?php echo $ag->getHoraAgandamento(); ?>">
+                        <label for="horaAgendada">Hora da tatuagem</label>
+                        <input type="time" class="form-control" name="dataAgendamento" placeholder="Informe a hora Agendada" value="<?php echo $ag->getHoraAgandamento(); ?>">
+                    </div>
+                    <select class="form-select" name="horaAgendada">
+                        <option>[--Selecione--]</option>
+                        <option <?php
+                                if ($ag->getStatusAgendamento() == "Concluido") {
+                                    echo "selected = 'selected'";
+                                }
+                                ?>>Concluido</option>
+                        <option <?php
+                                if ($ag->getStatusAgendamento() == "Em andamento") {
+                                    echo "selected = 'selected'";
+                                }
+                                ?>>Em andamento</option>
+                    </select>
+                    
+                                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" name="dataAgendamento" id="dataAgendamento" class="btn btn-primary">Salvar</button>
+                    </div>
                 </div>
-
-
+            </div>
+        </div>
+</form>
 
 
 </body> <!-- fecha /container -->

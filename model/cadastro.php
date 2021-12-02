@@ -40,13 +40,6 @@ function setEmail($email){
 }
 
 
-function getSenha(){
-    return $this->senha;
-
-}
-function setSenha($senha){
-    $this->senha = $senha;
-}
 function getCpf(){
     return $this->cpf;
 

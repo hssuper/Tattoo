@@ -43,9 +43,44 @@ public function inserir (Orcamento $Orcamento){
     }
     $conn = null;
     return $msg;
+}
 
+    public function listarOrcamentoDAO()
+    {
+        $msg = new mensagem();
+        $conn = new Conecta();
+        $conecta = $conn->conectadb();
+        if ($conecta) {
+            try {
+                $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $rs = $conecta->query("select * from orcamento");
+                $lista = array();
+                $a = 0;
+                if ($rs->execute()) {
+                    if ($rs->rowCount() > 0) {
+                        while ($linha = $rs->fetch(PDO::FETCH_OBJ)) {
 
-    
+                            $orcamento = new Orcamento();
+                            $orcamento->setIdorcamento($linha->idorcamento);
+                            $orcamento->setOrcamento($linha->orcamento);
+                            $orcamento->setData($linha->data);
+                            $orcamento->setHora($linha->hora);
+                            $orcamento->setFkusuario($linha->fkusuario);
+                            $orcamento->setFkImagem($linha->fkImagem);
+                            
+
+                            $lista[$a] = $orcamento;
+                            $a++;
+                        }
+                    }
+                }
+            } catch (PDOException $ex) {
+                $msg->setMsg(var_dump($ex->errorInfo));
+            }
+            $conn = null;
+            return $lista;
+        }
+    }
 
 
 }
@@ -66,4 +101,3 @@ public function inserir (Orcamento $Orcamento){
 
 
 
-}
