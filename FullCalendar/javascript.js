@@ -65,6 +65,7 @@
       listMonth: "Lista Mensal",
     },
     events: {
+      
       url: "agenda.php",
     },
     locale: "pt-br",
