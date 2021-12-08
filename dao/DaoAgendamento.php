@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:/xampp/htdocs/tattoo/model/agendamento.php';
+require_once 'C:/xampp/htdocs/tattoo/model/PedidoAgendamento.php';
 require_once 'C:/xampp/htdocs/tattoo/bd/bd.php';
 require_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
 require_once 'C:/xampp/htdocs/tattoo/model/usuario.php';

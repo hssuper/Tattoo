@@ -1,6 +1,6 @@
 <?php
 include_once 'C:/xampp/htdocs/tattoo/dao/DaoAgendamento.php';
-include_once 'C:/xampp/htdocs/tattoo/model/agendamento.php';
+include_once 'C:/xampp/htdocs/tattoo/model/PedidoAgendamento.php';
 
 class agendamentoController
 {
