@@ -22,18 +22,20 @@ $resp = new Mensagem();
 $resp = $daoLogin->validarLogin($email,$senha);
 
 if(gettype($resp) == "object"){
-       
+       if(!isset($_SESSION['email'])){
+$_SESSION['senhap'] = $resp->getSenha();
+      
 
         $_SESSION['nr'] = rand(1,1000000);
         $_SESSION['confereNr'] = $_SESSION['nr'];
 
-        header("Location: ../adm.php");
+        header("Location: ../login.php");
         exit;
-
+    }
     }else{
         $_SESSION['msg'] =  "Usuario Inexistente!!!";
         if(isset($_SESSION['email'])){
-            $_SESSION['senha'] = null;
+            $_SESSION['senhap'] = null;
         }
         header("Location: ../login.php");
         exit;
@@ -41,7 +43,7 @@ if(gettype($resp) == "object"){
 
     $_SESSION['msg'] = $resp;
     if(isset($_SESSION['email'])){
-        $_SESSION['senha'] = null;
+        $_SESSION['senhap'] = null;
     }
     header("Location: ../login.php");
     exit;
