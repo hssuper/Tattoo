@@ -4,9 +4,9 @@ session_start();
 if (!empty($_POST) AND (empty($_POST['email']) OR empty($_POST['senha']))){
     header("Location: ../sessionDestroy.php"); exit;
 } 
-require_once "C:/xampp/htdocs/tattoo1/dao/DaoLogin.php";
-require_once "C:/xampp/htdocs/tattoo1/model/mensagem.php";
-require_once "C:/xampp/htdocs/tattoo1/model/cadastro.php";
+require_once "C:/xampp/htdocs/tattoo/dao/DaoLogin.php";
+require_once "C:/xampp/htdocs/tattoo/model/mensagem.php";
+require_once "C:/xampp/htdocs/tattoo/model/cadastro.php";
 
 if(isset($_POST)){
     $email = $_POST['email'];
