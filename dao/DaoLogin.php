@@ -9,7 +9,7 @@ class DaoLogin
     {
         $conn = new Conecta();
         $conecta = $conn->conectadb();
-        $cadastro = new Cadastro();
+        $usuario = new Usuario();
         if ($conecta) {
             try {
                 $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,10 +21,10 @@ class DaoLogin
                     if ($st->rowCount() > 0) {
 
                         while ($linha = $st->fetch(PDO::FETCH_OBJ)) {
-                            $cadastro->setEmail($linha->email);
-                            $cadastro->setSenha($linha->senha);
+                            $usuario->setEmail($linha->email);
+                            $usuario->setSenha($linha->senha);
                         }
-                        return $cadastro;
+                        return $usuario;
                     } else {
                         return "<p style='color: red;'>"
                             . "Usuário inexistente.</p>";

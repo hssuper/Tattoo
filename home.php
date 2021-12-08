@@ -9,7 +9,7 @@ include_once "include/menu.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Agenda PHP</title>
+    <title>Home</title>
     <!-- CSS do Bootstrap e CSS customizado -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/style.css">
