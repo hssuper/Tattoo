@@ -22,12 +22,7 @@ $resp = new Mensagem();
 $resp = $daoLogin->validarLogin($email,$senha);
 
 if(gettype($resp) == "object"){
-    if(!isset($_SESSION['emailp'])){
-        $_SESSION['idp'] = $resp->getIdcadastro();
-        $_SESSION['nomep'] = $resp->getNome();
-        $_SESSION['contatop'] = $resp->getContato();
-        $_SESSION['senhap'] = $resp->getSenha();
-        $_SESSION['cpfp'] = $resp->getCpf();
+       
 
         $_SESSION['nr'] = rand(1,1000000);
         $_SESSION['confereNr'] = $_SESSION['nr'];
@@ -38,25 +33,17 @@ if(gettype($resp) == "object"){
     }else{
         $_SESSION['msg'] =  "Usuario Inexistente!!!";
         if(isset($_SESSION['email'])){
-            $_SESSION['idp'] = null;
-            $_SESSION['nomep'] = null;
-            $_SESSION['contatop'] = null;
-            $_SESSION['senhap'] = null;
-            $_SESSION['cpfp'] = null;
+            $_SESSION['senha'] = null;
         }
         header("Location: ../login.php");
         exit;
     }
-}else{
+
     $_SESSION['msg'] = $resp;
     if(isset($_SESSION['email'])){
-        $_SESSION['idp'] = null;
-        $_SESSION['nomep'] = null;
-        $_SESSION['contatop'] = null;
-        $_SESSION['senhap'] = null;
-        $_SESSION['cpfp'] = null;
+        $_SESSION['senha'] = null;
     }
     header("Location: ../login.php");
     exit;
-}
+
 ob_end_flush();

@@ -19,14 +19,10 @@ class DaoLogin
                 if($st->execute()){
 
                     if ($st->rowCount() > 0) {
+
                         while ($linha = $st->fetch(PDO::FETCH_OBJ)) {
-                            $cadastro->setIdcadastro($linha->idcadastro);
-                            $cadastro->setNome($linha->nome);
-                            $cadastro->setContato($linha->contato);
                             $cadastro->setEmail($linha->email);
                             $cadastro->setSenha($linha->senha);
-                            $cadastro->setCpf($linha->cpf);
-                            $cadastro->setDtNasc($linha->dtNasc);
                         }
                         return $cadastro;
                     } else {

@@ -46,8 +46,6 @@ class usuario
     {
         $this->email = $email;
     }
-
-
     function getSenha()
     {
         return $this->senha;
