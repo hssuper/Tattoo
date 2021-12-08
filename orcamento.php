@@ -9,9 +9,11 @@ include_once 'C:/xampp/htdocs/tattoo/model/agendamento.php';
 include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
 $msg = new mensagem();
 $or = new Orcamento();
+
 $agendamento = new Agendamento();
 $or->setFkImagem($agendamento);
 $ac = new agendamentoController();
+
 $usuario = new Usuario();
 $or->setFkusuario($usuario);
 $uc =  new cadastroFuncionarioController();
@@ -63,8 +65,52 @@ $btExcluir = FALSE;
         URL='orcamento.php'\">";
                 }
             }
+            
+            if(isset($_GET['getPesquisa'])){
+                $idimagem = $_GET['idimagem'];
+                $ac = new agendamentoController();
+                $agendamento = $ac->pesquisaPedidoOrcamento($idimagem);
+            }
             ?>
+            <div class="row">
+                <form method="get" action="">
+                    <select class="form-select" name="idimagem">
+                        <option>[--Selecione--]</option>
+                        <?php
+                        $listaAgendamento = $ac->listarAgendamento();
+                        if ($listaAgendamento != null) {
+                            foreach ($listaAgendamento as $lu) {
+                                ?>
+                                <option value="<?php echo $lu->getIdimagem(); ?>" <?php
+                                $lu->getIdimagem();
+                                if ($lu->getIdimagem() != "") {
+                                    if (
+                                            $lu->getIdimagem() == $lu->getIdimagem()
+                                    ) {
+                                        echo "selected = 'selected'";
+                                    }
+                                }
+                                ?>>
+                                        <?php echo $lu->getEmail(); ?></option>
+                                    <?php
+                            }
+                        }
+                        ?>
+                    </select>
+                    <input type="submit" value="Pesquisar" name="getPesquisa" />
+                </form>
+            </div>
             <form method="POST" action="">
+
+                <div class="form-group">
+                    <label for="orcamento">Imagem</label>
+                    <img src="<?php echo $agendamento->getImagem();?>" height="150">
+                </div>
+                <div class="form-group">
+                    <label for="orcamento">Descrição</label>
+                    <textarea rows="8" cols="50" name="informacao" maxlength="20000" minlength="20" value=""><?php echo $agendamento->getInformacao(); ?></textarea>
+                </div>
+
                 <div class="form-group">
                     <label for="orcamento">Orçamento</label>
                     <input type="number" class="form-control" name="orcamento" placeholder="Informe o Orçamento" value="<?php echo $or->getOrcamento(); ?>">

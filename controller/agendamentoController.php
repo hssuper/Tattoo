@@ -1,6 +1,6 @@
 <?php
 include_once 'C:/xampp/htdocs/tattoo/dao/DaoAgendamento.php';
-include_once 'C:/xampp/htdocs/tattoo/model/PedidoAgendamento.php';
+include_once 'C:/xampp/htdocs/tattoo/model/agendamento.php';
 
 class agendamentoController
 {
@@ -11,17 +11,10 @@ class agendamentoController
         $agendamento->setEmail($email);
         $agendamento->setInformacao($informacao);
         $agendamento->setImagem($imagem);
-        
-       
-        
-       
-       
+
         $email = $agendamento->getemail();
         $informacao= $agendamento->getInformacao();
         $imagem= $agendamento->getImagem();
-        
-        
-        
         
 
         $DaoAgendamento = new DaoAgendamento();
@@ -32,6 +25,9 @@ class agendamentoController
         $DaoAgendamento= new DaoAgendamento();
         return $DaoAgendamento->listarAgendamento();
     }
-
+    public function pesquisaPedidoOrcamento($id){
+        $DaoAgendamento= new DaoAgendamento();
+        return $DaoAgendamento->listarPedidoOrcamentoDao($id);
+    }
 
 }

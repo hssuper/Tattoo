@@ -1,9 +1,9 @@
 <?php
 
-require_once 'C:/xampp/htdocs/tattoo/model/PedidoAgendamento.php';
+require_once 'C:/xampp/htdocs/tattoo/model/agendamento.php';
 require_once 'C:/xampp/htdocs/tattoo/bd/bd.php';
 require_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
-
+require_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 
 
 class DaoAgendamento{
@@ -81,6 +81,36 @@ return $msg;
 
             $conn = null;
             return $lista;
+        }
+    }
+    
+    //lista os dados do cliente relativo ao pedido de orçamento
+     public function listarPedidoOrcamentoDao($id)
+    {
+        $msg = new mensagem();
+        $conn = new Conecta();
+        $conecta = $conn->conectadb();
+        $agendamento = new Agendamento();
+        if ($conecta) {
+            try {
+                $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $rs = $conecta->query("select * from imagenstatoo where idimagem = '$id' limit 1");
+                if ($rs->execute()) {
+                    if ($rs->rowCount() > 0) {
+                        while ($linha = $rs->fetch(PDO::FETCH_OBJ)) {                            
+                            $agendamento->setIdimagem($linha->idimagem);
+                            $agendamento->setImagem($linha->img);
+                            $agendamento->setInformacao($linha->informacao);
+                            $agendamento->setEmail($linha->email);
+                        }
+                    }
+                }
+            } catch (PDOException $ex) {
+                $msg->setMsg(var_dump($ex->errorInfo));
+            }
+
+            $conn = null;
+            return $agendamento;
         }
     }
 }
