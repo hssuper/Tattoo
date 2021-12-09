@@ -3,8 +3,8 @@
 $orcamento = $_POST['orcamento'];
 $data = $_POST['data'];
 $hora = $_POST['hora'];
-$fkusuario = $_POST['fkusuario'];
-$fkImagem = $_POST['fkImagem'];
+$idUsuario = $_POST['idUsuario'];
+$idimagem = $_POST['idimagem'];
 date_default_timezone_set('America/Sao_Paulo');
 $data_envio = date('d/m/Y');
 $hora_envio = date('H:i:s');

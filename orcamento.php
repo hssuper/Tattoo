@@ -7,7 +7,7 @@ include_once 'C:/xampp/htdocs/tattoo/model/orcamento.php';
 include_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 include_once 'C:/xampp/htdocs/tattoo/model/PedidoAgendamento.php';
 include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
-include_once 'C:/xampp/htdocs/tattoo/controller/email.php';
+include_once 'C:/xampp/htdocs/tattoo/email.php';
 $msg = new mensagem();
 $or = new Orcamento();
 
@@ -74,7 +74,7 @@ $btExcluir = FALSE;
             }
             ?>
             <div class="row">
-                <form method="get" action="">
+                <form method="get" action="email.php">
                     <select class="form-select" name="idimagem">
                         <option>[--Selecione--]</option>
                         <?php
@@ -99,7 +99,7 @@ $btExcluir = FALSE;
                         ?>
                     </select>
                     <input type="submit" value="Pesquisar" name="getPesquisa" />
-                </form>
+                
             </div>
             <form method="POST" action="">
 
@@ -189,12 +189,13 @@ $btExcluir = FALSE;
                     </div>
                 </div>
 
-                <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled = 'disabled'"; ?>>
+                <input type="submit" name="cadastrarFunc" class="btn btn-success btInput"  value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled = 'disabled'"; ?>>
 
                     <input type="submit" name="atualizarUsuario" class="btn btn-secondary btInput" value="Atualizar" <?php if ($btAtualizar == false) echo "disabled = 'disabled'"; ?>>
                     <button type="button" class="btn btn-warning btInput" data-bs-toggle="modal" data-bs-target="#ModalExcluir" <?php if ($btExcluir == false) echo "disabled = 'disabled'"; ?>>
                         Excluir
                     </button>
+                    </form>
 </body> <!-- fecha /container -->
 <footer id="myFooter" style="padding-top: 200px;">
     <div class="container">
