@@ -75,5 +75,5 @@ if ($enviaremail) {
     echo "<script>alert('ERRO AO ENVIAR E-MAIL!')</script>";
 }
 echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
-       URL='index.php'\">";
+       URL='orcamento.php'\">";
 ?>

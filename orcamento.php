@@ -7,6 +7,7 @@ include_once 'C:/xampp/htdocs/tattoo/model/orcamento.php';
 include_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 include_once 'C:/xampp/htdocs/tattoo/model/PedidoAgendamento.php';
 include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
+include_once 'C:/xampp/htdocs/tattoo/controller/email.php';
 $msg = new mensagem();
 $or = new Orcamento();
 
