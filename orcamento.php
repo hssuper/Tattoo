@@ -113,7 +113,7 @@ $btExcluir = FALSE;
 
                 <div class="form-group">
                     <label for="orcamento">Orçamento</label>
-                    <input type="number" class="form-control" name="orcamento" placeholder="Informe o Orçamento" value="<?php echo $or->getOrcamento(); ?>">
+                    <input type="text" class="form-control" name="orcamento" placeholder="Informe o Orçamento" value="<?php echo $or->getOrcamento(); ?>">
                 </div>
 
                 <div class="form-group">
@@ -154,7 +154,7 @@ $btExcluir = FALSE;
                             ?>
                         </select>
                         <div class="form-group">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <label>Agendamento/Cliente</label>
                                 <label id="idimagem" style="color: red; font-size: 11px;"></label>
                                 <select class="form-select" name="idimagem">
