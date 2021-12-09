@@ -74,7 +74,7 @@ $btExcluir = FALSE;
             }
             ?>
             <div class="row">
-                <form method="get" action="email.php">
+                <form method="POST" action="email.php">
                     <select class="form-select" name="idimagem">
                         <option>[--Selecione--]</option>
                         <?php
