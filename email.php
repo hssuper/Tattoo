@@ -1,5 +1,8 @@
 <?php
 
+if(isset($_POST ['cadastrar'] )){
+
+
 $orcamento = $_POST['orcamento'];
 $data = $_POST['data'];
 $hora = $_POST['hora'];
@@ -76,4 +79,5 @@ if ($enviaremail) {
 }
 echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
        URL='orcamento.php'\">";
+      }
 ?>

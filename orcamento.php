@@ -49,32 +49,9 @@ $btExcluir = FALSE;
         <div class="col-lg-offset-8">
 
             <h3>Orçamento De Tatuagens</h3>
-            <?php
-            if (isset($_POST['cadastrar'])) {
-                $orcamento = trim($_POST['orcamento']);
-                if ($orcamento != "") {
-                    $data = $_POST['data'];
-                    $hora = $_POST['hora'];
-                    $fkusuario = $_POST['idUsuario'];
-                    $fkImagem = $_POST['idimagem'];
-
-                    $or = new orcamentocontroller();
-                    unset($_POST['cadastrar']);
-                    $msg = $or->inserirOrcamento($orcamento, $data, $hora,  $fkusuario, $fkImagem);
-                    echo $msg->getMsg();
-                    echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-        URL='orcamento.php'\">";
-                }
-            }
-            
-            if(isset($_GET['getPesquisa'])){
-                $idimagem = $_GET['idimagem'];
-                $ac = new agendamentoController();
-                $agendamento = $ac->pesquisaPedidoOrcamento($idimagem);
-            }
-            ?>
+           
             <div class="row">
-                <form method="POST" action="email.php">
+                <form method="POST" action="">
                     <select class="form-select" name="idimagem">
                         <option>[--Selecione--]</option>
                         <?php
@@ -99,9 +76,9 @@ $btExcluir = FALSE;
                         ?>
                     </select>
                     <input type="submit" value="Pesquisar" name="getPesquisa" />
-                
+                </form>
             </div>
-            <form method="POST" action="">
+            <form method="POST" action="email.php">
 
                 <div class="form-group">
                     <label for="orcamento">Imagem</label>
@@ -189,7 +166,7 @@ $btExcluir = FALSE;
                     </div>
                 </div>
 
-                <input type="submit" name="cadastrarFunc" class="btn btn-success btInput"  value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled = 'disabled'"; ?>>
+                <input type="submit" name="cadastrar" class="btn btn-success btInput"   value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled = 'disabled'"; ?>>
 
                     <input type="submit" name="atualizarUsuario" class="btn btn-secondary btInput" value="Atualizar" <?php if ($btAtualizar == false) echo "disabled = 'disabled'"; ?>>
                     <button type="button" class="btn btn-warning btInput" data-bs-toggle="modal" data-bs-target="#ModalExcluir" <?php if ($btExcluir == false) echo "disabled = 'disabled'"; ?>>
