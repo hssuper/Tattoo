@@ -7,6 +7,7 @@ include_once 'C:/xampp/htdocs/tattoo/model/orcamento.php';
 include_once 'C:/xampp/htdocs/tattoo/model/usuario.php';
 include_once 'C:/xampp/htdocs/tattoo/model/PedidoAgendamento.php';
 include_once 'C:/xampp/htdocs/tattoo/model/mensagem.php';
+include_once 'C:/xampp/htdocs/tattoo/email.php';
 $msg = new mensagem();
 $or = new Orcamento();
 
@@ -48,32 +49,9 @@ $btExcluir = FALSE;
         <div class="col-lg-offset-8">
 
             <h3>Orçamento De Tatuagens</h3>
-            <?php
-            if (isset($_POST['cadastrar'])) {
-                $orcamento = trim($_POST['orcamento']);
-                if ($orcamento != "") {
-                    $data = $_POST['data'];
-                    $hora = $_POST['hora'];
-                    $fkusuario = $_POST['idUsuario'];
-                    $fkImagem = $_POST['idimagem'];
-
-                    $or = new orcamentocontroller();
-                    unset($_POST['cadastrar']);
-                    $msg = $or->inserirOrcamento($orcamento, $data, $hora,  $fkusuario, $fkImagem);
-                    echo $msg->getMsg();
-                    echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
-        URL='orcamento.php'\">";
-                }
-            }
-            
-            if(isset($_GET['getPesquisa'])){
-                $idimagem = $_GET['idimagem'];
-                $ac = new agendamentoController();
-                $agendamento = $ac->pesquisaPedidoOrcamento($idimagem);
-            }
-            ?>
+           
             <div class="row">
-                <form method="get" action="">
+                <form method="POST" action="">
                     <select class="form-select" name="idimagem">
                         <option>[--Selecione--]</option>
                         <?php
@@ -100,7 +78,7 @@ $btExcluir = FALSE;
                     <input type="submit" value="Pesquisar" name="getPesquisa" />
                 </form>
             </div>
-            <form method="POST" action="">
+            <form method="POST" action="email.php">
 
                 <div class="form-group">
                     <label for="orcamento">Imagem</label>
@@ -113,7 +91,7 @@ $btExcluir = FALSE;
 
                 <div class="form-group">
                     <label for="orcamento">Orçamento</label>
-                    <input type="number" class="form-control" name="orcamento" placeholder="Informe o Orçamento" value="<?php echo $or->getOrcamento(); ?>">
+                    <input type="text" class="form-control" name="orcamento" placeholder="Informe o Orçamento" value="<?php echo $or->getOrcamento(); ?>">
                 </div>
 
                 <div class="form-group">
@@ -154,7 +132,7 @@ $btExcluir = FALSE;
                             ?>
                         </select>
                         <div class="form-group">
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <label>Agendamento/Cliente</label>
                                 <label id="idimagem" style="color: red; font-size: 11px;"></label>
                                 <select class="form-select" name="idimagem">
@@ -188,12 +166,13 @@ $btExcluir = FALSE;
                     </div>
                 </div>
 
-                <input type="submit" name="cadastrarFunc" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled = 'disabled'"; ?>>
+                <input type="submit" name="cadastrar" class="btn btn-success btInput"   value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled = 'disabled'"; ?>>
 
                     <input type="submit" name="atualizarUsuario" class="btn btn-secondary btInput" value="Atualizar" <?php if ($btAtualizar == false) echo "disabled = 'disabled'"; ?>>
                     <button type="button" class="btn btn-warning btInput" data-bs-toggle="modal" data-bs-target="#ModalExcluir" <?php if ($btExcluir == false) echo "disabled = 'disabled'"; ?>>
                         Excluir
                     </button>
+                    </form>
 </body> <!-- fecha /container -->
 <footer id="myFooter" style="padding-top: 200px;">
     <div class="container">
