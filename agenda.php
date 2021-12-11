@@ -36,12 +36,7 @@ $btExcluir = FALSE;
     <link rel='stylesheet' type='text/css' href='FullCalendar/main.min.css' />
     <link rel='stylesheet' type='text/css' href='FullCalendar/style.css' />
 
-    <script>
-        function click(id) {
-            var btn = document.getElementById(id);
-            btn.click();
-        }
-    </script>
+   
 </head>
 
 <body class="img" >

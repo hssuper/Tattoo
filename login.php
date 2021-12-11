@@ -48,7 +48,7 @@ include_once "include/menu.php";
                 <form action="./controller/validaLogin.php" method="POST">
                     <div class="form-group">
                         <label for="email">E-Mail</label>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Informe seu Email">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Informe seu Email">
                     </div>
 
 
