@@ -91,19 +91,19 @@ $btExcluir = FALSE;
                     </div>
                     <div class="modal-body">
                     <div class="col-md-8">
-                            <label for="desconto">Desconto</label>
+                            <label for="desconto" style="color:black;">Desconto</label>
                             <input type="number" class="form-control" name="desconto" placeholder="Informe o valor de Desconto" value="<?php echo $ag->getDesconto(); ?>">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="dataAgendamento">Data De Agendamento</label>
+                        <label for="dataAgendamento" style="color:black;">Data De Agendamento</label>
                         <input type="date" name="dataAgendamento" class="form-control" id="dataAgendamento" placeholder="Informe data agendada" value="<?php echo $ag->getDataAgendamento(); ?>">
                     </div>
                     <div class="form-group">
-                        <label for="horaAgendada">Hora da tatuagem</label>
+                        <label for="horaAgendada" style="color:black;">Hora da tatuagem</label>
                         <input type="time" class="form-control" name="horaAgandamento" placeholder="Informe a hora Agendada" value="<?php echo $ag->getHoraAgandamento(); ?>">
                     </div>
-                    <label>Status</label>
+                    <label style="color:black;">Status</label>
                     <select class="form-select" name="statusAgendamento">
                         <option>[--Selecione--]</option>
                         <option <?php
@@ -117,7 +117,7 @@ $btExcluir = FALSE;
                                 }
                                 ?>>Em andamento</option>
                     </select>
-                    <label>Agendamento/Cliente</label>
+                    <label style="color:black;">Agendamento/Cliente</label>
                                 <label id="fkcliente" style="color: red; font-size: 11px;"></label>
                                 <select class="form-select" name="fkcliente">
                                     <option>[--Selecione--]</option>
@@ -143,7 +143,7 @@ $btExcluir = FALSE;
                                     }
                                     ?>
                                 </select>
-                                <label>Orçamento</label>
+                                <label style="color:black;">Orçamento</label>
                                 <label id="fkorcamento" style="color: red; font-size: 11px;"></label>
                                 <select class="form-select" name="fkorcamento">
                                     <option>[--Selecione--]</option>
