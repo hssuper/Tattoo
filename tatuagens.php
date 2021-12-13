@@ -141,19 +141,19 @@ include_once "include/menu.php";
             </div>
             <div class="col-md-6" name="gallery">
                 <h1 class="titulo">Tatuagens</h1>
-                <a href="img/1231.jpg" data-lightbox="mygallery"><img src="img/1231_Easy-Resize.com.jpg"></a>
-                <a href="img/212sdasda.jpg" data-lightbox="mygallery"><img src="img/212sdasda_Easy-Resize.com.jpg"></a>
-                <a href="img/213131.jpg" data-lightbox="mygallery"><img src="img/213131_Easy-Resize.com.jpg"></a>
-                <a href="img/tattooo.jpeg" data-lightbox="mygallery"><img src="img/tattooo_Easy-Resize.com.jpg"></a>
-                <a href="img/tatttttooo.jpg" data-lightbox="mygallery"><img src="img/tatttttooo_Easy-Resize.com.jpg"></a>
-                <a href="img/wdaeq.jpg" data-lightbox="mygallery"><img src="img/wdaeq_Easy-Resize.com.jpg"></a>
-                <a href="img/Tattoo1.jpg" data-lightbox="mygallery"><img src="img/Tattoo1_Easy-Resize.com.jpg"></a>
-                <a href="img/tattoo.jpg" data-lightbox="mygallery"><img src="img/tattoo_Easy-Resize.com.jpg"></a>
-                <a href="img/dadad.jpg" data-lightbox="mygallery"><img src="img/dadad_Easy-Resize.com.jpg"></a>
-                <a href="img/sdqw12.jpg" data-lightbox="mygallery"><img src="img/sdqw12_Easy-Resize.com.jpg"></a>
-                <a href="img/tattoototo.jpg" data-lightbox="mygallery"><img src="img/tattoototo_Easy-Resize.com.jpg"></a>
-                <a href="img/dawdadw.jpg" data-lightbox="mygallery"><img src="img/dawdadw_Easy-Resize.com.jpg"></a>
-                <a href="img/tatuagensleao.jpg" data-lightbox="mygallery"><img src="img/tatuagensleao_Easy-Resize.com.jpg"></a>
+                <a href="patinhas.jpg" data-lightbox="mygallery"><img src="1231_Easy-Resize.com.jpg"></a>
+                <a href="caveira.jpg" data-lightbox="mygallery"><img src="212sdasda_Easy-Resize.com.jpg"></a>
+                <a href="guecha.jpg" data-lightbox="mygallery"><img src="wdaeq_Easy-Resize.com.jpg"></a>
+                <a href="leaoB.jpg" data-lightbox="mygallery"><img src="tatuagensleao_Easy-Resize.com.jpg"></a>
+                <a href="tempo.jpg" data-lightbox="mygallery"><img src="tatttttooo_Easy-Resize.com.jpg"></a>
+                <a href="onça.jpg" data-lightbox="mygallery"><img src="tattoototo_Easy-Resize.com.jpg"></a>
+                <a href="leaobraco.jpg" data-lightbox="mygallery"><img src="tattooo_Easy-Resize.com.jpg"></a>
+                <a href="maoreP.jpg" data-lightbox="mygallery"><img src="sdqw12_Easy-Resize.com.jpg"></a>
+                <a href="leaoC.jpg" data-lightbox="mygallery"><img src="dawdadw_Easy-Resize.com.jpg"></a>
+                <a href="nintendo.jpg" data-lightbox="mygallery"><img src="213131_Easy-Resize.com.jpg"></a>
+                <a href="leaoD.jpg" data-lightbox="mygallery"><img src="Tattoo1_Easy-Resize.com.jpg"></a>
+                <a href="moto.jpg" data-lightbox="mygallery"><img src="tattoo_Easy-Resize.com.jpg"></a>
+                <a href="rosa.jpg" data-lightbox="mygallery"><img src="dadad_Easy-Resize.com.jpg"></a>
             </div>
         </div>
     </div>
