@@ -19,18 +19,20 @@ public function inserir (Orcamento $Orcamento){
             $orcamento = $Orcamento->getOrcamento();
             $data = $Orcamento->getData();
             $hora = $Orcamento->getHora();
+            $email = $Orcamento->getEmail();
             $fkusuario = $Orcamento->getFkusuario();
             $fkImagem = $Orcamento->getFkImagem();
             
-            $msg->setMsg(" $orcamento, $data,$hora,  $fkusuario, $fkImagem");
+            $msg->setMsg(" $orcamento, $data,$hora, $email, $fkusuario, $fkImagem");
 
 
             $stmt = $conecta->prepare("insert into orcamento values (null,?,?,?,?,?)");
             $stmt->bindParam(1, $orcamento);
             $stmt->bindParam(2, $data);
             $stmt->bindParam(3, $hora);
-            $stmt->bindParam(4, $fkusuario);
-            $stmt->bindParam(5, $fkImagem);
+            $stmt->bindParam(4, $email);
+            $stmt->bindParam(5, $fkusuario);
+            $stmt->bindParam(6, $fkImagem);
             
             $stmt->execute();
 
@@ -65,6 +67,7 @@ public function inserir (Orcamento $Orcamento){
                             $orcamento->setOrcamento($linha->orcamento);
                             $orcamento->setData($linha->data);
                             $orcamento->setHora($linha->hora);
+                            $orcamento->setEmail($linha->email);
                             $orcamento->setFkusuario($linha->fkusuario);
                             $orcamento->setFkImagem($linha->fkImagem);
                             

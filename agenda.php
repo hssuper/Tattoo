@@ -39,34 +39,7 @@ $btExcluir = FALSE;
     <script src='bootstrap/js/interaction/main.min.js'></script>
     <script src='bootstrap/js/daygrid/main.min.js'></script>
     <script src='bootstrap/js/core/locales/pt-br.js'></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                locale: 'pt-br',
-                plugins: ['interaction', 'dayGrid'],
-                //defaultDate: '2019-04-12',
-                editable: true,
-                eventLimit: true,
-                events: 'list_eventos.php', // allow "more" link when too many events
-                extraParams: function() {
-                    return {
-                        cachebuster: new Date().valueOf()
-
-                    };
-                },
-                eventClick: function(info) {
-                    $('#visualizar').modal('show');
-
-                }
-
-
-            });
-
-            calendar.render();
-        });
-    </script>
+    <script src="bootstrap/js/personalizado.js"></script>
     <style>
         body {
             margin: 100px 10px;
@@ -118,7 +91,7 @@ $btExcluir = FALSE;
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -130,19 +103,37 @@ $btExcluir = FALSE;
                         <div class="modal-body">
                             <div class="col-md-8">
                                 <label for="desconto" style="color:black;">Desconto</label>
-                                <input type="number" class="form-control" name="desconto" placeholder="Informe o valor de Desconto" value="<?php echo $ag->getDesconto(); ?>">
+                                <input type="text" class="form-control" name="desconto" id="desconto" placeholder="Informe o valor de Desconto" value="<?php echo $ag->getDesconto(); ?>">
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-8">
+                                <label for="cor" style="color:black;">Cor</label>
+                                <select name="color" class="form-control" id="color">
+                                    <option value="">Selecione</option>
+                                    <option style="color:#FFD700;" value="#FFD700">Amarelo</option>
+                                    <option style="color:#0071c5;" value="#0071c5">Azul Turquesa</option>
+                                    <option style="color:#FF4500;" value="#FF4500">Laranja</option>
+                                    <option style="color:#8B4513;" value="#8B4513">Marrom</option>
+                                    <option style="color:#1C1C1C;" value="#1C1C1C">Preto</option>
+                                    <option style="color:#436EEE;" value="#436EEE">Royal Blue</option>
+                                    <option style="color:#A020F0;" value="#A020F0">Roxo</option>
+                                    <option style="color:#40E0D0;" value="#40E0D0">Turquesa</option>
+                                    <option style="color:#228B22;" value="#228B22">Verde</option>
+                                    <option style="color:#8B0000;" value="#8B0000">Vermelho</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="dataAgendamento" style="color:black;">Data De Agendamento</label>
-                            <input type="date" name="dataAgendamento" class="form-control" id="dataAgendamento" placeholder="Informe data agendada" value="<?php echo $ag->getDataAgendamento(); ?>">
+                            <label for="dataAgendamento" style="color:black;">Data inicio Agendamento</label>
+                            <input type="text" name="dataAgendamento" class="form-control" id="dataAgendamento" placeholder="Informe data agendada" value="<?php echo $ag->getDataAgendamento(); ?>">
                         </div>
                         <div class="form-group">
-                            <label for="horaAgendada" style="color:black;">Hora da tatuagem</label>
-                            <input type="time" class="form-control" name="horaAgandamento" placeholder="Informe a hora Agendada" value="<?php echo $ag->getHoraAgandamento(); ?>">
+                            <label for="horaAgendada" style="color:black;">Hora fim da tatuagem</label>
+                            <input type="text" class="form-control" name="horaAgandamento" id="horaAgendamento" placeholder="Informe a hora Agendada" value="<?php echo $ag->getHoraAgandamento(); ?>">
                         </div>
                         <label style="color:black;">Status</label>
-                        <select class="form-select" name="statusAgendamento">
+                        <select class="form-select" name="statusAgendamento" id="statusAgendamento">
                             <option>[--Selecione--]</option>
                             <option <?php
                                     if ($ag->getStatusAgendamento() == "Concluido") {
@@ -164,17 +155,17 @@ $btExcluir = FALSE;
                             if ($listarCliente != null) {
                                 foreach ($listarCliente as $lu) {
                             ?>
-                                    <option value="<?php echo $lu->getIdcadastro(); ?>" <?php
-                                                                                        $lu->getIdcadastro();
-                                                                                        if ($lu->getIdcadastro() != "") {
-                                                                                            if (
-                                                                                                $lu->getIdcadastro() ==
-                                                                                                $lu->getIdcadastro()
-                                                                                            ) {
-                                                                                                echo "selected = 'selected'";
-                                                                                            }
-                                                                                        }
-                                                                                        ?>>
+                                    <option <?php
+                                            $lu->getIdcadastro();
+                                            if ($lu->getIdcadastro() != "") {
+                                                if (
+                                                    $lu->getIdcadastro() ==
+                                                    $lu->getIdcadastro()
+                                                ) {
+                                                    echo "selected = 'selected'";
+                                                }
+                                            }
+                                            ?>>
                                         <?php echo $lu->getNome(); ?></option>
                             <?php
                                 }
@@ -190,17 +181,17 @@ $btExcluir = FALSE;
                             if ($listarOrcamento != null) {
                                 foreach ($listarOrcamento as $lu) {
                             ?>
-                                    <option value="<?php echo $lu->getIdorcamento(); ?>" <?php
-                                                                                            $lu->getIdorcamento();
-                                                                                            if ($lu->getIdorcamento() != "") {
-                                                                                                if (
-                                                                                                    $lu->getIdorcamento() ==
-                                                                                                    $lu->getIdorcamento()
-                                                                                                ) {
-                                                                                                    echo "selected = 'selected'";
-                                                                                                }
-                                                                                            }
-                                                                                            ?>>
+                                    <option <?php
+                                            $lu->getIdorcamento();
+                                            if ($lu->getIdorcamento() != "") {
+                                                if (
+                                                    $lu->getIdorcamento() ==
+                                                    $lu->getIdorcamento()
+                                                ) {
+                                                    echo "selected = 'selected'";
+                                                }
+                                            }
+                                            ?>>
                                         <?php echo $lu->getOrcamento(); ?></option>
                             <?php
                                 }

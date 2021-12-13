@@ -4,6 +4,7 @@ private $idorcamento;
 private $orcamento;
 private $data;
 private $hora;
+private $email;
 private $fkusuario;
 private $fkImagem;
 
@@ -92,6 +93,20 @@ return $this->fkImagem;
 public function setFkImagem($fkImagem)
 {
 $this->fkImagem = $fkImagem;
+
+return $this;
+}
+
+
+public function getEmail()
+{
+return $this->email;
+}
+
+
+public function setEmail($email)
+{
+$this->email = $email;
 
 return $this;
 }

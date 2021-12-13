@@ -2,7 +2,7 @@
 
 if(isset($_POST ['cadastrar'] )){
 
-
+  $informacao = $_POST['informacao'];
 $orcamento = $_POST['orcamento'];
 $data = $_POST['data'];
 $hora = $_POST['hora'];
@@ -11,6 +11,8 @@ $fkImagem = $_POST['idimagem'];
 date_default_timezone_set('America/Sao_Paulo');
 $data_envio = date('d/m/Y');
 $hora_envio = date('H:i:s');
+
+//echo "$orcamento, $data, $hora, $fkusuario, $fkImagem ";
 
 // Compo E-mail
 $arquivo = "
@@ -39,16 +41,19 @@ $arquivo = "
                  <td width='500' class='padLeft'>Orçamento: $orcamento</td>
                 </tr>
                 <tr>
+                 <td width='500' class='padLeft'>Informações: $informacao</td>
+                </tr>
+                <tr>
                   <td width='320' class='padLeft'>Data Disponivel: <b>$data</b></td>
      </tr>
      <tr>
                   <td width='320' class='padLeft'>Horario Disponivel: $hora</td>
                 </tr>
                 <tr>
-                <td width='320' class='padLeft'>Horario Disponivel: $fkusuario</td>
+                <td width='320' class='padLeft'>Funcionario Disponivel: $fkusuario</td>
               </tr>
               <tr>
-                <td width='320' class='padLeft'>Horario Disponivel: $fkImagem</td>
+                <td width='320' class='padLeft'>Cliente Disponivel: $fkImagem</td>
               </tr>
             </td>
           </tr>
@@ -80,4 +85,5 @@ if ($enviaremail) {
 echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"0;
        URL='orcamento.php'\">";
       }
+
 ?>

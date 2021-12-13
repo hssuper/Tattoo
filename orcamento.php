@@ -114,7 +114,7 @@ $btExcluir = FALSE;
                             if ($listaUsuario != null) {
                                 foreach ($listaUsuario as $lu) {
                             ?>
-                                    <option value="<?php echo $lu->getIdcadastro(); ?>" <?php
+                                    <option  <?php
                                                                                         $lu->getIdcadastro();
                                                                                         if ($lu->getIdcadastro() != "") {
                                                                                             if (
@@ -142,7 +142,7 @@ $btExcluir = FALSE;
                                     if ($listaAgendamento != null) {
                                         foreach ($listaAgendamento as $lu) {
                                     ?>
-                                            <option value="<?php echo $lu->getIdimagem(); ?>" <?php
+                                            <option <?php
                                                                                                 $lu->getIdimagem();
                                                                                                 if ($lu->getIdimagem() != "") {
                                                                                                     if (

@@ -7,13 +7,14 @@ class orcamentocontroller {
 
 
 
-    public function inserirOrcamento($orcamento, $data, $hora, $fkusuario, $fkImagem)
+    public function inserirOrcamento($orcamento, $data, $hora,$email, $fkusuario, $fkImagem)
     {
 
         $Orcamento = new Orcamento();
         $Orcamento->setOrcamento($orcamento);
         $Orcamento->setData($data);
         $Orcamento->setHora($hora);
+        $Orcamento->setEmail($email);
         $Orcamento->setFkusuario($fkusuario);
         $Orcamento->setFkImagem($fkImagem);
         
@@ -22,6 +23,7 @@ class orcamentocontroller {
         $orcamento = $Orcamento->getOrcamento();
         $data = $Orcamento->getData();
         $hora = $Orcamento->getHora();
+        $email = $Orcamento->getEmail();
         $fkusuario = $Orcamento->getFkusuario();
         $fkImagem = $Orcamento->getFkImagem();
         
