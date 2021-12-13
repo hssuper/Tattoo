@@ -3,6 +3,7 @@
  class agendamento{
 private $idimagem;
 private $email;
+private $tell;
 private $informacao;
 private $imagem;
 private $fkUsuario;
@@ -81,6 +82,20 @@ return $this->idimagem;
 public function setIdimagem($idimagem)
 {
 $this->idimagem = $idimagem;
+
+return $this;
+}
+
+
+public function getTell()
+{
+return $this->tell;
+}
+
+
+public function setTell($tell)
+{
+$this->tell = $tell;
 
 return $this;
 }

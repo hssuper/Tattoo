@@ -19,6 +19,7 @@ try{
 
     $conecta->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $email = $agendamento->getEmail();
+    $tell = $agendamento->getTell();
     $informacao = $agendamento->getInformacao();
     $imagem = $agendamento->getImagem();
    
@@ -26,10 +27,11 @@ try{
     
    
    
-    $stmt = $conecta->prepare("insert into imagenstatoo values (null,?,?,?,'1')");
+    $stmt = $conecta->prepare("insert into imagenstatoo values (null,?,?,?,?,'1')");
     $stmt->bindParam(1, $imagem);
     $stmt->bindParam(2, $informacao);
     $stmt->bindParam(3, $email);
+    $stmt->bindParam(4, $tell);
     
     
     $stmt->execute();
@@ -65,6 +67,7 @@ return $msg;
                             $agendamento->setImagem($linha->img);
                             $agendamento->setInformacao($linha->informacao);
                             $agendamento->setEmail($linha->email);
+                            $agendamento->setTell($linha->tell);
                             
                             
                            
@@ -102,6 +105,7 @@ return $msg;
                             $agendamento->setImagem($linha->img);
                             $agendamento->setInformacao($linha->informacao);
                             $agendamento->setEmail($linha->email);
+                            $agendamento->setTell($linha->tell);
                         }
                     }
                 }
