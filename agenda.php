@@ -81,16 +81,14 @@ $btExcluir = FALSE;
 
 
 
-        <form method="post" name="dataAgendamento" id="dataAgendamento" style="color: white">
+        
 
 
             <div id="calendar" class="calendar"></div>
 
-            <button type="button" hidden id="botaoModal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Launch demo modal
-            </button>
+            
 
-            <!-- Modal -->
+            <form method="post" name="agenda" id="agenda" style="color: white">
             <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -126,11 +124,11 @@ $btExcluir = FALSE;
                         </div>
                         <div class="form-group">
                             <label for="dataAgendamento" style="color:black;">Data inicio Agendamento</label>
-                            <input type="text" name="dataAgendamento" class="form-control" id="dataAgendamento" placeholder="Informe data agendada" value="<?php echo $ag->getDataAgendamento(); ?>">
+                            <input type="text" name="dataAgendamento" class="form-control" id="dataAgendamento" placeholder="Informe data agendada" onkeypress="DataHora(event, this)" value="<?php echo $ag->getDataAgendamento(); ?>">
                         </div>
                         <div class="form-group">
                             <label for="horaAgendada" style="color:black;">Hora fim da tatuagem</label>
-                            <input type="text" class="form-control" name="horaAgandamento" id="horaAgendamento" placeholder="Informe a hora Agendada" value="<?php echo $ag->getHoraAgandamento(); ?>">
+                            <input type="text" class="form-control" name="horaAgandamento" id="horaAgendamento" placeholder="Informe a hora Agendada" onkeypress="DataHora(event, this)" value="<?php echo $ag->getHoraAgandamento(); ?>">
                         </div>
                         <label style="color:black;">Status</label>
                         <select class="form-select" name="statusAgendamento" id="statusAgendamento">
@@ -156,7 +154,7 @@ $btExcluir = FALSE;
                                 foreach ($listarCliente as $lu) {
                             ?>
                                     <option <?php
-                                            $lu->getIdcadastro();
+                                            
                                             if ($lu->getIdcadastro() != "") {
                                                 if (
                                                     $lu->getIdcadastro() ==
@@ -182,7 +180,7 @@ $btExcluir = FALSE;
                                 foreach ($listarOrcamento as $lu) {
                             ?>
                                     <option <?php
-                                            $lu->getIdorcamento();
+                                            
                                             if ($lu->getIdorcamento() != "") {
                                                 if (
                                                     $lu->getIdorcamento() ==
@@ -201,7 +199,7 @@ $btExcluir = FALSE;
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <input type="submit" name="cadastrar" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>Salvar</button>
+                            <button type="submit" name="agenda" id="agenda" class="btn btn-success btInput" value="Enviar" <?php if ($btEnviar == TRUE) echo "disabled"; ?>>Salvar</button>
                         </div>
                     </div>
                 </div>

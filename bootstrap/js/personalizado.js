@@ -66,3 +66,23 @@ function DataHora(evento, objeto) {
         event.returnValue = false;
     }
 }
+$(document).ready(function () {
+    $("#agenda").on("submit", function (event) {
+        event.preventDefault();
+       $.ajax({
+            method: "POST",
+            url: "cad_event.php",
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            success: function (retorna) {
+                if (retorna['sit']) {
+                    //$("#msg-cad").html(retorna['msg']);
+                    location.reload();
+                } else {
+                    $("#msg-cad").html(retorna['msg']);
+                }
+            }
+        })
+    });
+});

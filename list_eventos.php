@@ -1,7 +1,7 @@
 <?php
 include_once 'bd/bd.php';
 
-$query_events = "SELECT idagendamento, valorTattoo, desconto, end, color, start, statusAgendamento, fkcliente, fkorcamento FROM agendamento";
+$query_events = "SELECT idagendamento, valorTattoo, desconto, dataAgendamento, color, horaAgendamento, statusAgendamento, fkcliente, fkorcamento FROM agendamento";
 $resultado_events = $conn->prepare($query_events);
 $resultado_events->execute();
 
@@ -22,9 +22,9 @@ while ($row_events = $resultado_events->fetch(PDO::FETCH_ASSOC)){
         'idagendamento' => $id,
         'valorTattoo' => $valorTattoo,
         'desconto' => $desconto,
-        'end' => $end,
-        'color' => $color,
-        'start' => $start,
+        'dataAgendamento' => $dataAgendamento,
+        'cor' => $cor,
+        'horaAgendamento' => $horaAgendamento,
         'statusAgendamento' => $statusAgendamento,
         'fkcliente' => $fkcliente,
         'fkorcamento' => $fkorcamento,
