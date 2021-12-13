@@ -84,7 +84,7 @@ $btExcluir = FALSE;
         
 
 
-            <div id="calendar" class="calendar"></div>
+            
 
             <span id="msg-cad"></span>
 
