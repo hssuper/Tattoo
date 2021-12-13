@@ -47,6 +47,7 @@ include_once "include/menu.php";
                 if (isset($_POST['cadastrar'])) {
                     $email = trim($_POST['email']);
                     if ($email != "") {
+                        $tell = $_POST['tell'];
                         $informacao = $_POST['informacao'];
                          
                         if (isset($_FILES['imagem']) && basename($_FILES["imagem"]["name"]) != "") {
@@ -103,7 +104,7 @@ include_once "include/menu.php";
             
                         $ag = new agendamentoController();
                         unset($_POST['cadastrar']);
-                        $msg = $ag->inserirAgendamento($email, $informacao , $imagem);
+                        $msg = $ag->inserirAgendamento($email, $tell, $informacao , $imagem);
                         echo $msg->getMsg();
                          echo "<META HTTP-EQUIV='REFRESH' CONTENT=\"2;
                          URL='tatuagens.php'\">";
