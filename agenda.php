@@ -86,7 +86,7 @@ $btExcluir = FALSE;
 
             <div id="calendar" class="calendar"></div>
 
-            
+            <span id="msg-cad"></span>
 
             <form method="post" name="agenda" id="agenda" style="color: white">
             <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

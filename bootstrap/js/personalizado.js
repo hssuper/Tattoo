@@ -16,18 +16,22 @@ document.addEventListener('DOMContentLoaded', function () {
         eventClick: function (info) {
             info.jsEvent.preventDefault(); // don't let the browser navigate
 
-            $('#visualizar #id').text(info.event.id);
-            $('#visualizar #title').text(info.event.title);
-            $('#visualizar #start').text(info.event.start.toLocaleString());
-            $('#visualizar #end').text(info.event.end.toLocaleString());
+            $('#visualizar #idagendamento').text(info.event.id);
+            $('#visualizar #desconto').text(info.event.orcamento);
+            $('#visualizar #dataAgendamento').text(info.event.start.toLocaleString());
+            $('#visualizar #cor').text(info.event.cor);
+            $('#visualizar #horaAgendamento').text(info.event.end.toLocaleString());
+            $('#visualizar #statusAgendamento').text(info.event.statusAgendamento);
+            $('#visualizar #fkcliente').text(info.event.fkcliente);
+            $('#visualizar #fkorcamento').text(info.event.fkorcamento);
             $('#visualizar').modal('show');
         },
         selectable: true,
         select: function (info) {
             //alert('Início do evento: ' + info.start.toLocaleString());
-            $('#cadastrar #start').val(info.start.toLocaleString());
-            $('#cadastrar #end').val(info.end.toLocaleString());
-            $('#cadastrar').modal('show');
+            $('#agenda #dataAgendamento').val(info.start.toLocaleString());
+            $('#agenda #horaAgendamento').val(info.end.toLocaleString());
+            $('#agenda').modal('show');
         }
     });
 
