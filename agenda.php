@@ -56,7 +56,7 @@ $btExcluir = FALSE;
 </head>
 
 <body class="img">
-    <div id='calendar'>
+    
         <?php
         if (isset($_POST['cadastrar'])) {
             $desconto = trim($_POST['desconto']);
@@ -81,12 +81,7 @@ $btExcluir = FALSE;
 
 
 
-        
-
-
-            
-
-            <span id="msg-cad"></span>
+<div id='calendar'>
 
             <form method="post" name="agenda" id="agenda" style="color: white">
             <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
